@@ -18,9 +18,9 @@ Utiliser le site officiel <a href="https://cran.r-project.org/" target="_blank">
 
 {{% callout note %}}
 
-*Dois-je vraiment télécharger R si je veux utiliser R Studio ?
+*Dois-je vraiment télécharger R si je veux utiliser R Studio ?*
 
-Même si vous avez l'intention d'utiliser RStudio, vous devez télécharger R sur votre ordinateur. RStudio vous aide à utiliser la version de R qui se trouve sur votre ordinateur, mais il n'est pas livré avec une version de R.
+Même si vous avez l'intention d'utiliser R Studio, vous devez télécharger R sur votre ordinateur. RStudio vous aide à utiliser la version de R qui se trouve sur votre ordinateur, mais il n'est pas livré avec une version de R.
 
 {{% /callout %}}
 

@@ -20,7 +20,7 @@ We will concentrate on the installation on a **Windows** operating system. *If y
 *Do I need to download R if I want to use R Studio?*
 
 Even if you intend to use RStudio, you still need to download R to your computer. RStudio helps you use the version of R that lives on your computer, but it doesn't come with a version of R on its own.
-{{% /callout note %}}
+{{% /callout %}}
 
 For Windows operating system: click on the following link: <a href="https://cran.r-project.org/bin/windows/base/" target="_blank">Install R for Windows</a>
 
