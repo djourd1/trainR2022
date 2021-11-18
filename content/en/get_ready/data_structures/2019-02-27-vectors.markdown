@@ -217,7 +217,7 @@ y <- 3.1
 ## [1] 13.5  8.7
 ```
 
-{{% alert warning %}}
+{{% callout warning %}}
 While this is a very convenient R feature, it can be potentially misleading as it brings unruly results when the vectors are of different length, as in the following case:
 
 \\begin{equation}
@@ -226,7 +226,7 @@ While this is a very convenient R feature, it can be potentially misleading as i
 \\left(\\begin{matrix}a+e\\\b+f\\\c+g\\\d+e \\end{matrix} \\right) 
 \\end{equation}
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 

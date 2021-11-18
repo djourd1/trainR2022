@@ -107,7 +107,8 @@ Notes:
 + After parsing the text file, it also indicates the name and type of data that was selected for each column. 
 + The village column was not transformed into a factor, and there are no row names. 
 
-{{% alert note %}}
+{{% callout warning %}}
+
 Some packages require the use of the original R data.frame format. In such case, you can always convert 
 the tibble into R data.frames. For this, you can use the command data.frame()
 
@@ -125,7 +126,7 @@ str(ans_df) ## ans_df is now a native R data.frame
 ##  $ village: chr  "vilA" "vilB" "vilA" "vilC" ...
 ```
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## Importing data from an Excel file

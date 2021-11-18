@@ -61,11 +61,11 @@ matrix(c(1:12), nrow = 4, byrow = FALSE)
 ```
 
 
-{{% alert warning %}}
+{{% callout warning %}}
 
 Be aware that matrix() will only issue a warning if the vector length is not a multiple of the number of rows. In such case, the last row of the matrix will be completed with the first components of the vector: this is very unlikely it was the matrix you wanted to work with. 
 
-{{% /alert %}}
+{{% /callout %}}
 
 Look at what happens in the following example:
 
@@ -115,7 +115,7 @@ You can create a rectangular matrix, binding several vectors of the same size
 cbind(1:3, 4:6, 7:9)
 ```
 
-{{% alert note %}}
+{{% callout note %}}
 Note that the `cbind` and `rbind` functions can be used to combine matrices. But you have to make sure the matrices have compatible dimensions
 
 ```{r}
@@ -131,7 +131,7 @@ rbind(A, B)
 # But it will throw an error if we use cbind
 cbind(A, B)
 ```
-{{% /alert %}}
+{{% /callout %}}
 
 ### Using specialized functions
 
@@ -284,7 +284,7 @@ ncol(A)
 diag(A)
 ```
 
-{{% alert note %}}
+{{% callout note %}}
 
 The attentive reader will have noticed that the function `diag()` will react differently depending on the arguments that was given. For those familiar with object programming, this should not come as a surprise. For others, it is an invitation to be careful when providing an argument to a  function. 
 
@@ -296,7 +296,7 @@ diag(c(1,4,5)) ## when provided a vector, it will output a diagonal matrix
 diag(m) ## when provided a matrix, it will output its main diagonal
 ```
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 
