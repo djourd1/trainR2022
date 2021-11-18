@@ -1,0 +1,303 @@
+---
+title: "Les data.frame"
+author: "Damien Jourdain"
+date: '2020-08-20'
+slug: r-data-frames
+categories: R
+tags: []
+type: book
+weight: 60
+---
+
+## Objectifs d'apprentissage
+
+Les objets "data.frame" permettent de stocker des données de *différents types* dans une seule structure tabulaire. J'utiliserai l'orthographe "data.frame" car il existe plusieurs structures tabulaires proches  qui ont été développées sur la plateforme R (data.frame, data.table, tibble), et il m'a semblé plus simple de retenir les noms que vous aurez à utiliser pour les manipuler.
+ 
+Les data.frame sont très pratiques pour travailler avec des données d'enquête car elles sont généralement stockées sous forme de tableau, avec de nombreuses colonnes correspondant aux réponses à l'enquête et de nombreuses lignes (généralement, mais pas toujours, une ligne correspondant à une enquête). 
+
+Dans cette section, vous apprendrez :
+
++ [Qu'est-ce qu'une base de données](#cquoi)
++ [Comment créer un data.frame](#creer-data-frame)
++ [Comment accéder aux données](#acceder-data-frame)
++ [Comment trier les données](#trier-data-frame)
++ [Comment résumer rapidement les données](#resume-data-frame)
++ [Quelles sont les autres structures de données proches](#autres-data-frame)
+  + [Tibbles](#tibbles)
+  + [data.table](#data-table)
+  
+## Qu'est-ce qu'un data.frame ? {#cquoi}
+
+Un `data.frame` est une *structure bidimensionnelle semblable à un tableau* dans laquelle chaque colonne contient les valeurs d'une variable et chaque ligne contient un ensemble de valeurs de chaque colonne.
+
+Voici les caractéristiques d'un data.frame:
+
++ Les noms des colonnes doivent être non vides ;
++ Les noms des lignes doivent être uniques ;
++ Les données stockées dans un cadre de données peuvent être numériques, factorielles ou de type caractère ;
++ Chaque colonne doit contenir le même nombre d'éléments de données.
+
+> Les data.frame sont particulièrement utiles car ils permettent de combiner différents types de données en un seul objet et sont plus faciles à manipuler que les listes.  
+
+Nous pouvons utiliser les `data.frame` fournis par défaut quand vous installez R pour comprendre cela. Par exemple, le data.frame `mtcars` peut être utilisé directement en tapant simplement son nom.
+
+```{r, echo=F}
+mtcars <- mtcars [1:10, ]
+```
+```{r, eval=T}
+mtcars # pour ce document, nous avons utilisé une version modifiée de mtcars avec seulement 10 lignes
+```
+
+La ligne supérieure du tableau, appelée *en-tête*, contient les *noms des colonnes*. Chaque ligne qui suit indique une *ligne de données*, qui commence par le **nom de la ligne**, puis est suivie par les données réelles. Chaque élément de données d'une ligne est appelé *cellule*. 
+Vous pouvez facilement l'interpréter comme un cadre de données décrivant des voitures. Chaque ligne correspond à un modèle unique de voiture, chaque colonne correspond aux différentes caractéristiques de ce modèle.
+
+Si vous voulez connaître la structure exacte de l'objet `mtcars`, vous pouvez utiliser la fonction `str()`.
+
+```{r}
+str(mtcars)
+```
+
+Nous apprenons que `mtcars` est un objet R de type `data.frame`, qui contient 32 observations (c'est-à-dire 32 lignes) de 11 variables (c'est-à-dire 11 colonnes). Ensuite, chaque colonne est décrite (nom, type, premières valeurs stockées).
+
+## Comment créer un data.frame {#creer-data-frame}
+
+Souvent, vous ne créerez pas de data.frame à partir de zéro, mais vous les importerez généralement à partir d'autres programmes (voir le chapitre sur l'importation de données). 
+
+Cependant, vous devez savoir que vous pouvez créer un data.frame par vous-même.
+
+```{r}
+new.data <- data.frame(
+   emp_id = c (1:5), 
+   emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+   salary = c(623.3, 515.2, 611.0, 729.0, 843.25), 
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+   stringsAsFactors = FALSE   # il est possible d'éviter la conversion des vecteurs de caractères en facteurs
+)
+
+new.data
+```
+
+## Comment accéder aux données {#acceder-data-frame}
+
+### Données contenues dans dans une cellule
+
+Pour récupérer des données dans une cellule, vous devez entrer ses coordonnées de ligne et de colonne entre des crochets simples (opérateur `[ ]`). **Les deux coordonnées sont séparées par une virgule**. En d'autres termes, les coordonnées commencent par la position de la ligne, suivie d'une virgule, et se terminent par la position de la colonne. **L'ordre est important**.
+
+Voici la valeur de la cellule située à la première ligne et à la deuxième colonne de `mtcars`.
+
+```{r}
+mtcars [1, 2]
+```
+
+De plus, nous pouvons utiliser les noms des lignes et des colonnes au lieu des coordonnées numériques.
+
+```{r}
+mtcars ["Mazda RX4", "cyl"] 
+```
+
+### Données contenues dans une colonne
+
+Il existe plusieurs façons de récupérer les données contenues dans les colonnes.
+
+Tout d'abord, nous pouvons récupérer une seule colonne avec l'opérateur "$" :
+```{r}
+mtcars$am 
+class(mtcars$am)
+```
+
+Notez que vous devez connaître le nom de la colonne que vous souhaitez récupérer. Toutefois, si vous utilisez R Studio, si vous avez tapé mtcars$, une liste de noms possibles vous sera proposée (encore une bonne raison d'utiliser R Studio au lieu de R).
+
+Ensuite, nous pouvons récupérer une colonne avec l'opérateur `[ ]`. Pour ce faire, nous devons faire précéder le nom ou le numéro de la colonne d'une virgule, ce qui indique que nous voulons prendre en compte toutes les lignes :
+
+```{r}
+mtcars[, "am"] 
+mtcars[,9] 
+```
+
+Notez que :
+
+  + l'ordre de mtcars$am préserve l'ordre des lignes de la table de données. C'est important car cela nous permet de manipuler une variable en fonction des résultats d'une autre.
+  + l'objet `mtcars$am` qui est produit est un vecteur contenant 10 nombres. 
+
+
+### Données contenues dans plusieurs colonnes
+
+Pour selectionner plusieurs colonnes, vous ne pouvez plus utiliser le `\$`, mais devez utiliser les crochets:
+
+L'exemple suivant montre que vous pouvez extraire les colonnes 2, 3 et 4 de la table `mtcars` et les stocker dans un nouveau data.frame appelé `carsub`: 
+
+```{r}
+carsub <- mtcars[,2:4]
+head(carsub) # la fonction head affiche les six premières lignes du tableau
+```
+
+N'oubliez pas que si vous voulez afficher plusieurs colonnes qui ne sont pas dans la même séquence de chiffres, vous pouvez utiliser la fonction R `c()`. Rappelez-vous que c() est une fonction générique permettant de combiner des arguments pour former un vecteur. Donc si vous voulez sélectionner les colonnes 3, 7 et 11 :
+
+```{r}
+carsub <- mtcars[ , c(3,7,11)]
+head(carsub)
+```
+
+Notez que la fonction `c()` n'est pas limitée à la combinaison de nombres. Elle peut combiner de nombreux types d'objets différents en un seul vecteur (à condition que tous les objets que vous voulez combiner soient du même type).
+
+Vous obtiendrez le même résultat en créant un vecteur de noms de colonnes :
+
+```{r}
+carsub <-mtcars[ ,c("disp", "qsec", "carb")]
+head(carsub)
+```
+
+### Données contenues dans les lignes
+
+Les lignes d'un data.frame peuvent être selectionnées avec les crochets uniques, tout comme nous l'avons fait avec les colonnes. Cependant, en plus d'un vecteur d'index des positions des lignes, vous devez ajouter une virgule. *Ceci est important, car la virgule supplémentaire signale que l'on veut sélectionner toutes les colonnes*. 
+
+Vous devriez être en mesure de sélectionner des lignes en utilisant la fonction `c()`.
+
+```{r}
+mtcars[1:2, ] 
+mtcars[c(1,3,10), ] 
+mtcars["Dastsun 710", ]
+mtcars[c("Datsun 710", "Fiat X1-9"), ]
+```
+
+### Sous-ensemble de lignes et de colonnes
+
+Si vous avez compris la mécanique de sélection des columnes et des lignes, vous pouvez faire une sélection combinée de lignes et de colonnes que vous voulez traiter.
+
+```{r}
+mtcars [c(1,3,10), c(2, 3:5) ] 
+```
+
+
+## Comment trier les données {#trier-data-frame}
+
+Pour trier un data.frame, utilisez la fonction `order( )`. Par défaut, le tri se fait par order croissant. Si la variable de tri est précédées d'un signe moins, l'ordre sera alors décroissant. 
+
+```{r}
+# ordonnez les voitures en utilisant la colonne mpg (ordre croissant)
+mtcars[order(mtcars$mpg),]
+```
+
+```{r}
+#trier les voitures à l'aide de deux clés
+mtcars[order(mtcars$mpg, -mtcars$cyl),]
+```
+
+{{% callout note %}}
+
+Notez que vous devez répéter la partie mtcars$ dans la fonction order() ; ne pas le faire produira une erreur, car la fonction order() cherchera une variable mpg qui (normalement) n'existe pas.
+
+```{r, error=TRUE}
+mtcars[order(mpg),]
+```
+
+{{% /callout %}}
+
+## Comment résumer rapidement les données {#resume-data-frame}
+
+Vous pouvez obtenir un résumé statistique des données contenus dans le data.frame en appliquant la fonction `summary()`.
+
+```{r}
+summary(carsub)
+```
+
+
+## Quelles sont les autres structures tabulaires {#autres-data-frame}
+
+### tibble
+
+`tibble` est une structure tabulaire de données développée plus récemment par les équipes de RStudio. Les tibble permettent également de saisir des données de types différents et possèdent des caractéristiques internes qui facilitent le travail avec certains progiciels. 
+
+Vous pouvez travailler avec tibble en installant la suite de paquets `tidyverse` ou plus simplement le paquet `tibble`.
+
+```{r, eval = F}
+# install a suite of related packages
+install.packages("tidyverse")
+
+# Alternatively, install just tibble:
+install.packages("tibble")
+```
+
+Une fois installé, vous devrez charger le paquet tibble à chaque session:
+
+```{r, warning=FALSE,message=FALSE}
+library(tibble)
+```
+
+#### Creation d'un tibble
+
+Comme pour les data.frame, vous pouvez créer un nouveau tibble à partir de vecteurs individuels avec tibble(). 
+
+La fonction tibble() permet de:
++ se référer à des variables que vous venez de créer au sein de la fonction
++ recycler automatiquement les entrées de longueur 1
++ conserver les chaînes de caractères en tant que caractères (et ne pas les convertir automatiquement en facteurs)
+
+```{r}
+tibble(
+  x = 1:5, 
+  y = 1, # ce sera automatiquement transformé en un vecteur de longueur 5
+  z = x^2 + y, # il reconnaîtra x et y qui viennent d'être créés
+  t = letters[1:5] # les chaînes de caractères ne seront pas converties en facteurs
+)
+```
+
+Elle vérifie également que les colonnes soient de la même longueur (sauf, comme on l'a vu plus haut pour les valeurs uniques)
+
+```{r, error=TRUE}
+tibble(
+  x = 1:5, 
+  t = letters[1:3]
+)
+```
+
+
+#### Affichage des données 
+
+Quand vous avez un grand nombre de lignes, seules les 10 premières lignes et les colonnes qui tiennent à l'écran seront affichées. Sous la ligne des noms, les types de données sont également affichées:
+
+```{r}
+ans <- tibble(
+  x = 1:50, 
+  t = letters[1:50],
+  x2 = x^2,
+  e = sample(letters, 50, replace = TRUE)
+)
+ans
+```
+
+
+#### Subsetting
+
+tibble est plus strict que data.frame pour signaler les erreurs; par exemple, ils génèrent un avertissement si la colonne à laquelle vous essayez d'accéder n'existe pas.
+
+Comparez les deux codes :
+
+```{r}
+df <- data.frame(
+  thex = runif(5),
+  they = rnorm(5)
+)
+df$x # Extract by name
+df$thex
+df[["x"]] 
+df[[1]] # Extract by position
+```
+
+```{r, error=TRUE}
+df <- tibble(
+  thex = runif(5),
+  they = rnorm(5)
+)
+df$x # Extract by name 
+df[["x"]] 
+df[[1]] # Extract by position
+```
+
+### data.table
+
+`data.table` est un paquet qui étend `data.frame`. Plus concrètement, quand vous convertissez un data.frame en data.table, il garde la classe `data.frame`, mais sera également de la classe `data.table`. C'est une caractéristique utile quand vous devez travailler avec des paquets qui n'acceptent que des data.frame.
+
+Deux de ses caractéristiques les plus remarquables sont la vitesse et une syntaxe "simplifiée". Je donnerai beaucoup plus de détails sur data.table dans une section séparée.
+

@@ -1,0 +1,157 @@
+---
+title: Importer des données
+author: Damien Jourdain
+date: '2020-08-20'
+slug: import-data
+categories:
+  - R
+tags: []
+type: book
+weight: 70
+---
+## Objectifs d'apprentissage
+
+Les données que vous allez analyser proviennent généralement d'enquêtes et se présentent sous forme de tableaux. Bien que R puisse être utilisé pour saisir les données provenant de ces enquêtes, vous trouverez plus efficace de saisir les données dans un logiciel de type Excel et de les importer ensuite dans R pour l'analyse des données.  
+
+Dans cette section, vous apprendrez comment importer et exporter des données provenant de différents formats :
+  
++ [Fichier texte](#fichier-texte)
++ [Fichiers Excel (formats xls & xlsx)](#fichier-excel)
+      
+Il existe de nombreux autres formats qui peuvent être importés. 
+      
+Si vous disposez d'autres types de données (provenant par exemple d'autres logiciels statistiques tels que Stata), vous pouvez soit trouver le paquet adéquat pour importer les données (en naviguant sur le web, vous trouverez rapidement celui qui sera le plus adéquat pour le faire), soit transformer vos données en format texte ou excel et utiliser les méthodes fournies ici.
+    
+## Importer des données à partir d'un fichier texte {#fichier-texte}
+    
+Les fichiers texte peuvent facilement être importés à condition que les différentes colonnes soient séparées par un séparateur commun. Le séparateur peut être une virgule, une demi-colonne ou même une tabulation.
+    
+Voici un exemple d'information délimitée par des virgules.
+
+```{r, echo=FALSE}
+cat(readLines('D:/Mes donnees/Github/trainingR2021/content/en/get_ready/data_structures/mydata.csv', n=6), sep = '\n')
+```
+
+
+Pour importer ces données, vous avez de nombreuses solutions sous la main. J'en présente une ici qui me semble très facile d'accès. 
+
+Notez cependant qu'il existe de nombreuses autres façons d'importer des données et n'hésitez pas à explorer le web pour trouver la solution qui répond le mieux à vos besoins.
+
+### Utiliser les fonctions du paquet `readr` 
+
+Si vous ne l'avez pas encore fait, installez le paquet `readr`
+```{r, eval=F}
+install.packages("readr")
+```
+    
+Et chargez le:
+```{r, message=FALSE, warning=FALSE}
+library(readr)
+```
+    
+Pour lire un ensemble de données avec `readr`, vous combinez deux objets : 
+      
++ une fonction qui analyse l'ensemble du fichier et, 
++ une spécification de colonne. La spécification de colonne décrit comment chaque colonne doit être convertie d'un vecteur de caractères au type de données le plus approprié. 
+    
+Dans la plupart des cas, la spécification de colonne n'est pas nécessaire car `readr` la devinera pour vous automatiquement.
+
+Le paquet `readr` permet d'importer directement sept formats de fichiers avec sept fonctions `read_xxx()` :
+
++ read_csv() : fichiers séparés par des virgules (CSV)
++ read_tsv() : fichiers séparés par des tabulations
++ read_delim() : fichiers généraux délimités
++ read_fwf() : fichiers à largeur fixe
++ read_table() : fichiers tabulaires où les colonnes sont séparées par des espaces.
++ read_log() : fichiers journaux du web
+
+Par exemple, pour importer les données de mydata.csv, vous pouvez utiliser la fonction read_csv() comme suit :
+
+```{r, eval=FALSE }
+ans <- read_csv("myPath/mydata.csv")
+str(ans)
+```
+
+```{r, echo=FALSE }
+ans <- read_csv("D:/Mes donnees/Github/trainingR2021/content/en/get_ready/data_structures/mydata.csv")
+print(ans)
+```
+
+Notes : 
+
++ Les données sont importées sous forme de tibble
++ Après avoir analysé le fichier texte, il indique également le nom et le type de données qui ont été sélectionnées pour chaque colonne. 
++ La colonne "village" n'a pas été transformée en facteur, et il n'y a pas de noms de lignes. 
+
+{{% callout note %}}
+
+Certains paquets nécessitent l'utilisation d'un data.frame et pas d'un tibble. Dans ce cas, vous pouvez toujours convertir 
+le tibble en data.frame. Pour cela, vous pouvez utiliser la commande data.frame():
+      
+```{r}
+ans_df <- data.frame(ans)
+str(ans_df) ## ans_df est maintenant un R data.frame natif
+```
+    
+{{% /callout %}}
+    
+
+
+## Importer des données d'un fichier Excel {#fichier-excel}
+
+Là encore, plusieurs solutions sont possibles. Pour ce cours, je suggère d'utiliser le paquet `readxl`. Il permet d'importer des fichiers qui ont le format .xls ou .xlsx. 
+
+Comme d'habitude, si vous ne l'avez pas fait, vous devez d'abord installer le paquet sur votre ordinateur :
+```{r, eval=FALSE}
+install.packages("readxl")
+```
+
+Et le charger:
+```{r, warning=FALSE}
+library(readxl)
+```
+
+Pour tester cette fonction, vous devez d'abord télécharger le fichier datasets.xls
+[Clicker ici pour télécharger le fichier de données](/files/datasets.xlsx). 
+
+{{% callout warning %}}
+
+Enregistrez le fichier à un endroit où vous pourrez le récupérer facilement, car vous **devrez vous souvenir du chemin complet pour atteindre ce fichier afin de l'importer.**
+
+{{% /callout %}}
+
+Vous pouvez le faire avec n'importe quel fichier Excel que vous avez sur votre ordinateur. Nous utiliserons ici le fichier datasets.xlsx que vous venez de télécharger. Vous devrez indiquer le chemin exact de votre fichier, et le nom exact du fichier (y compris son extension).
+
+```{r, eval=FALSE}
+data <- read_excel("mypath/datasets.xlsx")
+```
+
+```{r, echo=FALSE}
+data <- read_excel("datasets.xlsx")
+data
+```
+
+Notes : 
+
++ On obtient un tibble. 
++ Les colonnes de chaînes de caractères ne sont pas automatiquement transformées en facteurs
++ Sauf indication contraire, il lira la première feuille de travail  
+
+Pour identifier les fiches de travail disponibles :
+```{r}
+excel_sheets("datasets.xlsx")
+```
+
+Vous pouvez selectionner la feuille que vous voulez importer:
+```{r}
+read_excel("datasets.xlsx", sheet = "quakes")
+```
+
+Vous disposez de nombreuses options pour importer des sections de données spécifiques. 
+Par exemple, si vous voulez lire des lignes spécifiques, vous pouvez utiliser:
+
+```{r}
+read_excel("datasets.xlsx", range = cell_rows(1:5))
+```
+
+
