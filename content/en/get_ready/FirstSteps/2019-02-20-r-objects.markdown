@@ -38,7 +38,8 @@ Note: We coud also use `=` the equals sign for assignment, but we recommend agai
 
 Try it out in your console.
 
-```{r}
+
+```r
 L <- 10000
 N <- 24
 r <- 6
@@ -54,13 +55,23 @@ Note that R does not print anything out when you make these assignments.
 
 Had you made a mistake, you would have received an error message. For example, if you forgot the minus sign to make a complete arrow and get the assignment right, you will receive an error message. For example, try this:
 
-```{r, error=T}
+
+```r
  u < 24
 ```
 
+```
+## Error in eval(expr, envir, enclos): object 'u' not found
+```
+
 To see the value stored in \\(L\\), variable we simply type a in the console.
-```{r}
+
+```r
 L
+```
+
+```
+## [1] 10000
 ```
 
 And when we hit the Return key, R shows us the value stored in \\(L\\), which is \\(10000\\).
@@ -70,22 +81,33 @@ As we define objects in the console, we are actually changing what is called the
 `ls` is a predefined R __function__ that shows you the names of the objects saved in your workspace. By predefined, we mean that you can use them without having to load an additional package, or to define them by yourself.
 
 Just type it in your console:
-```{r}
+
+```r
 ls()
+```
+
+```
+## [1] "L" "N" "r"
 ```
 
 Since the problem parameters are saved in variables, to obtain a solution, we can use the variables directly.
 
 To be able to calculate the  formula, we will again rely on R predefined operators `/` ,`^` , and `*`. 
 
-```{r}
+
+```r
 L * (r/1200) *(1+r/1200)^N / ((1 + r/1200)^N - 1) 
+```
+
+```
+## [1] 443.2061
 ```
 
 
 Note that simply typing the formula with the variables gives you the solution, but does not store it into the workspace. If you want to use the solutions obtained for further calculations, you need to assign them to other variables. 
 
-```{r}
+
+```r
 m <- L * (r/1200) *(1+r/1200)^N / ((1 + r/1200)^N - 1) 
 ```
 
@@ -93,12 +115,24 @@ Again the solutions are not printed out to your console, but they are stored in 
 
 As a small trick, if you want to store the value to the workspace and at the same time see the result on the console, you can surround your assignment with brackets:
 
-```{r}
+
+```r
 (m <- L * (r/1200) *(1+r/1200)^N / ((1 + r/1200)^N - 1))
+```
+
+```
+## [1] 443.2061
+```
+
+```r
 (extra <-  (m * N) - L )
 ```
 
-In any case, if you did things correctly you should get `r m`  to be paid per month, and paid an extra `r extra`  to your banker to get access to that money immediately !
+```
+## [1] 636.9465
+```
+
+In any case, if you did things correctly you should get 443.2061025  to be paid per month, and paid an extra 636.9464607  to your banker to get access to that money immediately !
 
 The Figure 1 shows how your console should look like at the end of this session if you followed all the instructions.
 
