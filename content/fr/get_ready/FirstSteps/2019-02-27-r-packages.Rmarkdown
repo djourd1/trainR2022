@@ -8,12 +8,14 @@ categories:
 tags: []
 type: book
 weight: 9
-
+output:
+  html_document:
+    keep_md: true
 ---
 
 ## Objectifs d'apprentissage
 
-Les paquetages R sont des ensembles de fonctions et de données. Ils augmentent la puissance de R en améliorant ou en en ajoutant des fonctionnalités à l'application de base.
+Les paquetages R sont des ensembles de fonctions et de données. Mais contrairement aux fonctions de base, ils ne sont pas installés automatiquement dans votre ordinateur quand vous utilisez R. Ils augmentent la puissance de R en améliorant ou en en ajoutant des fonctionnalités à l'application de base.
 
 Dans cette section, nous passerons en revue plusieurs aspects sur les paquetages:
 
@@ -27,13 +29,13 @@ Dans cette section, nous passerons en revue plusieurs aspects sur les paquetages
 
 ## Qu'est-ce qu'un paquetage ?
 
-Un paquetage comprend généralement du code (pas seulement du code R !), de la documentation sur le paquetage et les fonctions qu'il contient, des tests pour vérifier que tout fonctionne comme il faut et parfois des données.
+Un paquetage comprend généralement du code, de la documentation sur le paquetage et les fonctions qu'il contient, des tests pour vérifier que tout fonctionne comme il faut et parfois des données.
 
 Les informations de base sur un paquetage sont fournies dans le fichier DESCRIPTION, où vous pouvez trouver ce que fait le paquetage, qui en est l'auteur, à quelle version appartient la documentation, la date, le type de licence d'utilisation et les dépendances du paquetage.
 
-## Que sont les dépôts ?
+## Que sont les entrepôts ?
 
-Un dépôt est un endroit où se trouvent les paquetages afin que vous puissiez les installer à partir de celui-ci. En général, ils sont en ligne et accessibles à tous. Le dépôt le plus populaire pour les paquetages R est **CRAN**. 
+Un entrepôt est un endroit où se trouvent les paquetages afin que vous puissiez les installer à partir de celui-ci. En général, ils sont en ligne et accessibles à tous. Le dépôt le plus populaire pour les paquetages R est **CRAN**. 
 
 CRAN est le dépôt officiel, c'est un réseau de serveurs web géré par la communauté R dans le monde entier. Il est coordonné par la fondation R, et pour qu'un paquetage soit publié ici, il doit passer plusieurs tests qui garantissent que le paquetage suit les règles du CRAN. 
 
@@ -43,7 +45,7 @@ La méthode pour installer un paquetage dépend de l'endroit où il se trouve. A
 
 Tous les paquetages que nous utiliserons sont disponibles sur le dépôt du CRAN.
 
-Au cours de la formation, nous utiliserons largement le paquetage `data.table`. Vous devrez installer ce paquetage sur votre ordinateur avant de pouvoir l'utiliser. 
+Nous utiliserons largement le paquetage `data.table`. Vous devrez installer ce paquetage sur votre ordinateur avant de pouvoir l'utiliser. 
 
 Pour installer ce paquetage, vous pouvez soit le faire "manuellement", soit utiliser l'interface R-Studio. 
 
@@ -58,11 +60,9 @@ Avec R-Studio, vous pouvez également utiliser le menu. Suivez Outils -> Install
 
 {{< figure lsrc="installpackages.png" title="Tapez le nom du paquetage que vous voulez installer" numbered="true">}}
 
-
 Normalement, lorsque vous tapez les premières lettres, on vous propose une liste de noms de paquetages parmi lesquels vous pouvez choisir. 
 
 Une fois que vous avez sélectionné le paquetage à installer, il vous suffit de cliquer sur le bouton "Installer". Vous recevrez quelques messages à l'écran. Ils dépendront du système d'exploitation que vous utilisez, des dépendances et de la réussite de l'installation du paquetage.
-
 
 ## Comment vérifier les paquetages installés et les mettre à jour
 
@@ -74,7 +74,7 @@ Avec R Studio, vous pouvez garder une trace des paquetages déjà installés sur
 
 Une fois que vous aurez fait cela, vous verrez une liste des paquetages installés, et vous aurez la possibilité de les mettre à jour. C'est une bonne idée de mettre à jour les paquetages une fois par mois. 
 
-## Comment charger les colis
+## Comment "charger" les paquetages
 
 Une fois qu'un paquetage est installé, vous êtes prêt à utiliser ses fonctionnalités. 
 Pour ce faire, vous devez le charger dans la mémoire de l'ordinateur. La façon la plus simple de le faire est d'utiliser la commande `library()`.
@@ -91,7 +91,7 @@ Notez également que l'entrée de `install.packages()` est un vecteur de caract�
 
 ## Comment décharger un paquetage
 
-Pour décharger un colis donné, vous pouvez utiliser la fonction detach(). L'utilisation sera :
+Pour décharger un paquetage donné, vous pouvez utiliser la fonction `detach()`. L'utilisation sera :
 ```{r}
 detach("package:data.table", unload=TRUE)
 ```
@@ -127,4 +127,5 @@ Vous pouvez également parcourir directement les vignettes disponibles en utilis
 ```{r, eval=F}
 browseVignettes(package="data.table")
 ```
+
 Une fenêtre de navigateur s'ouvrira pour que vous puissiez facilement explorer et cliquer sur la vignette préférée pour l'ouvrir.

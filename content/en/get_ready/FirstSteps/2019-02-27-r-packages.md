@@ -48,7 +48,8 @@ During the course, we will use extensively the package `data.table`. You will ne
 To install this package, you can either do it "manually" or using the R Studio interface. 
 
 If you want to do it directly from the console, you can use the command: 
-```{r, eval=F}
+
+```r
 install.packages("data.table")
 ```
 After running this, you will receive some messages on the console. They will depend on what operating system you are using, the dependences, and if the package was succesfully installed.
@@ -82,8 +83,13 @@ To do so, you will need to load it into the computer memory. The simplest way to
 
 The packages is loaded into the memory, and a few messages are sent to confirm that the packages is loaded, and some additional messages. Note that these messages will be in red color even if everything went fine!  
 
-```{r}
+
+```r
 library(data.table)
+```
+
+```
+## Warning: package 'data.table' was built under R version 4.0.5
 ```
 
 Note also that the input of `install.packages()` is a character vector and requires the name to be in quotes, while `library()` accepts either character or name and makes it possible for you to write the name of the package without quotes.
@@ -91,7 +97,8 @@ Note also that the input of `install.packages()` is a character vector and requi
 ## How To Unload A Package
 
 To unload a given package you can use the detach() function. The use will be:
-```{r}
+
+```r
 detach("package:data.table", unload=TRUE)
 ```
 
@@ -104,9 +111,54 @@ As in basic R, the commands ?() and help(), are the first source of documentatio
 You can get a general overview of the package using help(package = "packagename"). Besides each function can be explored individually by help("name of the function") or help(function, package = "package") if the package has not been loaded, where you will typically find the description of the function and its parameters and an example of application.
 
 Tip: you can also use another way to see what is inside a loaded package. Use the ls() command in this way:
-```{r, message=FALSE}
+
+```r
 library(data.table)
+```
+
+```
+## Warning: package 'data.table' was built under R version 4.0.5
+```
+
+```r
 ls("package:data.table")
+```
+
+```
+##   [1] "%between%"          "%chin%"             "%flike%"           
+##   [4] "%ilike%"            "%inrange%"          "%like%"            
+##   [7] ":="                 "address"            "alloc.col"         
+##  [10] "as.data.table"      "as.IDate"           "as.ITime"          
+##  [13] "as.xts.data.table"  "between"            "chgroup"           
+##  [16] "chmatch"            "chorder"            "CJ"                
+##  [19] "copy"               "cube"               "data.table"        
+##  [22] "dcast"              "dcast.data.table"   "fcase"             
+##  [25] "fcoalesce"          "fifelse"            "fintersect"        
+##  [28] "first"              "foverlaps"          "frank"             
+##  [31] "frankv"             "fread"              "frollapply"        
+##  [34] "frollmean"          "frollsum"           "fsetdiff"          
+##  [37] "fsetequal"          "fsort"              "funion"            
+##  [40] "fwrite"             "getDTthreads"       "getNumericRounding"
+##  [43] "groupingsets"       "haskey"             "hour"              
+##  [46] "IDateTime"          "indices"            "inrange"           
+##  [49] "is.data.table"      "isoweek"            "key"               
+##  [52] "key<-"              "last"               "like"              
+##  [55] "mday"               "melt"               "melt.data.table"   
+##  [58] "merge.data.table"   "minute"             "month"             
+##  [61] "nafill"             "quarter"            "rbindlist"         
+##  [64] "rleid"              "rleidv"             "rollup"            
+##  [67] "rowid"              "rowidv"             "second"            
+##  [70] "set"                "setalloccol"        "setattr"           
+##  [73] "setcolorder"        "setDF"              "setDT"             
+##  [76] "setDTthreads"       "setindex"           "setindexv"         
+##  [79] "setkey"             "setkeyv"            "setnafill"         
+##  [82] "setnames"           "setNumericRounding" "setorder"          
+##  [85] "setorderv"          "shift"              "shouldPrint"       
+##  [88] "SJ"                 "tables"             "test.data.table"   
+##  [91] "timetaken"          "transpose"          "truelength"        
+##  [94] "tstrsplit"          "uniqueN"            "update.dev.pkg"    
+##  [97] "wday"               "week"               "yday"              
+## [100] "year"
 ```
 
 ### Vignettes
@@ -115,14 +167,13 @@ The vignettes are documents where the authors show some functionalities of their
 
 They are usually accessible at the top of the package help file.
 
-```{r vignette, echo=FALSE, fig.cap = "Update packages with R Studio"}
-#knitr::include_graphics("/img/r-packages/vignettes.png")
-```
+
 {{< figure library="true" src="installpackages/vignettes.png" title="Vignettes provides package documentation" numbered="true">}}
 
 You can also browse directly the vignettes available using:
 
-```{r, eval=F}
+
+```r
 browseVignettes(package="data.table")
 ```
 A browser window will open so you can easily explore and click on the preferred vignette to open it.
