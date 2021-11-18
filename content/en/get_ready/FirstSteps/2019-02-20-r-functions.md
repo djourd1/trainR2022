@@ -24,44 +24,64 @@ In this section we will:
 + Show you how to learn about these functions
 
 ## R functions: `log()` as an example
-```{r, echo=FALSE}
-a <- 1
-```
+
 
 #### R functions use parenteses
 In general, to evaluate a function, we need to use parentheses.
 Note what happens when we type the function `ls`  instead of `ls()`. 
 
-```{r, eval=F}
+
+```r
 ls
 ```
-```{r, eval=T, echo=F}
-head(ls,5)
+
+```
+##                                                                              
+## 1 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
+## 2     pattern, sorted = TRUE)                                                
+## 3 {                                                                          
+## 4     if (!missing(name)) {                                                  
+## 5         pos <- tryCatch(name, error = function(e) e)
 ```
 
 It doesn't evaluate the function but instead it shows us the underlying code of `ls`. 
 
 Now if we add the parentheses, the function is evaluated and you see the objects in the workspace.
 
-```{r}
+
+```r
 ls()
+```
+
+```
+## [1] "a"
 ```
 
 #### R functions usually require arguments
 
 Unlike `ls`, which does not require any arguments, *most functions require at least one*. An argument is a R object, it can be a variable or other data structures, that the function will process before returning another R object.
 
-Here is an example of how we assign an object to the argument for the natural log function `log`. So if we type `log(8)`, 8 is the argument sent to the function for evaluation. We get in return the natural log of 8, i.e., `r log(8)`.
+Here is an example of how we assign an object to the argument for the natural log function `log`. So if we type `log(8)`, 8 is the argument sent to the function for evaluation. We get in return the natural log of 8, i.e., 2.0794415.
 
-```{r}
+
+```r
 log(8)
+```
+
+```
+## [1] 2.079442
 ```
 
 Functions can take stored variables as arguments. Let's define a variable `a` as `1`. So we can apply a function to a variable as well. Because `a` has been defined as `1`, then the `log(a)` is `0`.
 
-```{r}
+
+```r
 a <- 1
 log(a)
+```
+
+```
+## [1] 0
 ```
 
 #### Functions can be nested
@@ -72,8 +92,13 @@ For example, if we type the function `exp(1)` the function for exponential, we g
 
 Because `exp()` is the inverse function of `log()`, if we compute the natural log of that number, we should get back \\(1\\). So note that if we type function `log()` and then inside that function we use the argument function `exp(1)`, we first evaluate the first function, `exp(1)`, and then we evaluate the second, and we get an answer of 1.
 
-```{r}
+
+```r
 log(exp(1))
+```
+
+```
+## [1] 1
 ```
 
 The important thing to remember is that functions are evaluated *from the inside out when you nest them*. 
@@ -91,14 +116,39 @@ Help files are like user manuals for the functions. You can find:
 + what it produces, i.e. what are the outputs of the function
 
 You get help by using the help function, or for most functions, you can use as a shorthand, which is the question mark followed by the function name.
-```{r, eval=F}
+
+```r
 help(log)
 ? log
 ```
 
 Finally, many of the functions contains some example proposed by the developer. You can try out the worked out examples provided, by typing: 
-```{r}
+
+```r
 example(log)   # show an example of function log
+```
+
+```
+## 
+## log> log(exp(3))
+## [1] 3
+## 
+## log> log10(1e7) # = 7
+## [1] 7
+## 
+## log> x <- 10^-(1+2*1:9)
+## 
+## log> cbind(x, log(1+x), log1p(x), exp(x)-1, expm1(x))
+##           x                                                    
+##  [1,] 1e-03 9.995003e-04 9.995003e-04 1.000500e-03 1.000500e-03
+##  [2,] 1e-05 9.999950e-06 9.999950e-06 1.000005e-05 1.000005e-05
+##  [3,] 1e-07 1.000000e-07 1.000000e-07 1.000000e-07 1.000000e-07
+##  [4,] 1e-09 1.000000e-09 1.000000e-09 1.000000e-09 1.000000e-09
+##  [5,] 1e-11 1.000000e-11 1.000000e-11 1.000000e-11 1.000000e-11
+##  [6,] 1e-13 9.992007e-14 1.000000e-13 9.992007e-14 1.000000e-13
+##  [7,] 1e-15 1.110223e-15 1.000000e-15 1.110223e-15 1.000000e-15
+##  [8,] 1e-17 0.000000e+00 1.000000e-17 0.000000e+00 1.000000e-17
+##  [9,] 1e-19 0.000000e+00 1.000000e-19 0.000000e+00 1.000000e-19
 ```
 
 ### Look up for help 
@@ -116,14 +166,25 @@ that a default value is assigned with the equal sign. For example, the base of t
 If you already know how the function works but need a quick reminder of the arguments, you can use the args function.
 
 If I type args of log, it shows us the two arguments that it needs.
-```{r}
+
+```r
 args(log)
+```
+
+```
+## function (x, base = exp(1)) 
+## NULL
 ```
 
 You can change the default value by simply assigning another value.
 For example, if instead of natural log we want to get log base 2, we would type, for example, log of 8, and now we change the default of base to 2.
-```{r}
+
+```r
 log(8, base=2)
+```
+
+```
+## [1] 3
 ```
 
 **Note that to specify arguments, we use the equal sign. We did not use the assignment argument.**
@@ -132,8 +193,13 @@ If we read the help file for log, we see that the first argument has a name, too
 It's x. However, we haven't been using that argument name. We could, though.
 
 Here's how we would do it.
-```{r}
+
+```r
 log(x=8, base=2)
+```
+
+```
+## [1] 3
 ```
 
 We get the same answer as if we hadn't used the name x.
@@ -150,7 +216,8 @@ For example, `2 ^ 3`, that function that takes 2 to the power of 3 doesn't need 
 
 You can see the arithmetic operators by looking at the help file.
 
-```{r, eval= FALSE}
+
+```r
 help('+')
 ```
 
@@ -171,11 +238,11 @@ help('+')
 
 Run the following code in the R console and guess what they are doing
 
-```{r, eval=F}
+
+```r
 n <- 1000
 x <- seq(1,n)
 sum(x)
-
 ```
 Possible Answers: 
 

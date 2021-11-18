@@ -31,37 +31,59 @@ Dans cette section, nous allons :
 En général, pour évaluer une fonction, il faut utiliser des parenthèses.
 Notez ce qui se passe lorsque nous tapons la fonction "ls" au lieu de "ls()". 
 
-```{r, eval=F}
+
+```r
 ls
 ```
 
-```{r, eval=T, echo=F}
-head(ls,5)
+
+```
+##                                                                              
+## 1 function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
+## 2     pattern, sorted = TRUE)                                                
+## 3 {                                                                          
+## 4     if (!missing(name)) {                                                  
+## 5         pos <- tryCatch(name, error = function(e) e)
 ```
 
 En n'utilisant pas les parenthèses, on fait apparaitre le code sous-jacent de la fonction.
 
 Maintenant, si nous ajoutons les parenthèses, la fonction est évaluée et vous voyez les objets dans l'espace de travail.
 
-```{r}
+
+```r
 ls()
+```
+
+```
+## character(0)
 ```
 
 #### Les fonctions R nécessitent généralement des arguments
 
 Contrairement à la fonction `ls`, qui ne nécessite aucun argument, *la plupart des fonctions en nécessitent au moins un*. Un argument est un objet R, il peut s'agir d'une variable ou d'autres structures de données, que la fonction traitera avant de renvoyer un autre objet R.
 
-Voici un exemple de la façon dont nous assignons un objet à l'argument pour la fonction `log()`. Si je tape `log(8)`, 8 est l'argument envoyé à la fonction pour évaluation. J'obtiens en retour le log naturel de 8, c'est-à-dire `r round(log(8),4)`.
+Voici un exemple de la façon dont nous assignons un objet à l'argument pour la fonction `log()`. Si je tape `log(8)`, 8 est l'argument envoyé à la fonction pour évaluation. J'obtiens en retour le log naturel de 8, c'est-à-dire 2.0794.
 
-```{r}
+
+```r
 log(8)
+```
+
+```
+## [1] 2.079442
 ```
 
 Les fonctions peuvent prendre des variables comme arguments. Affectons la valeur 1 à la variable `a`. Comme `a` stocke le numerique 1, alors le `log(a)` devrait retourner la valeur 0. 
 
-```{r}
+
+```r
 a <- 1
 log(a)
+```
+
+```
+## [1] 0
 ```
 
 #### Les fonctions peuvent être imbriquées
@@ -72,8 +94,13 @@ Par exemple, si nous tapons la fonction `exp(1)` la fonction pour obtenir une ex
 
 Parce que `exp()` est la fonction inverse de `log()`, si nous calculons le log naturel de ce nombre, nous devrions récupérer $ 1 $. Notez donc que si nous tapons la fonction `log()` et qu'ensuite, à l'intérieur de cette fonction, nous utilisons la fonction argument `exp(a)`, nous évaluons d'abord la première fonction, `exp(a)`, puis la seconde, et nous obtenons une réponse de 1.
 
-```{r}
+
+```r
 log(exp(1))
+```
+
+```
+## [1] 1
 ```
 
 Ce qu'il  faut retenir, c'est que les fonctions sont évaluées *de l'intérieur vers l'extérieur quand on les emboîte*. 
@@ -93,15 +120,40 @@ Les fichiers d'aide sont comme des manuels d'utilisation des fonctions. Vous pou
 
 Vous obtenez de l'aide en utilisant la fonction d'aide, ou pour la plupart des fonctions, vous pouvez utiliser comme raccourci le point d'interrogation suivi du nom de la fonction.
 
-```{r, eval=F}
+
+```r
 help(log)
 ? log
 ```
 
 Enfin, de nombreuses fonctions contiennent des exemples proposés par le développeur. Vous pouvez essayer les exemples élaborés fournis, en tapant : 
 
-```{r}
+
+```r
 example(log) # montre un exemple de journal de fonction
+```
+
+```
+## 
+## log> log(exp(3))
+## [1] 3
+## 
+## log> log10(1e7) # = 7
+## [1] 7
+## 
+## log> x <- 10^-(1+2*1:9)
+## 
+## log> cbind(x, log(1+x), log1p(x), exp(x)-1, expm1(x))
+##           x                                                    
+##  [1,] 1e-03 9.995003e-04 9.995003e-04 1.000500e-03 1.000500e-03
+##  [2,] 1e-05 9.999950e-06 9.999950e-06 1.000005e-05 1.000005e-05
+##  [3,] 1e-07 1.000000e-07 1.000000e-07 1.000000e-07 1.000000e-07
+##  [4,] 1e-09 1.000000e-09 1.000000e-09 1.000000e-09 1.000000e-09
+##  [5,] 1e-11 1.000000e-11 1.000000e-11 1.000000e-11 1.000000e-11
+##  [6,] 1e-13 9.992007e-14 1.000000e-13 9.992007e-14 1.000000e-13
+##  [7,] 1e-15 1.110223e-15 1.000000e-15 1.110223e-15 1.000000e-15
+##  [8,] 1e-17 0.000000e+00 1.000000e-17 0.000000e+00 1.000000e-17
+##  [9,] 1e-19 0.000000e+00 1.000000e-19 0.000000e+00 1.000000e-19
 ```
 
 ### Chercher de l'aide extérieure
@@ -125,16 +177,27 @@ Vous pouvez déterminer quels arguments sont optionnels en notant dans le docume
 
 Si vous savez déjà comment la fonction fonctionne mais que vous avez besoin d'un rappel rapide des arguments, vous pouvez utiliser la fonction args.
 
-```{r}
+
+```r
 args(log)
+```
+
+```
+## function (x, base = exp(1)) 
+## NULL
 ```
 
 Vous pouvez modifier la valeur par défaut en attribuant simplement une autre valeur.
 
 Par exemple, si au lieu du log naturel nous voulons obtenir le log base 2, nous taperons, par exemple, log de 8, et nous changerons maintenant la valeur par défaut de base en 2.
 
-```{r}
+
+```r
 log(8, base=2)
+```
+
+```
+## [1] 3
 ```
 
 **Notez que pour spécifier les arguments, nous utilisons le signe égal. Nous n'avons pas utilisé l'argument d'affectation.**
@@ -143,8 +206,13 @@ Si nous lisons le fichier d'aide pour la fonction log, nous voyons que le premie
 C'est x. Cependant, nous n'avons pas utilisé le nom de cet argument. Nous pourrions, cependant.
 
 Voici comment nous le ferions.
-```{r}
+
+```r
 log(x=8, base=2)
+```
+
+```
+## [1] 3
 ```
 
 Nous obtenons la même réponse que si nous n'avions pas utilisé le nom x.
@@ -162,7 +230,8 @@ Par exemple, `2 ^ 3`, cette fonction qui prend 2 à la puissance de 3 n'a pas be
 
 Vous pouvez chercher de l'aide sur les opérateurs arithmétiques en consultant le fichier d'aide.
 
-```{r, eval= FALSE}
+
+```r
 help('+')
 ```
 
@@ -179,7 +248,8 @@ help('+')
 
 Exécutez le code suivant dans la console R et trouvez quelle opérations elles effectuent:
 
-```{r, eval=F}
+
+```r
 n <- 1000
 x <- seq(1,n)
 sum(x)
@@ -192,8 +262,13 @@ Réponses possibles (Vous pouvez utiliser le système d'aide) :
 + sum renvoie toujours le même nombre
 
 {{< spoiler text="Cliquer pour voir la réponse" >}}
-```{r}
+
+```r
 log10(sqrt(100))
+```
+
+```
+## [1] 1
 ```
 {{< /spoiler >}}
 
@@ -203,7 +278,12 @@ log10(sqrt(100))
 Utilisez une ligne de code pour calculer le logarithme, en base 10, de la racine carrée de 100. Assurez-vous que votre code inclut les fonctions `log10()` et `sqrt()`.
 
 {{< spoiler text="Cliquer pour voir la réponse" >}}
-```{r}
+
+```r
 log10(sqrt(100))
+```
+
+```
+## [1] 1
 ```
 {{< /spoiler >}}
