@@ -25,6 +25,6 @@ In this section, we will learn about the data that R can store and process.
 * How to [import data]({{<relref path="2019-02-15-import-data">}} "Page Import Data")  you have stored in other formats, especially text or excel formats into such structures
 
   
-{{< figure library="true" src="datastructures.png" >}}  
+{{< figure src="datastructures.png" >}}  
 <a href="https://hackernoon.com/50-data-structure-and-algorithms-interview-questions-for-programmers-b4b1ac61f5b0" target="_blank">Image source</a>
 

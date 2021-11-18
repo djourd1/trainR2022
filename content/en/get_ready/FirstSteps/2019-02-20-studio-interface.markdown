@@ -15,7 +15,7 @@ R-studio's graphical user interface provides a set of tools and information that
 
 R-studio's graphical interface is divided into 4 areas:
 
-{{< figure library="true" src="get_ready/RstudioInterface.png" title="The R-Studio graphical interface" numbered="true">}}
+{{< figure src="RstudioInterface.png" title="The R-Studio graphical interface" numbered="true">}}
 
 + Zone A allows you to edit R code, i.e. to open, create or modify R command scripts.
 
