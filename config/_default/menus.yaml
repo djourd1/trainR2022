@@ -10,3 +10,6 @@ main:
   - name: Documentation
     url: docs/
     weight: 20
+  - name: Start with R
+    url: get_ready/
+    weight: 30
