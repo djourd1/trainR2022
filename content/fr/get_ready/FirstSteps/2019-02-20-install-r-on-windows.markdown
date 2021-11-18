@@ -17,10 +17,12 @@ weight: 2
 Utiliser le site officiel <a href="https://cran.r-project.org/" target="_blank">https://cran.r-project.org/ </a> et faire un tour d’horizon du site ( en anglais);
 
 {{% callout note %}}
+
 *Dois-je vraiment télécharger R si je veux utiliser R Studio ?
 
 Même si vous avez l'intention d'utiliser RStudio, vous devez télécharger R sur votre ordinateur. RStudio vous aide à utiliser la version de R qui se trouve sur votre ordinateur, mais il n'est pas livré avec une version de R.
-{{% /callout note %}}
+
+{{% /callout %}}
 
 
 {{< figure src="cran_root.jpg" title="Page d'accueil du site CRAN" numbered="true">}}
