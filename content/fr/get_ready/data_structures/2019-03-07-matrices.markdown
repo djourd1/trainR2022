@@ -79,11 +79,11 @@ matrix(c(1:12), nrow = 4, byrow = FALSE)
 ```
 
 
-{{% alert warning %}}
+{{% callout warning %}}
 
 Sachez que matrix() émettra un avertissement si la longueur du vecteur n'est pas un multiple du nombre de lignes, mais ne produira pas d'erreur. Dans ce cas, la dernière ligne de la matrice sera complétée par les premières composantes du vecteur : il est très peu probable que ce soit la matrice avec laquelle vous vouliez travailler. 
 
-{{% /alert %}}
+{{% /callout %}}
 
 Regardez ce qui se passe dans l'exemple suivant :
 
@@ -188,10 +188,10 @@ cbind(1:3, 4:6, 7:9)
 ## [3,]    3    6    9
 ```
 
-{{% alert warning %}}
+{{% callout warning %}}
 Notez que les fonctions cbind et rbind peuvent être utilisées pour combiner des matrices. Mais vous devez vous assurer que les matrices aient des dimensions compatibles.
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 ```r
@@ -610,7 +610,7 @@ diag(A)
 ## [1] 2 8
 ```
 
-{{% alert note %}}
+{{% callout note %}}
 
 Le lecteur attentif aura remarqué que la fonction `diag()` réagira différemment en fonction des arguments qui lui sont donnés. Pour ceux qui sont familiers avec la programmation objet, cela ne devrait pas être une surprise. Pour les autres, c'est une invitation à la prudence lorsqu'on fournit un argument à une fonction. 
 
@@ -656,7 +656,7 @@ diag(m) ## when provided a matrix, it will output its main diagonal
 ## [1] 1 5 9
 ```
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 ### Determinant

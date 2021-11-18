@@ -111,7 +111,7 @@ Notes :
 + Après avoir analysé le fichier texte, il indique également le nom et le type de données qui ont été sélectionnées pour chaque colonne. 
 + La colonne "village" n'a pas été transformée en facteur, et il n'y a pas de noms de lignes. 
 
-{{% alert note %}}
+{{% callout note %}}
 
 Certains paquets nécessitent l'utilisation d'un data.frame et pas d'un tibble. Dans ce cas, vous pouvez toujours convertir 
 le tibble en data.frame. Pour cela, vous pouvez utiliser la commande data.frame():
@@ -130,7 +130,7 @@ str(ans_df) ## ans_df est maintenant un R data.frame natif
 ##  $ village: chr  "vilA" "vilB" "vilA" "vilC" ...
 ```
     
-{{% /alert %}}
+{{% /callout %}}
     
 
 
@@ -153,11 +153,11 @@ library(readxl)
 Pour tester cette fonction, vous devez d'abord télécharger le fichier datasets.xls
 [Clicker ici pour télécharger le fichier de données](/files/datasets.xlsx). 
 
-{{% alert warning %}}
+{{% callout warning %}}
 
 Enregistrez le fichier à un endroit où vous pourrez le récupérer facilement, car vous **devrez vous souvenir du chemin complet pour atteindre ce fichier afin de l'importer.**
 
-{{% /alert %}}
+{{% /callout %}}
 
 Vous pouvez le faire avec n'importe quel fichier Excel que vous avez sur votre ordinateur. Nous utiliserons ici le fichier datasets.xlsx que vous venez de télécharger. Vous devrez indiquer le chemin exact de votre fichier, et le nom exact du fichier (y compris son extension).
 

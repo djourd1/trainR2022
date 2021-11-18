@@ -132,7 +132,7 @@ y <- 3.1
 (z <- x + y)
 ```
 
-{{% alert warning %}}
+{{% callout warning %}}
 Bien que cette fonction R soit très pratique, elle est potentiellement trompeuse et dangereuse à utiliser car elle donne des résultats non initialement prévus lorsque les vecteurs sont de longueur différente, comme dans le cas suivant :
 
 \\begin{equation}
@@ -141,7 +141,7 @@ Bien que cette fonction R soit très pratique, elle est potentiellement trompeus
 \\left(\\begin{matrix}a+e\\\b+f\\\c+g\\\d+e \\end{matrix} \\right) 
 \\end{equation}
 
-{{% /alert %}}
+{{% /callout %}}
 
 
 
