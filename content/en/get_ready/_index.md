@@ -4,7 +4,7 @@ type: book  # Do not modify.
 ---
 
 
-{{< figure library="true" src="get_ready/getready.jpg" >}}  
+{{< figure src="get_ready/getready.jpg" caption="A caption" numbered="true" >}}
 
 This section of the site presents the basics to get started with R.
 
