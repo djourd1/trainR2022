@@ -16,6 +16,13 @@ weight: 2
 
 Utiliser le site officiel <a href="https://cran.r-project.org/" target="_blank">https://cran.r-project.org/ </a> et faire un tour d’horizon du site ( en anglais);
 
+{{% callout note %}}
+*Dois-je vraiment télécharger R si je veux utiliser R Studio ?
+
+Même si vous avez l'intention d'utiliser RStudio, vous devez télécharger R sur votre ordinateur. RStudio vous aide à utiliser la version de R qui se trouve sur votre ordinateur, mais il n'est pas livré avec une version de R.
+{{% /callout note %}}
+
+
 {{< figure src="cran_root.jpg" title="Page d'accueil du site CRAN" numbered="true">}}
 
 Nous nous concentrerons sur l'installation sur un système d'exploitation **Windows**. Clickez donc sur le lien "Download R for Windows"
@@ -30,7 +37,7 @@ Lorsque vous êtes prêt, cliquez sur le lien de téléchargement.
 
 Vous recevrez un message vous demandant d'enregistrer le fichier. Cliquez sur le bouton "Enregistrer". Veuillez noter que le téléchargement peut prendre un certain temps. Une fois le téléchargement terminé, ouvrez le fichier et lancez le programme. (Je suppose que vous savez où et comment ouvrir le fichier qui vient d'être sauvegardé. Comme le mode de fonctionnement est spécifique à votre système, nous ne donnons pas d'instructions particulières ici).
 
-Un assistant d'installation devrait apparaître. Suivez les différentes étapes : paramétrez votre langue, les répertoires où il sera installé, etc. En tant que débutant, vous êtes bien conseillé de suivre les options par défaut proposées par l'assistant !
+Un assistant d'installation devrait apparaître. Suivez les différentes étapes : paramétrez votre langue, les répertoires où il sera installé, etc. En tant que débutant, il est conseillé de suivre les options par défaut proposées par l'assistant !
 
 Jusqu'à ce que vous arriviez à l'étape `Terminer`.
 

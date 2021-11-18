@@ -9,38 +9,26 @@ weight: 3
 
 ---
 
-<script type="text/javascript">
-   function toggle_visibility(id) {
-       var e = document.getElementById(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
-   }
-</script>
-
-
-
 ## Learning objectives
 
-In this section, you will learn to store *objects* (think of variables, functions, datasets) into the *R workspace* (think of a place where R stores all its objects) and use the stored objects to solve a question about repayments of loans.  
+In this section, you will 
++ learn to store *objects* (think of variables, functions, datasets) into the *R workspace* (think of the place where R stores all its objects) 
++ use the stored objects to solve a question about repayments of loans.  
 
 
+## Repayment of loans
 
-## R Objects using an example
-
-To do this we will use the R programme we have just installed. Launch the R program (for example, by clicking at the R icon present in your desktop).
- 
 Let's start with objects and functions using a very simple example. 
 
-Suppose you want to know how much you will have to pay to the bank if you borrow an amount $ L $ and you intend to reimburse a fixed amount over a period of \\(N\\) months, and the bank intend to charge you an annual interest rate \\(r\\). 
-
+Suppose you want to know how much you will have to pay to the bank if you borrow an amount $L$ and you intend to reimburse a fixed amount over a period of $N$ months, and the bank intend to charge you an annual interest rate $r$. 
 
 There are different ways to consider this problem, but today we will rely on the textbook formula to calculate this
 
 $$ m = L . \frac{(\frac{r}{1200})(1 +\frac{r}{1200})^N}{(1+ \frac{r}{1200})^N -1 } $$
 
 One advantage of programming language is that we can define variables and keep such expressions general. So, if we are asked to answer this question when borrowing 2000\$ for 24 months at an interest of 6\% per year, we can define \\(L\\) to be \\(10000\\), \\(N\\) to be \\(24\\), and \\(r\\) to be \\(6\\).
+
+Fist, we will launch the R programme we have just installed (for example, by clicking at the R icon present in your desktop).
 
 In R, we do that using the assignment symbol `<-`, which is less than followed by a minus. Note that it looks like a little arrow. `L <- 10000` means that __you're assigning the number 10000 to the variable named L__.
 

@@ -13,11 +13,11 @@ type: book
 weight: 1
 ---
 
-R is a statistical program: it can help you work on your data and run some statistical analyses to understand better your data. It will also allow run almost any statistical models (linear regression, etc.) on these data.
+R is a statistical program: it will help you perform statistical analyses to better understand your data. It will also allow you to run almost any statistical model (linear regression, etc.) on these data.
 
-R is *also* a programming language, but it is not a programming language like C or Java. It was not created by software engineers for software development. Instead, it was developed by statisticians and data analysts as an interactive environment for data analysis. As a programming language, it allows you to develop your own functions and models. However, when you start with R, you will not really write many functions, but use functions that have been written by others and contained into specialised packages.
+R is *also* a programming language, but it is not a programming language like C or Java. It was not created for software development. Rather, it was developed by statisticians and data analysts as an interactive environment for data analysis. As a programming language, it allows you to develop your own functions and models. However, if you are new to R, you will not actually write functions, but rather use functions that have been written by others and contained in specialised packages.
 
-However, like in any other programming language,you can save your work in to scripts, which you can easily execute at any moment. These scripts serve as a record of the analysis you performed, a key feature that facilitates reproducible work.
+As with any other programming language, you can save your work in scripts, which you can easily run at any time. These scripts serve as a record of the analysis you have performed, an essential feature that facilitates repeatable work.
 
 Other attractive features are:
 

@@ -16,6 +16,12 @@ weight: 2
 
 We will concentrate on the installation on a **Windows** operating system. *If you need to install it on a Mac, you can find a video at <a href="https://youtu.be/GFImMj1lMRI" target="_blank">Install R and Rstudio on Mac</a> that will help you*
 
+{{% callout note %}}
+*Do I need to download R if I want to use R Studio?*
+
+Even if you intend to use RStudio, you still need to download R to your computer. RStudio helps you use the version of R that lives on your computer, but it doesn't come with a version of R on its own.
+{{% /callout note %}}
+
 For Windows operating system: click on the following link: <a href="https://cran.r-project.org/bin/windows/base/" target="_blank">Install R for Windows</a>
 
 You will be proposed to install the latest version of R that corresponds to your operating system (first link on top of the page as shown in Figure 1 ).

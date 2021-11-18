@@ -6,12 +6,11 @@ type: book  # Do not modify.
 
 {{< figure src="getready.jpg" >}}
 
-This section of the site presents the basics to get started with R.
+This section will give you the basics to get started with R.
 
-It is structured into 2 chapters:
+It is structured in two chapters:
 
-+ The first chapter helps you install the necessary software and guides you in your first interactions with R and R Studio
-+ The second chapter introduces the main types of data and data structures that you will work with during this session
++ In the first chapter you will install R and R Studio software and write your first lines of R code.
++ In the second chapter you will be introduced to the main data types and data structures.
 
-
-If you already have experience with R and R Studio, you can proceed to the next section without any problems for reading the following sections.
+If you already have experience with R and R Studio, you can move on to the next section without any problems.
