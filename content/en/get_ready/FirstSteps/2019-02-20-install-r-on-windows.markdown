@@ -20,7 +20,7 @@ For Windows operating system: click on the following link: <a href="https://cran
 
 You will be proposed to install the latest version of R that corresponds to your operating system (first link on top of the page as shown in Figure 1 ).
 
-{{< figure library="true" src="get_ready/cran-download.png" title="The download screen" numbered="true">}}
+{{< figure src="cran-download.png" title="The download screen" numbered="true">}}
 
 Feel free to explore that page. In particular, you may explore the link "Does R run under my version of Windows?" before starting the installation process.
 
@@ -30,33 +30,33 @@ You will receive a message to save the file. Click on the "Save" button. Please 
 
 A setup wizard should appear. Follow the different steps: set-up your language, the directories where it will installed, etc. As a beginner, you are well advised to follow the default options proposed by the wizard! Until you reach the Finish step.
 
-{{< figure library="true" src="get_ready/install_r02.png" title="Security Warning: Use the Run button" numbered="true">}}
+{{< figure src="install_r02.png" title="Security Warning: Use the Run button" numbered="true">}}
 
-{{< figure library="true" src="get_ready/install_r03.png" title="Select Language" numbered="true">}}
+{{< figure src="install_r03.png" title="Select Language" numbered="true">}}
 
-{{< figure library="true" src="get_ready/install_r04.png" title="Wizard 4" numbered="true">}}
+{{< figure src="install_r04.png" title="Wizard 4" numbered="true">}}
 
-{{< figure library="true" src="get_ready/install_r05.png" title="Wizard 5" numbered="true">}}
-{{< figure library="true" src="get_ready/install_r06.png" title="Select the default destination" numbered="true">}}
-{{< figure library="true" src="get_ready/install_r07.png" title="Wizard 7" numbered="true">}}
+{{< figure src="install_r05.png" title="Wizard 5" numbered="true">}}
+{{< figure src="install_r06.png" title="Select the default destination" numbered="true">}}
+{{< figure src="install_r07.png" title="Wizard 7" numbered="true">}}
 
-{{< figure library="true" src="get_ready/install_r08.png" title="Wizard 8" numbered="true">}}
-{{< figure library="true" src="get_ready/install_r09.png" title="Wizard 9" numbered="true">}}
-{{< figure library="true" src="get_ready/install_r10.png" title="Wizard 10" numbered="true">}}
-{{< figure library="true" src="get_ready/install_r11.png" title="Wizard 11" numbered="true">}}
-{{< figure library="true" src="get_ready/install_r12.png" title="Wizard 12" numbered="true">}}
+{{< figure src="install_r08.png" title="Wizard 8" numbered="true">}}
+{{< figure src="install_r09.png" title="Wizard 9" numbered="true">}}
+{{< figure src="install_r10.png" title="Wizard 10" numbered="true">}}
+{{< figure src="install_r11.png" title="Wizard 11" numbered="true">}}
+{{< figure src="install_r12.png" title="Wizard 12" numbered="true">}}
 
 
 To check that everything went OK, you can open the R program. A R shortcut should now be present on your computer desktop screen.
 
 Click on this new icon and you should see appearing the R console as in the Figure  13 :
 
-{{< figure library="true" src="get_ready/RConsole.jpg" title="R Console" numbered="true">}}
+{{< figure src="RConsole.jpg" title="R Console" numbered="true">}}
 
 
 You can type your first R command at the cursor. Type 1+1.Then type the `Enter` key. Normally the console should create a new line that says `[1] 2`
 
-{{< figure library="true" src="get_ready/RConsole2.jpg" title="Your first command" numbered="true">}}
+{{< figure src="RConsole2.jpg" title="Your first command" numbered="true">}}
 
 **Congratulations R is up and running on your computer !**
 
