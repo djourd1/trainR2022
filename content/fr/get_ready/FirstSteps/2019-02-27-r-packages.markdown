@@ -1,5 +1,5 @@
 ---
-title: Les Packages (paquets)
+title: Les paquetages (packages)
 author: Damien Jourdain
 date: '2019-02-27'
 slug: r-packages
@@ -13,37 +13,37 @@ weight: 9
 
 ## Objectifs d'apprentissage
 
-Les paquets R sont des ensembles de fonctions et de données. Ils augmentent la puissance de R en améliorant ou en en ajoutant des fonctionnalités à l'application de base.
+Les paquetages R sont des ensembles de fonctions et de données. Ils augmentent la puissance de R en améliorant ou en en ajoutant des fonctionnalités à l'application de base.
 
 Dans cette section, nous passerons en revue plusieurs aspects sur les paquets:
 
-+ Qu'est-ce qu'un paquet ? 
-+ Où trouver le paquet qui vous interesse ?
-+ Comment installer un paquet ?
++ Qu'est-ce qu'un paquetage ? 
++ Où trouver le paquetage qui vous interesse ?
++ Comment installer un paquetage ?
 + Quelles sont les fonctions liées à install.packages() ? 
-+ Comment pouvez-vous utiliser l'interface utilisateur pour installer des paquets ? 
-+ Comment charger des paquets ? 
-+ Comment se renseigner sur ces paquets ?
++ Comment pouvez-vous utiliser l'interface utilisateur pour installer des paquetages ? 
++ Comment charger des paquetages ? 
++ Comment se renseigner sur ces paquetages ?
 
-## Qu'est-ce qu'un paquet ?
+## Qu'est-ce qu'un paquetage?
 
-Un paquet comprend généralement du code (pas seulement du code R !), de la documentation sur le paquet et les fonctions qu'il contient, des tests pour vérifier que tout fonctionne comme il faut et parfois des données.
+Un paquetage comprend généralement du code (pas seulement du code R !), de la documentation sur le paquetage et les fonctions qu'il contient, des tests pour vérifier que tout fonctionne comme il faut et parfois des données.
 
-Les informations de base sur un paquet sont fournies dans le fichier DESCRIPTION, où vous pouvez trouver ce que fait le paquet, qui en est l'auteur, à quelle version appartient la documentation, la date, le type de licence d'utilisation et les dépendances du paquet.
+Les informations de base sur un paquetage sont fournies dans le fichier DESCRIPTION, où vous pouvez trouver ce que fait le paquet, qui en est l'auteur, à quelle version appartient la documentation, la date, le type de licence d'utilisation et les dépendances du paquet.
 
 ## Que sont les dépôts ?
 
 Un dépôt est un endroit où se trouvent les paquets afin que vous puissiez les installer à partir de celui-ci. En général, ils sont en ligne et accessibles à tous. Le dépôt le plus populaire pour les paquets R est **CRAN**. 
 
-CRAN est le dépôt officiel, c'est un réseau de serveurs web géré par la communauté R dans le monde entier. Il est coordonné par la fondation R, et pour qu'un paquet soit publié ici, il doit passer plusieurs tests qui garantissent que le paquet suit les règles du CRAN. 
+CRAN est le dépôt officiel, c'est un réseau de serveurs web géré par la communauté R dans le monde entier. Il est coordonné par la fondation R, et pour qu'un paquetage soit publié ici, il doit passer plusieurs tests qui garantissent que le paquetage suit les règles du CRAN. 
 
 ## Installation d'un paquet
 
-La méthode pour installer un paquet dépend de l'endroit où il se trouve. Ainsi, pour les paquets accessibles au public, cela signifie dans quel dépôt est stocké. 
+La méthode pour installer un paquetage dépend de l'endroit où il se trouve. Ainsi, pour les paquets accessibles au public, cela signifie dans quel dépôt est stocké. 
 
 Tous les paquets que nous utiliserons sont disponibles sur le dépôt du CRAN.
 
-Au cours de la formation, nous utiliserons largement le paquet `data.table`. Vous devrez installer ce paquet sur votre ordinateur avant de pouvoir l'utiliser. 
+Au cours de la formation, nous utiliserons largement le paquetage `data.table`. Vous devrez installer ce paquetage sur votre ordinateur avant de pouvoir l'utiliser. 
 
 Pour installer ce paquet, vous pouvez soit le faire "manuellement", soit utiliser l'interface R-Studio. 
 
@@ -55,14 +55,14 @@ install.packages("data.table")
 ```
 Après l'avoir lancé, vous recevrez quelques messages sur la console. Ils dépendront du système d'exploitation que vous utilisez, des dépendances et de la réussite de l'installation du paquet.
 
-Avec R-Studio, vous pouvez également utiliser le menu. Suivez Outils -> Installer les paquets... et vous obtiendrez une fenêtre pop-up pour sélectionner le paquet que vous voulez installer :
+Avec R-Studio, vous pouvez également utiliser le menu. Suivez Outils -> Installer les paquets... et vous obtiendrez une fenêtre pop-up pour sélectionner le paquetage que vous voulez installer :
 
-{{< figure src="installpackages.png" title="Tapez le nom du paquet que vous voulez installer" numbered="true">}}
+{{< figure src="installpackages.png" title="Tapez le nom du paquetage que vous voulez installer" numbered="true">}}
 
 
 Normalement, lorsque vous tapez les premières lettres, on vous propose une liste de noms de paquets parmi lesquels vous pouvez choisir. 
 
-Une fois que vous avez sélectionné le paquet à installer, il vous suffit de cliquer sur le bouton "Installer". Vous recevrez quelques messages à l'écran. Ils dépendront du système d'exploitation que vous utilisez, des dépendances et de la réussite de l'installation du paquet.
+Une fois que vous avez sélectionné le paquetage à installer, il vous suffit de cliquer sur le bouton "Installer". Vous recevrez quelques messages à l'écran. Ils dépendront du système d'exploitation que vous utilisez, des dépendances et de la réussite de l'installation du paquet.
 
 
 ## Comment vérifier les paquets installés et les mettre à jour
@@ -77,10 +77,10 @@ Une fois que vous aurez fait cela, vous verrez une liste des paquets installés,
 
 ## Comment charger les colis
 
-Une fois qu'un paquet est installé, vous êtes prêt à utiliser ses fonctionnalités. 
+Une fois qu'un paquetage est installé, vous êtes prêt à utiliser ses fonctionnalités. 
 Pour ce faire, vous devez le charger dans la mémoire de l'ordinateur. La façon la plus simple de le faire est d'utiliser la commande `library()`.
 
-Le paquet est chargé dans la mémoire, et quelques messages sont envoyés pour confirmer que le paquet est chargé, ainsi que quelques messages supplémentaires.  
+Le paquetage est chargé dans la mémoire, et quelques messages sont envoyés pour confirmer que le paquetage est chargé, ainsi que quelques messages supplémentaires.  
 
 *Notez que ces messages seront de couleur rouge même si tout s'est bien passé !  *
 
@@ -93,7 +93,7 @@ library(data.table)
 ## Warning: package 'data.table' was built under R version 4.0.3
 ```
 
-Notez également que l'entrée de `install.packages()` est un vecteur de caractères et nécessite que le nom soit entre guillemets, alors que `library()` accepte soit le caractère soit le nom et vous permet d'écrire le nom du paquet sans les guillemets.
+Notez également que l'entrée de `install.packages()` est un vecteur de caractères et nécessite que le nom soit entre guillemets, alors que `library()` accepte soit le caractère soit le nom et vous permet d'écrire le nom du paquetage sans les guillemets.
 
 ## Comment décharger un paquet
 
@@ -109,9 +109,9 @@ detach("package:data.table", unload=TRUE)
 
 Comme pour le R de base, les commandes `?` et `help()` sont la première source de documentation lorsque vous débutez avec un paquet. 
 
-Vous pouvez obtenir un aperçu général du paquet en utilisant help(package = "NomDuPaquet"). En outre, chaque fonction peut être explorée individuellement par help("nom de la fonction") ou help(fonction, package = "NomDuPaquet") si le paquet n'a pas été chargé, où vous trouverez généralement la description de la fonction et de ses paramètres ainsi qu'un exemple d'application.
+Vous pouvez obtenir un aperçu général du paquetage en utilisant help(package = "NomDuPaquet"). En outre, chaque fonction peut être explorée individuellement par help("nom de la fonction") ou help(fonction, package = "NomDuPaquet") si le paquetage n'a pas été chargé, où vous trouverez généralement la description de la fonction et de ses paramètres ainsi qu'un exemple d'application.
 
-Conseil : vous pouvez également utiliser une autre méthode pour voir ce qui se trouve à l'intérieur d'un paquet chargé. Utilisez la commande `ls()` de cette façon :
+Conseil : vous pouvez également utiliser une autre méthode pour voir ce qui se trouve à l'intérieur d'un paquetage chargé. Utilisez la commande `ls()` de cette façon :
 
 
 ```r
@@ -165,7 +165,7 @@ ls("package:data.table")
 
 ### Vignettes
 
-Les vignettes sont des documents dans lesquels les auteurs montrent certaines fonctionnalités de leur paquet de manière plus détaillée. Suivre les vignettes est une excellente façon de commencer à travailler avec un paquet avant de faire sa propre analyse.
+Les vignettes sont des documents dans lesquels les auteurs montrent certaines fonctionnalités de leur paquetage de manière plus détaillée. Suivre les vignettes est une excellente façon de commencer à travailler avec un paquetage avant de faire sa propre analyse.
 
 Elles sont généralement accessibles en haut du fichier d'aide du paquet.
 
