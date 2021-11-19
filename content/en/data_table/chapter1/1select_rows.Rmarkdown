@@ -32,6 +32,8 @@ At the end of the section, you should be able to select specific rows of a datas
 + a logical criteria based on the different variables describing the rows
 + randomly.  
 
+Some more advanced topics are related to the use of keys to speed up the processes. Beginners can skip these sections without loss of continuity
+
 ## Converting the data into a data.table object
 
 The first step when using data.table is to load the package, and make sure the dataset in the data.table format.
