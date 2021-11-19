@@ -118,7 +118,7 @@ They are usually accessible at the top of the package help file.
 ```{r vignette, echo=FALSE, fig.cap = "Update packages with R Studio"}
 #knitr::include_graphics("/img/r-packages/vignettes.png")
 ```
-{{< figure library="true" src="installpackages/vignettes.png" title="Vignettes provides package documentation" numbered="true">}}
+{{< figure src="vignettes.png" title="Vignettes provides package documentation" numbered="true">}}
 
 You can also browse directly the vignettes available using:
 
