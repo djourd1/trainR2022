@@ -3,12 +3,12 @@ widget: featurette
 headless: true
 weight: 20
 title: Features
-subtitle: Document _anything_ ✨
+subtitle: 
 feature:
   - icon: book-open
     icon_pack: fas
-    name: Project Documentation
-    description: For users
+    name: Install 
+    description: R and R studio
   - icon: question
     icon_pack: fas
     name: Knowledge Base
