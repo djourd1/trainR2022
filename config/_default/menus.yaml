@@ -4,9 +4,6 @@
 #   The weight parameter defines the order that the links will appear in.
 
 main:
-  - name: Home
-    url: /
-    weight: 10
   - name: Start with R
     url: get_ready/
     weight: 30
