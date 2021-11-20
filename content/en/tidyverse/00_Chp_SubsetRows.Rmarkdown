@@ -1,0 +1,92 @@
+---
+title: "Subsetting rows" 
+author: Damien Jourdain
+date: '2020-03-02'
+slug: subsetrows
+categories:
+  - R
+tags: []
+type: book
+weight: 2
+output:
+  html_document:
+    keep_md: true
+---
+
+## Learning objectives
+Often when you want to understand your data or exclude some individuals that are outside the scope of the analysis you want to conduct, you will need to select subsamples of your data set.
+
+In this section, you will learn how to take a subset of a data frame. This will be our first encounter with the package `dplyr` and the use of the pipe for chaining commands. This is an important section, as you will be using this kind of syntax for all the subsequent types of data manipulations.  
+
+At the end of the section, you should be able to select specific rows of a data set that will be selected :
+
++ by their row number
++ a logical criteria based on the different variables describing the rows
++ randomly
+
+We have several ways to subset rows.
+
+## Subsetting rows by their position
+
+To do this we will start to use `dplyr`. Note that `dplyr` is already loaded if you loaded the package `tidyverse`. 
+
+The command `slice()` lets you index rows by their locations. It allows you to select, remove, and duplicate rows. 
+
+The easiest way to use slice is to indicate the vector of row numbers you wish to keep as in:
+```{r}
+slice(data, 2:5)  # to select the row from 2 to 5
+slice(data, c(1,7, 5)) # to select the row from 2 to 5 (note rearrangements of rows)
+```
+
+Note that all `dplyr` related commands work similarly:
+
++ The first argument is a data frame.
++ The subsequent arguments describe what to do with the data frame, using the variable names (**without quotes**) or sometimes some column numbers.
++ The result is a new data frame.
+
+
+A very convenient feature of tidyverse is the pipe `%>%` operator. 
+To understand how it works, we can reproduce the precedent example using the pipe. 
+
+```{r}
+data %>% slice(2:5)
+```
+
+How did that work:
+
+You need to read this chain of command from left to right, and think that the results of the previous command are passed as the first argument of the next command. 
+
+Here the argument data (the data frame) is passed on as the first argument of the command slice(...). So literally, you think about this command as: take "data", then use slice to select the row 2 to 5...
+
+In this very simple command, the advantage of using the pipe is not obvious as you would probably be faster in writing `data[2:5, ]`, but you will soon see its main advantage when we will start "chaining" several commands.
+
+Note you can use several variants of `slice()`, in particular, you may want to look at the commands 
+`slice_head()` and `slice_tail()` to select the first or last rows.
+
+### Exercise 1: Select of the last 10 rows
+
+Using the command slice_tail(), select the last 10 rows of the dataset data.
+
+{{% callout solution%}}
+{{< spoiler text="Click to view the solution" >}}
+
+```r
+data <- slice_tail(n=10)
+```
+{{< /spoiler >}}
+{{% /callout %}}
+
+### Exercise 2: Select the rows 3, 50 and 200
+
+Using a command to select the 3, 50 and 200 of the dataset `data`.
+
+{{% callout solution%}}
+{{< spoiler text="Click to view the solution" >}}
+
+```r
+data <- slice(c(3,50, 200))
+```
+{{< /spoiler >}}
+{{% /callout %}}
+
+
