@@ -9,7 +9,7 @@ main:
     weight: 30
   - name: tidyverse
     url: tidyverse
-    weight:40
+    weight: 40
   - name: "data.table"
     url: data_table/
     weight: 50
