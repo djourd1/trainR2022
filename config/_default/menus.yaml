@@ -10,6 +10,6 @@ main:
   - name: tidyverse
     url: tidyverse
     weight:40
-  - name: data.table
+  - name: "data.table"
     url: data_table/
     weight: 50
