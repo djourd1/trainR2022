@@ -83,8 +83,19 @@ Using the command slice_tail(), select the last 10 rows of the dataset data.
 {{% callout solution%}}
 {{< spoiler text="Click to view the solution" >}}
 
-```r
-data <- slice_tail(n=10)
+```{r}
+data %>% slice_tail(n=10)  
+
+#note it outputs a new dataframe, however it is not saved
+# if you want to save it with a new name
+data2 <- data %>% slice_tail(n=10)  
+``` 
+
+```{r, eval=FALSE}
+# if you want to overwrite the old data
+# However, you have deleted all the other data from the memory!
+# Make sure this is what you wanted to do...
+data <- data %>% slice_tail(n=10)  
 ```
 {{< /spoiler >}}
 {{% /callout %}}
@@ -96,8 +107,8 @@ Using a command to select the 3, 50 and 200 of the dataset `data`.
 {{% callout solution%}}
 {{< spoiler text="Click to view the solution" >}}
 
-```r
-data <- slice(c(3,50, 200))
+```{r}
+data %>% slice(c(3,50, 200))
 ```
 {{< /spoiler >}}
 {{% /callout %}}

@@ -1,7 +1,7 @@
 ---
 title: "Subsetting rows" 
 author: Damien Jourdain
-date: '2020-03-02'
+date: '2021-11-20'
 slug: subsetrows
 categories:
   - R
@@ -115,8 +115,39 @@ Using the command slice_tail(), select the last 10 rows of the dataset data.
 {{% callout solution%}}
 {{< spoiler text="Click to view the solution" >}}
 
+
 ```r
-data <- slice_tail(n=10)
+data %>% slice_tail(n=10)  
+```
+
+```
+## # A tibble: 10 x 7
+##    country  continent  year lifeExp      pop gdpPercap row_no
+##    <fct>    <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+##  1 Zimbabwe Africa     1962    52.4  4277736      527.   1695
+##  2 Zimbabwe Africa     1967    54.0  4995432      570.   1696
+##  3 Zimbabwe Africa     1972    55.6  5861135      799.   1697
+##  4 Zimbabwe Africa     1977    57.7  6642107      686.   1698
+##  5 Zimbabwe Africa     1982    60.4  7636524      789.   1699
+##  6 Zimbabwe Africa     1987    62.4  9216418      706.   1700
+##  7 Zimbabwe Africa     1992    60.4 10704340      693.   1701
+##  8 Zimbabwe Africa     1997    46.8 11404948      792.   1702
+##  9 Zimbabwe Africa     2002    40.0 11926563      672.   1703
+## 10 Zimbabwe Africa     2007    43.5 12311143      470.   1704
+```
+
+```r
+#note it outputs a new dataframe, however it is not saved
+# if you want to save it with a new name
+data2 <- data %>% slice_tail(n=10)  
+```
+
+
+```r
+# if you want to overwrite the old data
+# However, you have deleted all the other data from the memory!
+# Make sure this is what you wanted to do...
+data <- data %>% slice_tail(n=10)  
 ```
 {{< /spoiler >}}
 {{% /callout %}}
@@ -128,8 +159,18 @@ Using a command to select the 3, 50 and 200 of the dataset `data`.
 {{% callout solution%}}
 {{< spoiler text="Click to view the solution" >}}
 
+
 ```r
-data <- slice(c(3,50, 200))
+data %>% slice(c(3,50, 200))
+```
+
+```
+## # A tibble: 3 x 7
+##   country      continent  year lifeExp      pop gdpPercap row_no
+##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Afghanistan  Asia       1962    32.0 10267083      853.      3
+## 2 Argentina    Americas   1957    64.4 19610538     6857.     50
+## 3 Burkina Faso Africa     1987    49.6  7586551      912.    200
 ```
 {{< /spoiler >}}
 {{% /callout %}}
