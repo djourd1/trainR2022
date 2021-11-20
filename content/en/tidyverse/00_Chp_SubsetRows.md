@@ -26,13 +26,11 @@ At the end of the section, you should be able to select specific rows of a data 
 
 First, lets rename the dataframe gapminder with a shorter name, and let's add a column `row_no`. That colum is not really essential, but it will help visualizing the rows that have been selected.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-library(gapminder)
-library(tidyverse)
-```
 
 
-```{r}
+
+
+```r
 data <- gapminder
 data$row_no = 1:nrow(data)
 ```
@@ -47,9 +45,32 @@ To do this we will start to use `dplyr`. Note that `dplyr` is already loaded if 
 The command `slice()` lets you index rows by their locations. It allows you to select, remove, and duplicate rows. 
 
 The easiest way to use slice is to indicate the vector of row numbers you wish to keep as in:
-```{r}
+
+```r
 slice(data, 2:5)  # to select the row from 2 to 5
+```
+
+```
+## # A tibble: 4 x 7
+##   country     continent  year lifeExp      pop gdpPercap row_no
+##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Afghanistan Asia       1957    30.3  9240934      821.      2
+## 2 Afghanistan Asia       1962    32.0 10267083      853.      3
+## 3 Afghanistan Asia       1967    34.0 11537966      836.      4
+## 4 Afghanistan Asia       1972    36.1 13079460      740.      5
+```
+
+```r
 slice(data, c(7, 5, 1)) # to select specific rows in a specific order
+```
+
+```
+## # A tibble: 3 x 7
+##   country     continent  year lifeExp      pop gdpPercap row_no
+##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Afghanistan Asia       1982    39.9 12881816      978.      7
+## 2 Afghanistan Asia       1972    36.1 13079460      740.      5
+## 3 Afghanistan Asia       1952    28.8  8425333      779.      1
 ```
 
 Note that all `dplyr` related commands work similarly:
@@ -61,8 +82,19 @@ Note that all `dplyr` related commands work similarly:
 A very convenient feature of tidyverse is the pipe `%>%` operator. 
 To understand how it works, we can reproduce the precedent example using the pipe. 
 
-```{r}
+
+```r
 data %>% slice(2:5)
+```
+
+```
+## # A tibble: 4 x 7
+##   country     continent  year lifeExp      pop gdpPercap row_no
+##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Afghanistan Asia       1957    30.3  9240934      821.      2
+## 2 Afghanistan Asia       1962    32.0 10267083      853.      3
+## 3 Afghanistan Asia       1967    34.0 11537966      836.      4
+## 4 Afghanistan Asia       1972    36.1 13079460      740.      5
 ```
 
 How did that work:

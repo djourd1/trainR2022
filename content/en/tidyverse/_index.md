@@ -2,7 +2,7 @@
 # Title, summary, and page position.
 linktitle: Manipulate your data with tidyverse
 summary: Manipulate your data with tidyverse
-weight: 3
+weight: 1
 icon: book
 icon_pack: fas
 
@@ -63,10 +63,28 @@ gapminder
 
 Let's now load the tidyverse ecosystems, we call it "ecosystems" because it is composed of several packages. However, you can install these different packages using one command
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, warning=TRUE, message=TRUE}
 library(tidyverse)
 ```
-The message indicates the packages that you have just loaded.
+```
+-- Attaching packages -------------------------------------------------------------------------------- tidyverse 1.3.1 --
+v ggplot2 3.3.5     v purrr   0.3.4
+v tibble  3.1.5     v dplyr   1.0.7
+v tidyr   1.1.4     v stringr 1.4.0
+v readr   2.0.2     v forcats 0.5.1
+-- Conflicts ----------------------------------------------------------------------------------- tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Warning messages:
+1: package ‘tidyverse’ was built under R version 4.0.5 
+2: package ‘ggplot2’ was built under R version 4.0.5 
+3: package ‘tibble’ was built under R version 4.0.5 
+4: package ‘tidyr’ was built under R version 4.0.5 
+5: package ‘readr’ was built under R version 4.0.5 
+6: package ‘dplyr’ was built under R version 4.0.5 
+```
+
+The message indicates the packages that you have just loaded, the potential conflicts. Note again, that red color does not necessarily means it did not work.
 
 
 

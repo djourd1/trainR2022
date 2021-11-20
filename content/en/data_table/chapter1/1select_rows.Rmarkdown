@@ -18,6 +18,7 @@ output:
 library(data.table)
 library(gapminder)
 library(knitr)
+gapminder
 ```
 
 ## Learning objectives
