@@ -369,11 +369,9 @@ data %>%  select(country, pop) %>%
   filter(continent == "Africa") 
 ```
 
-
-
 ## Exercises
 
-### Ex 1: 
+### Exercise 1: 
 
 Show the 2007 GDP per capita of the 10 most populated countries (in 2007) in descending order of population
 
@@ -405,9 +403,9 @@ data %>% filter(year==2007) %>%
 ## 10 Mexico         108700891    11978.
 ```
 {{< /spoiler >}}
-{{% callout %}}
+{{% /callout %}}
 
-### Ex 2: 
+### Exercise 2: 
 
 Show the 2007 life expectency (in 2007). Order by descending GDP per capita. Show the countries with the 5 highest GDP per Capita and the 5 lowest GDP per capita.
 
@@ -438,5 +436,5 @@ data %>% filter(year==2007) %>%
 ## 10 Congo, Dem. Rep.    46.5      278.
 ```
 {{< /spoiler >}}
-{{% callout %}}
+{{% /callout %}}
 
