@@ -1,8 +1,8 @@
 ---
-title: "Selecting rows" 
+title: "Select rows" 
 author: Damien Jourdain
 date: '2021-11-20'
-slug: select-rows
+slug: select-rows-tidyverse
 categories:
   - R
 tags: []
@@ -116,6 +116,36 @@ The first command is to take the data.frame data, the result data is passed on a
 
 In this very simple command, the advantage of using the pipe is not obvious as you would probably be faster in writing `data[2:5, ]`, but you will soon see its main advantage when we will start "chaining" several commands.
 
+{{% callout note%}}
+
+`n()` is a very useful `dplyr` function that outputs the number of rows of the dataset.
+For example, you could use it with `slice` to discard the first 200 rows.
+
+
+```r
+slice(data, 200:n()) %>% head(10)
+```
+
+```
+## # A tibble: 10 x 7
+##    country      continent  year lifeExp      pop gdpPercap row_no
+##    <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+##  1 Burkina Faso Africa     1987    49.6  7586551      912.    200
+##  2 Burkina Faso Africa     1992    50.3  8878303      932.    201
+##  3 Burkina Faso Africa     1997    50.3 10352843      946.    202
+##  4 Burkina Faso Africa     2002    50.6 12251209     1038.    203
+##  5 Burkina Faso Africa     2007    52.3 14326203     1217.    204
+##  6 Burundi      Africa     1952    39.0  2445618      339.    205
+##  7 Burundi      Africa     1957    40.5  2667518      380.    206
+##  8 Burundi      Africa     1962    42.0  2961915      355.    207
+##  9 Burundi      Africa     1967    43.5  3330989      413.    208
+## 10 Burundi      Africa     1972    44.1  3529983      464.    209
+```
+(note we have chained the command with head(10) using the pipe)
+
+{{% /callout%}}
+
+
 Note you can use several variants of `slice()`, in particular, you may want to look at the commands 
 `slice_head()` and `slice_tail()` to select the first or last n rows from your data set.
 
@@ -204,13 +234,13 @@ data %>% slice_sample(n = 5)
 
 ```
 ## # A tibble: 5 x 7
-##   country        continent  year lifeExp       pop gdpPercap row_no
-##   <fct>          <fct>     <int>   <dbl>     <int>     <dbl>  <int>
-## 1 Pakistan       Asia       1972    51.9  69325921     1050.   1169
-## 2 India          Asia       1977    54.2 634000000      813.    702
-## 3 Czech Republic Europe     1962    69.9   9620282    10137.    399
-## 4 Cuba           Americas   1992    74.4  10723260     5593.    393
-## 5 Czech Republic Europe     1982    71.0  10303704    15377.    403
+##   country      continent  year lifeExp      pop gdpPercap row_no
+##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Spain        Europe     1992    77.6 39549438    18603.   1425
+## 2 Finland      Europe     1972    70.9  4639657    14359.    521
+## 3 Sierra Leone Africa     1962    32.8  2467895     1117.   1347
+## 4 Mozambique   Africa     1967    38.1  8680909      567.   1036
+## 5 El Salvador  Americas   1987    63.2  4842194     4140.    476
 ```
 
 ```r
@@ -219,13 +249,13 @@ data %>% slice_sample(n = 5, replace = TRUE)
 
 ```
 ## # A tibble: 5 x 7
-##   country      continent  year lifeExp      pop gdpPercap row_no
-##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Tanzania     Africa     1972    47.6 14706593      916.   1517
-## 2 Germany      Europe     1957    69.1 71019069    10188.    566
-## 3 Venezuela    Americas   1952    55.1  5439568     7690.   1633
-## 4 Saudi Arabia Asia       1997    70.5 21229759    20587.   1318
-## 5 Bolivia      Americas   1962    43.4  3593918     2181.    135
+##   country  continent  year lifeExp      pop gdpPercap row_no
+##   <fct>    <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Togo     Africa     1982    55.5  2644765     1345.   1543
+## 2 Pakistan Asia       1962    47.7 53100671      803.   1167
+## 3 Kuwait   Asia       2007    77.6  2505559    47307.    864
+## 4 Niger    Africa     1997    51.3  9666252      580.   1126
+## 5 Gabon    Africa     1952    37.0   420702     4293.    541
 ```
 
 ### Exercise 3
@@ -251,26 +281,26 @@ data10 %>% slice_sample(n = 20, replace = TRUE)
 ## # A tibble: 20 x 7
 ##    country     continent  year lifeExp      pop gdpPercap row_no
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-##  1 Afghanistan Asia       1967    34.0 11537966      836.      4
-##  2 Afghanistan Asia       1957    30.3  9240934      821.      2
-##  3 Afghanistan Asia       1962    32.0 10267083      853.      3
-##  4 Afghanistan Asia       1952    28.8  8425333      779.      1
-##  5 Afghanistan Asia       1987    40.8 13867957      852.      8
-##  6 Afghanistan Asia       1952    28.8  8425333      779.      1
-##  7 Afghanistan Asia       1992    41.7 16317921      649.      9
-##  8 Afghanistan Asia       1962    32.0 10267083      853.      3
-##  9 Afghanistan Asia       1962    32.0 10267083      853.      3
-## 10 Afghanistan Asia       1992    41.7 16317921      649.      9
-## 11 Afghanistan Asia       1957    30.3  9240934      821.      2
-## 12 Afghanistan Asia       1997    41.8 22227415      635.     10
-## 13 Afghanistan Asia       1987    40.8 13867957      852.      8
-## 14 Afghanistan Asia       1987    40.8 13867957      852.      8
+##  1 Afghanistan Asia       1977    38.4 14880372      786.      6
+##  2 Afghanistan Asia       1952    28.8  8425333      779.      1
+##  3 Afghanistan Asia       1987    40.8 13867957      852.      8
+##  4 Afghanistan Asia       1992    41.7 16317921      649.      9
+##  5 Afghanistan Asia       1952    28.8  8425333      779.      1
+##  6 Afghanistan Asia       1997    41.8 22227415      635.     10
+##  7 Afghanistan Asia       1997    41.8 22227415      635.     10
+##  8 Afghanistan Asia       1992    41.7 16317921      649.      9
+##  9 Afghanistan Asia       1967    34.0 11537966      836.      4
+## 10 Afghanistan Asia       1987    40.8 13867957      852.      8
+## 11 Afghanistan Asia       1977    38.4 14880372      786.      6
+## 12 Afghanistan Asia       1967    34.0 11537966      836.      4
+## 13 Afghanistan Asia       1982    39.9 12881816      978.      7
+## 14 Afghanistan Asia       1972    36.1 13079460      740.      5
 ## 15 Afghanistan Asia       1962    32.0 10267083      853.      3
-## 16 Afghanistan Asia       1982    39.9 12881816      978.      7
-## 17 Afghanistan Asia       1972    36.1 13079460      740.      5
-## 18 Afghanistan Asia       1992    41.7 16317921      649.      9
-## 19 Afghanistan Asia       1972    36.1 13079460      740.      5
-## 20 Afghanistan Asia       1997    41.8 22227415      635.     10
+## 16 Afghanistan Asia       1952    28.8  8425333      779.      1
+## 17 Afghanistan Asia       1982    39.9 12881816      978.      7
+## 18 Afghanistan Asia       1952    28.8  8425333      779.      1
+## 19 Afghanistan Asia       1957    30.3  9240934      821.      2
+## 20 Afghanistan Asia       1992    41.7 16317921      649.      9
 ```
 {{< /spoiler >}}
 
@@ -304,13 +334,17 @@ Note again how the command worked :
 + The subsequent arguments describe what to do with the data frame, using the variable names *without quotes*.
 + The result is a new data frame.
 
-You can create a more complicated criteria
+You can create a more complicated criteria using functions and operators such as
+
++ `==`, `>`, `>=`,  `<`, `<=`  (when constructing comparison expressions)
++ `%in%` when checking presence in a list of possible value
++ `&` (and), `|` (or), `!`  (not) (when combining expression)
 
 In the following example, we are selecting South Africa records for years after 2000:
 
 
 ```r
-SA2000 <- filter(data, country=="South Africa" , year > 2000)
+SA2000 <- filter(data, country=="South Africa" & year > 2000)
 head(SA2000,3)
 ```
 
@@ -346,6 +380,33 @@ filter(data, continent=="Africa" , year > 2003, pop > 30000000)
 ##  8 South Africa     Africa     2007    49.3  43997828     9270.   1416
 ##  9 Sudan            Africa     2007    58.6  42292929     2602.   1452
 ## 10 Tanzania         Africa     2007    52.5  38139640     1107.   1524
+```
+
+{{< /spoiler >}}
+
+### Exercise 5: Select the data that from South Africa except those from 1962, 1977 and 2003
+
+
+{{< spoiler text="Click to see the solution" >}} 
+
+```r
+filter(data, country=="South Africa" & !(year %in% c(1962, 1977, 2003)))
+```
+
+```
+## # A tibble: 10 x 7
+##    country      continent  year lifeExp      pop gdpPercap row_no
+##    <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+##  1 South Africa Africa     1952    45.0 14264935     4725.   1405
+##  2 South Africa Africa     1957    48.0 16151549     5487.   1406
+##  3 South Africa Africa     1967    51.9 20997321     7114.   1408
+##  4 South Africa Africa     1972    53.7 23935810     7766.   1409
+##  5 South Africa Africa     1982    58.2 31140029     8568.   1411
+##  6 South Africa Africa     1987    60.8 35933379     7826.   1412
+##  7 South Africa Africa     1992    61.9 39964159     7225.   1413
+##  8 South Africa Africa     1997    60.2 42835005     7479.   1414
+##  9 South Africa Africa     2002    53.4 44433622     7711.   1415
+## 10 South Africa Africa     2007    49.3 43997828     9270.   1416
 ```
 
 {{< /spoiler >}}

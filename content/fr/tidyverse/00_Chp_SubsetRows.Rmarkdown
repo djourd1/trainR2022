@@ -13,18 +13,22 @@ output:
     keep_md: true
 ---
 
-## Learning objectives
-Often when you want to understand your data or exclude some individuals that are outside the scope of your analysis, you will need to select subsamples of your data set.
+## Objectifs d'apprentissage
 
-In this chapter, you will learn how to select specific rows of your data frame. This is our first encounter with the package `dplyr` and the use of the pipe for chaining commands. This is an important section, as you will be using this kind of syntax for all the subsequent types of data manipulations.  
+Souvent, vous aurez à exclure certains individus qui ne font pas partie du champ de votre analyse ou sélectionner des sous-échantillons de votre jeu de données.
 
-At the end of the chapter, you should be able to select specific rows of a data set that will be selected :
+Dans ce chapitre, vous allez apprendre à sélectionner des lignes spécifiques de vos données. 
 
-+ by their row number
-+ a logical criteria based on the different variables describing the rows
-+ randomly
+*C'est notre première rencontre avec le paquet `dplyr` et l'utilisation du "pipe" (`%>%`) pour enchaîner les commandes. C'est une section importante, car vous utiliserez ce type de syntaxe pour tous les types de manipulations de données qui suivront.  *
 
-First, let's rename the dataframe `gapminder` with a shorter name, and let's add a column `row_no`. That column is not really essential, but it will help visualizing the rows that have been selected.
+À la fin du chapitre, vous devriez être capable de sélectionner des lignes spécifiques d'un ensemble de données qui seront sélectionnées :
+
++ par leurs numéros de ligne
++ par un critère logique 
++ de manière aléatoire
+
+Tout d'abord, renommons le dataframe `gapminder` avec un nom plus court, et ajoutons une colonne `row_no`. Cette colonne n'est pas vraiment essentielle, mais elle aidera à visualiser les lignes qui ont été sélectionnées.
+
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(gapminder)
@@ -38,41 +42,42 @@ data$row_no = 1:nrow(data)
 ```
 
 
-We have several ways to subset rows.
+Nous disposons de plusieurs moyens pour extraire des sous-ensembles de lignes.
 
-## Selecting rows by their position
+## Sélectionner les lignes par leur position
 
-To do this we will start to use the `dplyr` package. Note that `dplyr` is already loaded if you loaded the package `tidyverse`. 
+Nous allons commencer à utiliser le paquetage `dplyr`. Notez que `dplyr` est déjà chargé si vous avez chargé le paquet `tidyverse`. 
 
-The command `slice()` lets you index rows by their locations. It allows you to select, remove, and duplicate rows. 
+La commande `slice()` vous permet d'indexer les lignes par leur emplacement. Elle vous permet de sélectionner, supprimer et dupliquer des lignes. 
 
-The easiest way to use slice is to indicate the vector of row numbers you wish to keep as in:
+La manière la plus simple d'utiliser slice est d'indiquer le vecteur de numéros de lignes que vous souhaitez conserver comme dans :
 ```{r}
-slice(data, 2:5)  # to select the row from 2 to 5
-slice(data, c(7, 5, 1)) # to select specific rows in a specific order
-slice(data, 10) #note that including a number and not a vector also works
+slice(data, 2:5) # pour sélectionner la ligne de 2 à 5
+slice(data, c(7, 5, 1)) # pour sélectionner des lignes spécifiques dans un ordre spécifique
+slice(data, 10) # Notez que l'inclusion d'un nombre et non d'un vecteur fonctionne également
+slice(data, rep(2, 5)) # Je répète la ligne 2 cinq fois
 ```
 
-Note that all `dplyr` related commands work in the same way:
+Notez que toutes les commandes liées à `dplyr` fonctionnent de la même manière :
 
-+ The first argument is a data frame.
-+ The subsequent arguments describe what to do with the data frame, using the variable names (**without quotes**) or sometimes some vectors of numbers.
-+ The result is a new data frame.
++ Le premier argument est le dataframe.
++ Les arguments suivants décrivent ce qu'il faut faire en utilisant les noms des variables **sans guillemets** ou parfois des vecteurs de nombres.
++ Le résultat est un nouveau dataframe.
 
-A very convenient feature of tidyverse is the pipe `%>%` operator. 
-To understand how it works, we can reproduce the precedent example using the pipe. 
+Une fonctionnalité très pratique de tidyverse est l'opérateur "pipe" `%>%`. 
+Pour comprendre comment il fonctionne, nous pouvons reproduire l'exemple précédent en utilisant le pipe. 
 
 ```{r}
 data %>% slice(2:5)
 ```
 
-How did that work:
+Comment cela fonctionne?
 
-You need to read this command from left to right, and think that the results of the previous command are passed as the first argument of the next command. 
+Vous devez lire cette commande de gauche à droite, et penser que les résultats de la commande précédente sont passés comme premier argument de la commande suivante. 
 
-The first command is to take the data.frame data, the result data is passed on as the first argument of the command slice(...). So literally, you think about this command as: take "data", then use slice to select the row 2 to 5...
+La première commande consiste à prendre les données du data.frame, les données du résultat sont transmises comme premier argument de la commande slice(...). Donc, littéralement, vous pensez à cette commande comme : prendre "data", puis utiliser slice pour sélectionner la ligne 2 à 5...
 
-In this very simple command, the advantage of using the pipe is not obvious as you would probably be faster in writing `data[2:5, ]`, but you will soon see its main advantage when we will start "chaining" several commands.
+Dans cette commande très simple, l'avantage du pipe n'est pas évident car vous seriez probablement plus rapide avec la commande `data[2:5, ]`, mais vous verrez bientôt son principal avantage lorsque nous commencerons à "enchaîner" plusieurs commandes.
 
 {{% callout note%}}
 
