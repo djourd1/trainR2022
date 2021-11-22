@@ -1,8 +1,8 @@
 ---
-title: "Subsetting rows" 
+title: "Selecting rows" 
 author: Damien Jourdain
 date: '2021-11-20'
-slug: subsetrows
+slug: select-rows
 categories:
   - R
 tags: []
@@ -14,17 +14,17 @@ output:
 ---
 
 ## Learning objectives
-Often when you want to understand your data or exclude some individuals that are outside the scope of the analysis you want to conduct, you will need to select subsamples of your data set.
+Often when you want to understand your data or exclude some individuals that are outside the scope of your analysis, you will need to select subsamples of your data set.
 
-In this section, you will learn how to take a subset of a data frame. This will be our first encounter with the package `dplyr` and the use of the pipe for chaining commands. This is an important section, as you will be using this kind of syntax for all the subsequent types of data manipulations.  
+In this chapter, you will learn how to select specific rows of your data frame. This is our first encounter with the package `dplyr` and the use of the pipe for chaining commands. This is an important section, as you will be using this kind of syntax for all the subsequent types of data manipulations.  
 
-At the end of the section, you should be able to select specific rows of a data set that will be selected :
+At the end of the chapter, you should be able to select specific rows of a data set that will be selected :
 
 + by their row number
 + a logical criteria based on the different variables describing the rows
 + randomly
 
-First, lets rename the dataframe gapminder with a shorter name, and let's add a column `row_no`. That colum is not really essential, but it will help visualizing the rows that have been selected.
+First, let's rename the dataframe `gapminder` with a shorter name, and let's add a column `row_no`. That column is not really essential, but it will help visualizing the rows that have been selected.
 
 
 
@@ -38,9 +38,9 @@ data$row_no = 1:nrow(data)
 
 We have several ways to subset rows.
 
-## Subsetting rows by their position
+## Selecting rows by their position
 
-To do this we will start to use `dplyr`. Note that `dplyr` is already loaded if you loaded the package `tidyverse`. 
+To do this we will start to use the `dplyr` package. Note that `dplyr` is already loaded if you loaded the package `tidyverse`. 
 
 The command `slice()` lets you index rows by their locations. It allows you to select, remove, and duplicate rows. 
 
@@ -73,7 +73,18 @@ slice(data, c(7, 5, 1)) # to select specific rows in a specific order
 ## 3 Afghanistan Asia       1952    28.8  8425333      779.      1
 ```
 
-Note that all `dplyr` related commands work similarly:
+```r
+slice(data, 10) #note that including a number and not a vector also works
+```
+
+```
+## # A tibble: 1 x 7
+##   country     continent  year lifeExp      pop gdpPercap row_no
+##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Afghanistan Asia       1997    41.8 22227415      635.     10
+```
+
+Note that all `dplyr` related commands work in the same way:
 
 + The first argument is a data frame.
 + The subsequent arguments describe what to do with the data frame, using the variable names (**without quotes**) or sometimes some vectors of numbers.
@@ -99,24 +110,26 @@ data %>% slice(2:5)
 
 How did that work:
 
-You need to read this chain of command from left to right, and think that the results of the previous command are passed as the first argument of the next command. 
+You need to read this command from left to right, and think that the results of the previous command are passed as the first argument of the next command. 
 
-Here the argument data (the data frame) is passed on as the first argument of the command slice(...). So literally, you think about this command as: take "data", then use slice to select the row 2 to 5...
+The first command is to take the data.frame data, the result data is passed on as the first argument of the command slice(...). So literally, you think about this command as: take "data", then use slice to select the row 2 to 5...
 
 In this very simple command, the advantage of using the pipe is not obvious as you would probably be faster in writing `data[2:5, ]`, but you will soon see its main advantage when we will start "chaining" several commands.
 
 Note you can use several variants of `slice()`, in particular, you may want to look at the commands 
-`slice_head()` and `slice_tail()` to select the first or last rows.
+`slice_head()` and `slice_tail()` to select the first or last n rows from your data set.
 
-### Exercise 1: Select of the last 10 rows
+### Exercise 1: Select the last 10 rows
 
-Using the command slice_tail(), select the last 10 rows of the dataset data.
+Using the command `slice_tail()`, select the last 10 rows of the dataset data.
 
 {{% callout solution%}}
 {{< spoiler text="Click to view the solution" >}}
 
 
 ```r
+# note that it outputs a new dataframe, however you can check that the initial data 
+# was not modified, and that you did not create a new object in the workspace
 data %>% slice_tail(n=10)  
 ```
 
@@ -137,18 +150,21 @@ data %>% slice_tail(n=10)
 ```
 
 ```r
-#note it outputs a new dataframe, however it is not saved
 # if you want to save it with a new name
 data2 <- data %>% slice_tail(n=10)  
 ```
 
+{{% callout warning%}}
 
 ```r
-# if you want to overwrite the old data
+# You may want to overwrite the old data
+data <- data %>% slice_tail(n=10)  
+
 # However, you have deleted all the other data from the memory!
 # Make sure this is what you wanted to do...
-data <- data %>% slice_tail(n=10)  
 ```
+{{% /callout%}}
+
 {{< /spoiler >}}
 {{% /callout %}}
 
