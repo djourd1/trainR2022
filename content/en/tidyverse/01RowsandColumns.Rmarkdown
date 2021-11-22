@@ -6,6 +6,9 @@ type: book
 date: "2021-02-02T00:00:00+01:00"
 
 weight: 30
+output:
+  html_document:
+    keep_md: true
 ---
 
 ## Learning objectives
