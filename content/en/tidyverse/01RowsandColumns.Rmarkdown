@@ -97,7 +97,7 @@ You can provide a range of variables or a range of column positions
 data %>% select(continent:pop) %>% head(4)
 ```
 
-### Exclude instead of selecting
+#### Exclude instead of selecting
 If you need to select most variables and exclude only a few variables you can use the sign `-` to signal the variables you want to exclude:
 
 ```{r}
@@ -176,4 +176,41 @@ Note that the order of the commands can be important. In our example, we selecte
 data %>%  select(country, pop) %>%
   filter(continent == "Africa") 
 ```
+
+
+
+## Exercises
+
+### Ex 1: 
+
+Show the 2007 GDP per capita of the 10 most populated countries (in 2007) in descending order of population
+
+{{% callout solution%}}
+{{< spoiler text="Click to view the solution" >}}
+
+
+```{r}
+data %>% filter(year==2007) %>%
+  arrange(-pop) %>%
+  select(country, pop, gdpPercap) %>%
+  slice_head(n=10)
+```
+{{< /spoiler >}}
+{{% callout %}}
+
+### Ex 2: 
+
+Show the 2007 life expectency (in 2007). Order by descending GDP per capita. Show the countries with the 5 highest GDP per Capita and the 5 lowest GDP per capita.
+
+{{% callout solution%}}
+{{< spoiler text="Click to view the solution" >}}
+
+```{r}
+data %>% filter(year==2007) %>%
+  arrange(-gdpPercap) %>%
+  select(country, lifeExp, gdpPercap) %>%
+  slice(1:5, (n()-4):n())  #be careful with the parenthesis
+```
+{{< /spoiler >}}
+{{% callout %}}
 

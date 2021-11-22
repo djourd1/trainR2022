@@ -188,7 +188,7 @@ data %>% select(continent:pop) %>% head(4)
 ## 4 Asia       1967    34.0 11537966
 ```
 
-### Exclude instead of selecting
+#### Exclude instead of selecting
 If you need to select most variables and exclude only a few variables you can use the sign `-` to signal the variables you want to exclude:
 
 
@@ -368,4 +368,75 @@ Note that the order of the commands can be important. In our example, we selecte
 data %>%  select(country, pop) %>%
   filter(continent == "Africa") 
 ```
+
+
+
+## Exercises
+
+### Ex 1: 
+
+Show the 2007 GDP per capita of the 10 most populated countries (in 2007) in descending order of population
+
+{{% callout solution%}}
+{{< spoiler text="Click to view the solution" >}}
+
+
+
+```r
+data %>% filter(year==2007) %>%
+  arrange(-pop) %>%
+  select(country, pop, gdpPercap) %>%
+  slice_head(n=10)
+```
+
+```
+## # A tibble: 10 x 3
+##    country              pop gdpPercap
+##    <fct>              <int>     <dbl>
+##  1 China         1318683096     4959.
+##  2 India         1110396331     2452.
+##  3 United States  301139947    42952.
+##  4 Indonesia      223547000     3541.
+##  5 Brazil         190010647     9066.
+##  6 Pakistan       169270617     2606.
+##  7 Bangladesh     150448339     1391.
+##  8 Nigeria        135031164     2014.
+##  9 Japan          127467972    31656.
+## 10 Mexico         108700891    11978.
+```
+{{< /spoiler >}}
+{{% callout %}}
+
+### Ex 2: 
+
+Show the 2007 life expectency (in 2007). Order by descending GDP per capita. Show the countries with the 5 highest GDP per Capita and the 5 lowest GDP per capita.
+
+{{% callout solution%}}
+{{< spoiler text="Click to view the solution" >}}
+
+
+```r
+data %>% filter(year==2007) %>%
+  arrange(-gdpPercap) %>%
+  select(country, lifeExp, gdpPercap) %>%
+  slice(1:5, (n()-4):n())  #be careful with the parenthesis
+```
+
+```
+## # A tibble: 10 x 3
+##    country          lifeExp gdpPercap
+##    <fct>              <dbl>     <dbl>
+##  1 Norway              80.2    49357.
+##  2 Kuwait              77.6    47307.
+##  3 Singapore           80.0    47143.
+##  4 United States       78.2    42952.
+##  5 Ireland             78.9    40676.
+##  6 Guinea-Bissau       46.4      579.
+##  7 Zimbabwe            43.5      470.
+##  8 Burundi             49.6      430.
+##  9 Liberia             45.7      415.
+## 10 Congo, Dem. Rep.    46.5      278.
+```
+{{< /spoiler >}}
+{{% callout %}}
 
