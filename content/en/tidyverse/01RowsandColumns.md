@@ -116,7 +116,7 @@ data %>%
 _Note that this becomes very easy to follow the succesive data treatments. Beside, with that solution you do not need an intermediate variable._
 
 
-## Select columns/variables {#select-columns}
+## Select columns/variables {#subsetting-columns}
 
 When you have a large survey with many variables, it will often be useful to extract the specific variables useful for a particular type of analysis. 
 
@@ -333,7 +333,7 @@ data %>% relocate(row_no) %>% head(3)
 Use the function helper if you need more sophisticated changes.
 
 
-### Selecting rows and columns
+## Selecting rows and columns {#subsetting-rows-and-columns}
 
 You have all the tools to select rows and columns.
 Using tidyverse, you will chain each activities. For example, you want to select the column country and pop, and consider only the African countries:
