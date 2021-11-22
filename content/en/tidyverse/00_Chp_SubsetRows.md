@@ -155,14 +155,14 @@ data2 <- data %>% slice_tail(n=10)
 ```
 
 {{% callout warning%}}
+You may want to overwrite the old data
 
 ```r
-# You may want to overwrite the old data
 data <- data %>% slice_tail(n=10)  
-
-# However, you have deleted all the other data from the memory!
-# Make sure this is what you wanted to do...
 ```
+However, by doing so you deleted the old dataset!
+Make sure this is what you wanted to do...
+
 {{% /callout%}}
 
 {{< /spoiler >}}
@@ -192,3 +192,84 @@ data %>% slice(c(3,50, 200))
 {{% /callout %}}
 
 
+# Randomly selecting rows
+
+A more interesting application is the creation of a random subsample of cases (i.e., rows).
+Again, you can use a slice helper: `slice_sample()` which allows you to random select with or without replacement.
+
+
+```r
+data %>% slice_sample(n = 5)
+```
+
+```
+## # A tibble: 5 x 7
+##   country           continent  year lifeExp        pop gdpPercap row_no
+##   <fct>             <fct>     <int>   <dbl>      <int>     <dbl>  <int>
+## 1 Nepal             Asia       1957    37.7    9682338      598.   1070
+## 2 Czech Republic    Europe     2007    76.5   10228744    22833.    408
+## 3 China             Asia       1987    67.3 1084035000     1379.    296
+## 4 Equatorial Guinea Africa     1972    40.5     277603      672.    485
+## 5 Norway            Europe     1967    74.1    3786019    16362.   1144
+```
+
+```r
+data %>% slice_sample(n = 5, replace = TRUE)
+```
+
+```
+## # A tibble: 5 x 7
+##   country continent  year lifeExp      pop gdpPercap row_no
+##   <fct>   <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Peru    Americas   2002    69.9 26769436     5909.   1211
+## 2 Bahrain Asia       1957    53.8   138655    11636.     86
+## 3 Israel  Asia       1967    70.8  2693585     8394.    760
+## 4 Angola  Africa     1982    39.9  7016384     2757.     43
+## 5 Ireland Europe     2007    78.9  4109086    40676.    756
+```
+
+### Exercise 3
+
+1. Generate a subset of data with its first 10 rows and name it data10
+2. Generate a random subsample of `data10` containing 20 rows. (tip: understand what the argument replace is doing)
+
+{{< spoiler text="Click to see the solution" >}} 
+
+
+```r
+data10 <- data %>% slice_head(n=10)
+```
+
+Random sample with replacement. Note that it you do not include `replace=TRUE` argument, R will throw an error (why?)
+
+
+```r
+data %>% slice_sample(n = 20, replace = TRUE)
+```
+
+```
+## # A tibble: 20 x 7
+##    country             continent  year lifeExp        pop gdpPercap row_no
+##    <fct>               <fct>     <int>   <dbl>      <int>     <dbl>  <int>
+##  1 Egypt               Africa     1987    59.8   52799062     3885.    464
+##  2 Cameroon            Africa     1962    42.6    5793633     1400.    231
+##  3 Cameroon            Africa     2002    49.9   15929988     1934.    239
+##  4 Congo, Dem. Rep.    Africa     1987    47.4   35481645      673.    332
+##  5 Slovak Republic     Europe     1957    67.4    3844277     6093.   1370
+##  6 Syria               Asia       1972    57.3    6701172     2571.   1493
+##  7 China               Asia       1992    68.7 1164970000     1656.    297
+##  8 Panama              Americas   1967    64.1    1405486     4421.   1180
+##  9 Benin               Africa     1992    53.9    4981671     1191.    129
+## 10 West Bank and Gaza  Asia       1962    48.1    1133134     2199.   1659
+## 11 Mozambique          Africa     1997    46.3   16603334      472.   1042
+## 12 Chile               Americas   1962    57.9    7961258     4519.    279
+## 13 Montenegro          Europe     2007    74.5     684736     9254.   1020
+## 14 Equatorial Guinea   Africa     2007    51.6     551201    12154.    492
+## 15 United Kingdom      Europe     1982    74.0   56339704    18232.   1603
+## 16 South Africa        Africa     1957    48.0   16151549     5487.   1406
+## 17 Yemen, Rep.         Asia       1982    49.1    9657618     1978.   1675
+## 18 Trinidad and Tobago Americas   1967    65.4     960155     5621.   1552
+## 19 Netherlands         Europe     1967    73.8   12596822    15363.   1084
+## 20 Guinea-Bissau       Africa     1952    32.5     580653      300.    625
+```
+{{< /spoiler >}}

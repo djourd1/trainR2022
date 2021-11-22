@@ -94,13 +94,13 @@ data2 <- data %>% slice_tail(n=10)
 ``` 
 
 {{% callout warning%}}
+You may want to overwrite the old data
 ```{r, eval=FALSE}
-# You may want to overwrite the old data
 data <- data %>% slice_tail(n=10)  
-
-# However, you have deleted all the other data from the memory!
-# Make sure this is what you wanted to do...
 ```
+However, by doing so you deleted the old dataset!
+Make sure this is what you wanted to do...
+
 {{% /callout%}}
 
 {{< /spoiler >}}
@@ -120,3 +120,30 @@ data %>% slice(c(3,50, 200))
 {{% /callout %}}
 
 
+# Randomly selecting rows
+
+A more interesting application is the creation of a random subsample of cases (i.e., rows).
+Again, you can use a slice helper: `slice_sample()` which allows you to random select with or without replacement.
+
+```{r}
+data %>% slice_sample(n = 5)
+data %>% slice_sample(n = 5, replace = TRUE)
+```
+
+### Exercise 3
+
+1. Generate a subset of data with its first 10 rows and name it data10
+2. Generate a random subsample of `data10` containing 20 rows. (tip: understand what the argument replace is doing)
+
+{{< spoiler text="Click to see the solution" >}} 
+
+```{r}
+data10 <- data %>% slice_head(n=10)
+```
+
+Random sample with replacement. Note that it you do not include `replace=TRUE` argument, R will throw an error (why?)
+
+```{r}
+data %>% slice_sample(n = 20, replace = TRUE)
+```
+{{< /spoiler >}}
