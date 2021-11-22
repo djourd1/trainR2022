@@ -192,7 +192,7 @@ data %>% slice(c(3,50, 200))
 {{% /callout %}}
 
 
-# Randomly selecting rows
+## Randomly selecting rows
 
 A more interesting application is the creation of a random subsample of cases (i.e., rows).
 Again, you can use a slice helper: `slice_sample()` which allows you to random select with or without replacement.
@@ -204,13 +204,13 @@ data %>% slice_sample(n = 5)
 
 ```
 ## # A tibble: 5 x 7
-##   country           continent  year lifeExp        pop gdpPercap row_no
-##   <fct>             <fct>     <int>   <dbl>      <int>     <dbl>  <int>
-## 1 Nepal             Asia       1957    37.7    9682338      598.   1070
-## 2 Czech Republic    Europe     2007    76.5   10228744    22833.    408
-## 3 China             Asia       1987    67.3 1084035000     1379.    296
-## 4 Equatorial Guinea Africa     1972    40.5     277603      672.    485
-## 5 Norway            Europe     1967    74.1    3786019    16362.   1144
+##   country  continent  year lifeExp      pop gdpPercap row_no
+##   <fct>    <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Eritrea  Africa     1982    43.9  2637297      525.    499
+## 2 Ghana    Africa     1977    51.8 10538093      993.    582
+## 3 Italy    Europe     1982    75.0 56535636    16537.    775
+## 4 Senegal  Africa     1962    41.5  3430243     1655.   1323
+## 5 Slovenia Europe     2007    77.9  2009245    25768.   1392
 ```
 
 ```r
@@ -219,13 +219,13 @@ data %>% slice_sample(n = 5, replace = TRUE)
 
 ```
 ## # A tibble: 5 x 7
-##   country continent  year lifeExp      pop gdpPercap row_no
-##   <fct>   <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Peru    Americas   2002    69.9 26769436     5909.   1211
-## 2 Bahrain Asia       1957    53.8   138655    11636.     86
-## 3 Israel  Asia       1967    70.8  2693585     8394.    760
-## 4 Angola  Africa     1982    39.9  7016384     2757.     43
-## 5 Ireland Europe     2007    78.9  4109086    40676.    756
+##   country           continent  year lifeExp      pop gdpPercap row_no
+##   <fct>             <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Sweden            Europe     1952    71.9  7124673     8528.   1465
+## 2 Zimbabwe          Africa     2007    43.5 12311143      470.   1704
+## 3 Germany           Europe     1982    73.8 78335266    22032.    571
+## 4 Ethiopia          Africa     1962    40.1 25145372      419.    507
+## 5 Equatorial Guinea Africa     1952    34.5   216964      376.    481
 ```
 
 ### Exercise 3
@@ -244,32 +244,103 @@ Random sample with replacement. Note that it you do not include `replace=TRUE` a
 
 
 ```r
-data %>% slice_sample(n = 20, replace = TRUE)
+data10 %>% slice_sample(n = 20, replace = TRUE)
 ```
 
 ```
 ## # A tibble: 20 x 7
-##    country             continent  year lifeExp        pop gdpPercap row_no
-##    <fct>               <fct>     <int>   <dbl>      <int>     <dbl>  <int>
-##  1 Egypt               Africa     1987    59.8   52799062     3885.    464
-##  2 Cameroon            Africa     1962    42.6    5793633     1400.    231
-##  3 Cameroon            Africa     2002    49.9   15929988     1934.    239
-##  4 Congo, Dem. Rep.    Africa     1987    47.4   35481645      673.    332
-##  5 Slovak Republic     Europe     1957    67.4    3844277     6093.   1370
-##  6 Syria               Asia       1972    57.3    6701172     2571.   1493
-##  7 China               Asia       1992    68.7 1164970000     1656.    297
-##  8 Panama              Americas   1967    64.1    1405486     4421.   1180
-##  9 Benin               Africa     1992    53.9    4981671     1191.    129
-## 10 West Bank and Gaza  Asia       1962    48.1    1133134     2199.   1659
-## 11 Mozambique          Africa     1997    46.3   16603334      472.   1042
-## 12 Chile               Americas   1962    57.9    7961258     4519.    279
-## 13 Montenegro          Europe     2007    74.5     684736     9254.   1020
-## 14 Equatorial Guinea   Africa     2007    51.6     551201    12154.    492
-## 15 United Kingdom      Europe     1982    74.0   56339704    18232.   1603
-## 16 South Africa        Africa     1957    48.0   16151549     5487.   1406
-## 17 Yemen, Rep.         Asia       1982    49.1    9657618     1978.   1675
-## 18 Trinidad and Tobago Americas   1967    65.4     960155     5621.   1552
-## 19 Netherlands         Europe     1967    73.8   12596822    15363.   1084
-## 20 Guinea-Bissau       Africa     1952    32.5     580653      300.    625
+##    country     continent  year lifeExp      pop gdpPercap row_no
+##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+##  1 Afghanistan Asia       1992    41.7 16317921      649.      9
+##  2 Afghanistan Asia       1972    36.1 13079460      740.      5
+##  3 Afghanistan Asia       1952    28.8  8425333      779.      1
+##  4 Afghanistan Asia       1987    40.8 13867957      852.      8
+##  5 Afghanistan Asia       1977    38.4 14880372      786.      6
+##  6 Afghanistan Asia       1977    38.4 14880372      786.      6
+##  7 Afghanistan Asia       1962    32.0 10267083      853.      3
+##  8 Afghanistan Asia       1957    30.3  9240934      821.      2
+##  9 Afghanistan Asia       1972    36.1 13079460      740.      5
+## 10 Afghanistan Asia       1982    39.9 12881816      978.      7
+## 11 Afghanistan Asia       1962    32.0 10267083      853.      3
+## 12 Afghanistan Asia       1967    34.0 11537966      836.      4
+## 13 Afghanistan Asia       1952    28.8  8425333      779.      1
+## 14 Afghanistan Asia       1972    36.1 13079460      740.      5
+## 15 Afghanistan Asia       1977    38.4 14880372      786.      6
+## 16 Afghanistan Asia       1977    38.4 14880372      786.      6
+## 17 Afghanistan Asia       1997    41.8 22227415      635.     10
+## 18 Afghanistan Asia       1967    34.0 11537966      836.      4
+## 19 Afghanistan Asia       1992    41.7 16317921      649.      9
+## 20 Afghanistan Asia       1992    41.7 16317921      649.      9
 ```
 {{< /spoiler >}}
+
+## Selecting rows based on a logical criterion
+
+Let say you want to look only at South Africa data. 
+
+We will now use another command from the dplyr package : `filter()`
+
+
+```r
+SAdat <- filter(data, country=="South Africa")
+head(SAdat)  #the function head selects the first 6 rows of a data frame
+```
+
+```
+## # A tibble: 6 x 7
+##   country      continent  year lifeExp      pop gdpPercap row_no
+##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 South Africa Africa     1952    45.0 14264935     4725.   1405
+## 2 South Africa Africa     1957    48.0 16151549     5487.   1406
+## 3 South Africa Africa     1962    50.0 18356657     5769.   1407
+## 4 South Africa Africa     1967    51.9 20997321     7114.   1408
+## 5 South Africa Africa     1972    53.7 23935810     7766.   1409
+## 6 South Africa Africa     1977    55.5 27129932     8029.   1410
+```
+
+Note again how the command worked :
+
++ The first argument is a data frame.
++ The subsequent arguments describe what to do with the data frame, using the variable names *without quotes*.
++ The result is a new data frame.
+
+You can create a more complicated criteria
+
+In the following example, we are selecting South Africa records for years after 2000:
+
+
+```r
+SA2000 <- filter(data, country=="South Africa" , year > 2000)
+head(SA2000,3)
+```
+
+```
+## # A tibble: 2 x 7
+##   country      continent  year lifeExp      pop gdpPercap row_no
+##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 South Africa Africa     2002    53.4 44433622     7711.   1415
+## 2 South Africa Africa     2007    49.3 43997828     9270.   1416
+```
+
+
+### Exercise 4: Select recent African data
+
++ Select records from the continent "Africa" for years after 2001 (note there are two selection criteria)
+
+{{< spoiler text="Click to see the solution" >}} 
+
+```r
+filter(data, country=="South Africa" , year > 2001)
+```
+
+```
+## # A tibble: 2 x 7
+##   country      continent  year lifeExp      pop gdpPercap row_no
+##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 South Africa Africa     2002    53.4 44433622     7711.   1415
+## 2 South Africa Africa     2007    49.3 43997828     9270.   1416
+```
+
+{{< /spoiler >}}
+
+

@@ -120,7 +120,7 @@ data %>% slice(c(3,50, 200))
 {{% /callout %}}
 
 
-# Randomly selecting rows
+## Randomly selecting rows
 
 A more interesting application is the creation of a random subsample of cases (i.e., rows).
 Again, you can use a slice helper: `slice_sample()` which allows you to random select with or without replacement.
@@ -144,6 +144,46 @@ data10 <- data %>% slice_head(n=10)
 Random sample with replacement. Note that it you do not include `replace=TRUE` argument, R will throw an error (why?)
 
 ```{r}
-data %>% slice_sample(n = 20, replace = TRUE)
+data10 %>% slice_sample(n = 20, replace = TRUE)
 ```
 {{< /spoiler >}}
+
+## Selecting rows based on a logical criterion
+
+Let say you want to look only at South Africa data. 
+
+We will now use another command from the dplyr package : `filter()`
+
+```{r}
+SAdat <- filter(data, country=="South Africa")
+head(SAdat)  #the function head selects the first 6 rows of a data frame
+```
+
+Note again how the command worked :
+
++ The first argument is a data frame.
++ The subsequent arguments describe what to do with the data frame, using the variable names *without quotes*.
++ The result is a new data frame.
+
+You can create a more complicated criteria
+
+In the following example, we are selecting South Africa records for years after 2000:
+
+```{r}
+SA2000 <- filter(data, country=="South Africa" , year > 2000)
+head(SA2000,3)
+```
+
+
+### Exercise 4: Select recent African data
+
++ Select records from the continent "Africa" for years after 2001 (note there are two selection criteria)
+
+{{< spoiler text="Click to see the solution" >}} 
+```{r}
+filter(data, country=="South Africa" , year > 2001)
+```
+
+{{< /spoiler >}}
+
+
