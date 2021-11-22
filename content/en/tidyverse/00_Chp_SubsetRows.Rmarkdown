@@ -174,14 +174,13 @@ SA2000 <- filter(data, country=="South Africa" , year > 2000)
 head(SA2000,3)
 ```
 
-
 ### Exercise 4: Select recent African data
 
-+ Select records from the continent "Africa" for years after 2001 (note there are two selection criteria)
++ Select records from African country with a population greater than 30 million for years after 2003 (note there are three selection criteria)
 
 {{< spoiler text="Click to see the solution" >}} 
 ```{r}
-filter(data, country=="South Africa" , year > 2001)
+filter(data, continent=="Africa" , year > 2003, pop > 30000000)
 ```
 
 {{< /spoiler >}}

@@ -204,13 +204,13 @@ data %>% slice_sample(n = 5)
 
 ```
 ## # A tibble: 5 x 7
-##   country  continent  year lifeExp      pop gdpPercap row_no
-##   <fct>    <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Eritrea  Africa     1982    43.9  2637297      525.    499
-## 2 Ghana    Africa     1977    51.8 10538093      993.    582
-## 3 Italy    Europe     1982    75.0 56535636    16537.    775
-## 4 Senegal  Africa     1962    41.5  3430243     1655.   1323
-## 5 Slovenia Europe     2007    77.9  2009245    25768.   1392
+##   country        continent  year lifeExp       pop gdpPercap row_no
+##   <fct>          <fct>     <int>   <dbl>     <int>     <dbl>  <int>
+## 1 Pakistan       Asia       1972    51.9  69325921     1050.   1169
+## 2 India          Asia       1977    54.2 634000000      813.    702
+## 3 Czech Republic Europe     1962    69.9   9620282    10137.    399
+## 4 Cuba           Americas   1992    74.4  10723260     5593.    393
+## 5 Czech Republic Europe     1982    71.0  10303704    15377.    403
 ```
 
 ```r
@@ -219,13 +219,13 @@ data %>% slice_sample(n = 5, replace = TRUE)
 
 ```
 ## # A tibble: 5 x 7
-##   country           continent  year lifeExp      pop gdpPercap row_no
-##   <fct>             <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Sweden            Europe     1952    71.9  7124673     8528.   1465
-## 2 Zimbabwe          Africa     2007    43.5 12311143      470.   1704
-## 3 Germany           Europe     1982    73.8 78335266    22032.    571
-## 4 Ethiopia          Africa     1962    40.1 25145372      419.    507
-## 5 Equatorial Guinea Africa     1952    34.5   216964      376.    481
+##   country      continent  year lifeExp      pop gdpPercap row_no
+##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Tanzania     Africa     1972    47.6 14706593      916.   1517
+## 2 Germany      Europe     1957    69.1 71019069    10188.    566
+## 3 Venezuela    Americas   1952    55.1  5439568     7690.   1633
+## 4 Saudi Arabia Asia       1997    70.5 21229759    20587.   1318
+## 5 Bolivia      Americas   1962    43.4  3593918     2181.    135
 ```
 
 ### Exercise 3
@@ -251,26 +251,26 @@ data10 %>% slice_sample(n = 20, replace = TRUE)
 ## # A tibble: 20 x 7
 ##    country     continent  year lifeExp      pop gdpPercap row_no
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-##  1 Afghanistan Asia       1992    41.7 16317921      649.      9
-##  2 Afghanistan Asia       1972    36.1 13079460      740.      5
-##  3 Afghanistan Asia       1952    28.8  8425333      779.      1
-##  4 Afghanistan Asia       1987    40.8 13867957      852.      8
-##  5 Afghanistan Asia       1977    38.4 14880372      786.      6
-##  6 Afghanistan Asia       1977    38.4 14880372      786.      6
-##  7 Afghanistan Asia       1962    32.0 10267083      853.      3
-##  8 Afghanistan Asia       1957    30.3  9240934      821.      2
-##  9 Afghanistan Asia       1972    36.1 13079460      740.      5
-## 10 Afghanistan Asia       1982    39.9 12881816      978.      7
-## 11 Afghanistan Asia       1962    32.0 10267083      853.      3
-## 12 Afghanistan Asia       1967    34.0 11537966      836.      4
-## 13 Afghanistan Asia       1952    28.8  8425333      779.      1
-## 14 Afghanistan Asia       1972    36.1 13079460      740.      5
-## 15 Afghanistan Asia       1977    38.4 14880372      786.      6
-## 16 Afghanistan Asia       1977    38.4 14880372      786.      6
-## 17 Afghanistan Asia       1997    41.8 22227415      635.     10
-## 18 Afghanistan Asia       1967    34.0 11537966      836.      4
-## 19 Afghanistan Asia       1992    41.7 16317921      649.      9
-## 20 Afghanistan Asia       1992    41.7 16317921      649.      9
+##  1 Afghanistan Asia       1967    34.0 11537966      836.      4
+##  2 Afghanistan Asia       1957    30.3  9240934      821.      2
+##  3 Afghanistan Asia       1962    32.0 10267083      853.      3
+##  4 Afghanistan Asia       1952    28.8  8425333      779.      1
+##  5 Afghanistan Asia       1987    40.8 13867957      852.      8
+##  6 Afghanistan Asia       1952    28.8  8425333      779.      1
+##  7 Afghanistan Asia       1992    41.7 16317921      649.      9
+##  8 Afghanistan Asia       1962    32.0 10267083      853.      3
+##  9 Afghanistan Asia       1962    32.0 10267083      853.      3
+## 10 Afghanistan Asia       1992    41.7 16317921      649.      9
+## 11 Afghanistan Asia       1957    30.3  9240934      821.      2
+## 12 Afghanistan Asia       1997    41.8 22227415      635.     10
+## 13 Afghanistan Asia       1987    40.8 13867957      852.      8
+## 14 Afghanistan Asia       1987    40.8 13867957      852.      8
+## 15 Afghanistan Asia       1962    32.0 10267083      853.      3
+## 16 Afghanistan Asia       1982    39.9 12881816      978.      7
+## 17 Afghanistan Asia       1972    36.1 13079460      740.      5
+## 18 Afghanistan Asia       1992    41.7 16317921      649.      9
+## 19 Afghanistan Asia       1972    36.1 13079460      740.      5
+## 20 Afghanistan Asia       1997    41.8 22227415      635.     10
 ```
 {{< /spoiler >}}
 
@@ -322,23 +322,30 @@ head(SA2000,3)
 ## 2 South Africa Africa     2007    49.3 43997828     9270.   1416
 ```
 
-
 ### Exercise 4: Select recent African data
 
-+ Select records from the continent "Africa" for years after 2001 (note there are two selection criteria)
++ Select records from African country with a population greater than 30 million for years after 2003 (note there are three selection criteria)
 
 {{< spoiler text="Click to see the solution" >}} 
 
 ```r
-filter(data, country=="South Africa" , year > 2001)
+filter(data, continent=="Africa" , year > 2003, pop > 30000000)
 ```
 
 ```
-## # A tibble: 2 x 7
-##   country      continent  year lifeExp      pop gdpPercap row_no
-##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 South Africa Africa     2002    53.4 44433622     7711.   1415
-## 2 South Africa Africa     2007    49.3 43997828     9270.   1416
+## # A tibble: 10 x 7
+##    country          continent  year lifeExp       pop gdpPercap row_no
+##    <fct>            <fct>     <int>   <dbl>     <int>     <dbl>  <int>
+##  1 Algeria          Africa     2007    72.3  33333216     6223.     36
+##  2 Congo, Dem. Rep. Africa     2007    46.5  64606759      278.    336
+##  3 Egypt            Africa     2007    71.3  80264543     5581.    468
+##  4 Ethiopia         Africa     2007    52.9  76511887      691.    516
+##  5 Kenya            Africa     2007    54.1  35610177     1463.    828
+##  6 Morocco          Africa     2007    71.2  33757175     3820.   1032
+##  7 Nigeria          Africa     2007    46.9 135031164     2014.   1140
+##  8 South Africa     Africa     2007    49.3  43997828     9270.   1416
+##  9 Sudan            Africa     2007    58.6  42292929     2602.   1452
+## 10 Tanzania         Africa     2007    52.5  38139640     1107.   1524
 ```
 
 {{< /spoiler >}}
