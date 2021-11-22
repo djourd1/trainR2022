@@ -39,23 +39,40 @@ data %>% arrange(country)
 
 {{< spoiler text="Click to see the output" >}}
 ```{r, echo=FALSE}
-data %>% arrange(country) %>% head(20)
+data %>% arrange(country) %>% head(10)
 ```
+Note: only the first 10 rows are shown here
 {{< /spoiler >}}
 
 
 
 If you provide more than one column name, the column names are separated with commas.Each additional column will be used to break ties in the values of preceding columns. 
 
-```{r}
-data %>% arrange(continent, country, year) %>% head()
+```{r, eval=FALSE}
+data %>% arrange(continent, country, year)
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% arrange(continent, country, year) %>% head(10)
+```
+Note: only the first 10 rows are shown here
+{{< /spoiler >}}
+
 
 Use desc() to re-order by a column in descending order:
 
-```{r}
-data %>% arrange(desc(continent), country) %>% head()
+```{r, eval=FALSE}
+data %>% arrange(desc(continent), country)
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% arrange(desc(continent), country) %>% head(10)
+```
+Note: only the first 10 rows are shown here
+{{< /spoiler >}}
+
 
 ## Chaining data treatments: selecting and sorting rows {#select-sort-rows}
 
