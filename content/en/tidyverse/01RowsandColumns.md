@@ -36,7 +36,7 @@ data %>% arrange(country)
 {{< spoiler text="Click to see the output" >}}
 
 ```
-## # A tibble: 20 x 7
+## # A tibble: 10 x 7
 ##    country     continent  year lifeExp      pop gdpPercap row_no
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
 ##  1 Afghanistan Asia       1952    28.8  8425333      779.      1
@@ -49,17 +49,8 @@ data %>% arrange(country)
 ##  8 Afghanistan Asia       1987    40.8 13867957      852.      8
 ##  9 Afghanistan Asia       1992    41.7 16317921      649.      9
 ## 10 Afghanistan Asia       1997    41.8 22227415      635.     10
-## 11 Afghanistan Asia       2002    42.1 25268405      727.     11
-## 12 Afghanistan Asia       2007    43.8 31889923      975.     12
-## 13 Albania     Europe     1952    55.2  1282697     1601.     13
-## 14 Albania     Europe     1957    59.3  1476505     1942.     14
-## 15 Albania     Europe     1962    64.8  1728137     2313.     15
-## 16 Albania     Europe     1967    66.2  1984060     2760.     16
-## 17 Albania     Europe     1972    67.7  2263554     3313.     17
-## 18 Albania     Europe     1977    68.9  2509048     3533.     18
-## 19 Albania     Europe     1982    70.4  2780097     3631.     19
-## 20 Albania     Europe     1987    72    3075321     3739.     20
 ```
+Note: only the first 10 rows are shown here
 {{< /spoiler >}}
 
 
@@ -68,39 +59,57 @@ If you provide more than one column name, the column names are separated with co
 
 
 ```r
-data %>% arrange(continent, country, year) %>% head()
+data %>% arrange(continent, country, year)
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 6 x 7
-##   country continent  year lifeExp      pop gdpPercap row_no
-##   <fct>   <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Algeria Africa     1952    43.1  9279525     2449.     25
-## 2 Algeria Africa     1957    45.7 10270856     3014.     26
-## 3 Algeria Africa     1962    48.3 11000948     2551.     27
-## 4 Algeria Africa     1967    51.4 12760499     3247.     28
-## 5 Algeria Africa     1972    54.5 14760787     4183.     29
-## 6 Algeria Africa     1977    58.0 17152804     4910.     30
+## # A tibble: 10 x 7
+##    country continent  year lifeExp      pop gdpPercap row_no
+##    <fct>   <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+##  1 Algeria Africa     1952    43.1  9279525     2449.     25
+##  2 Algeria Africa     1957    45.7 10270856     3014.     26
+##  3 Algeria Africa     1962    48.3 11000948     2551.     27
+##  4 Algeria Africa     1967    51.4 12760499     3247.     28
+##  5 Algeria Africa     1972    54.5 14760787     4183.     29
+##  6 Algeria Africa     1977    58.0 17152804     4910.     30
+##  7 Algeria Africa     1982    61.4 20033753     5745.     31
+##  8 Algeria Africa     1987    65.8 23254956     5681.     32
+##  9 Algeria Africa     1992    67.7 26298373     5023.     33
+## 10 Algeria Africa     1997    69.2 29072015     4797.     34
 ```
+Note: only the first 10 rows are shown here
+{{< /spoiler >}}
+
 
 Use desc() to re-order by a column in descending order:
 
 
 ```r
-data %>% arrange(desc(continent), country) %>% head()
+data %>% arrange(desc(continent), country)
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 6 x 7
-##   country   continent  year lifeExp      pop gdpPercap row_no
-##   <fct>     <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Australia Oceania    1952    69.1  8691212    10040.     61
-## 2 Australia Oceania    1957    70.3  9712569    10950.     62
-## 3 Australia Oceania    1962    70.9 10794968    12217.     63
-## 4 Australia Oceania    1967    71.1 11872264    14526.     64
-## 5 Australia Oceania    1972    71.9 13177000    16789.     65
-## 6 Australia Oceania    1977    73.5 14074100    18334.     66
+## # A tibble: 10 x 7
+##    country   continent  year lifeExp      pop gdpPercap row_no
+##    <fct>     <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+##  1 Australia Oceania    1952    69.1  8691212    10040.     61
+##  2 Australia Oceania    1957    70.3  9712569    10950.     62
+##  3 Australia Oceania    1962    70.9 10794968    12217.     63
+##  4 Australia Oceania    1967    71.1 11872264    14526.     64
+##  5 Australia Oceania    1972    71.9 13177000    16789.     65
+##  6 Australia Oceania    1977    73.5 14074100    18334.     66
+##  7 Australia Oceania    1982    74.7 15184200    19477.     67
+##  8 Australia Oceania    1987    76.3 16257249    21889.     68
+##  9 Australia Oceania    1992    77.6 17481977    23425.     69
+## 10 Australia Oceania    1997    78.8 18565243    26998.     70
 ```
+Note: only the first 10 rows are shown here
+{{< /spoiler >}}
+
 
 ## Chaining data treatments: selecting and sorting rows {#select-sort-rows}
 
