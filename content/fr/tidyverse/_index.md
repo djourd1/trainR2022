@@ -11,31 +11,31 @@ date: "2020-08-20T00:00:00Z"
 type: book  
 ---
 
-In most real-life cases, data is not always ready to use immediately. Most of the time it has missing values, missing variable names, or variables scattered into multiple columns that you will need to synthesize. When this kind of data is presented for analysis, it needs intervention to make it *tidy*. 
+Dans la plupart des cas, vos données ne sont pas prêtes à être utilisées immédiatement. La plupart du temps, elles comportent des valeurs manquantes, des noms de variables manquants, ou des variables dispersées dans plusieurs colonnes que vous devrez synthétiser. 
 
-Up to now, we have been manipulating vectors, matrix and data.frames by reordering them and subsetting them through indexing and the operator `[ ]`. But once we start more advanced analyses, we will want to manipulate with more efficient tools.
+Jusqu'à présent, nous avons manipulé des vecteurs, des matrices et des data.frames en les réordonnant et en les prenant des sous-ensembles grâce à l'indexation et à l'opérateur `[ ]`. Mais lorsque nous commencerons des analyses plus avancées, nous voudrons manipuler avec des outils plus efficaces.
+
 {{< figure library="true" src="OIP.jpg" >}}  
 
-To manipulate data, you have different options. Among them, 3 environments are popular:
+Pour manipuler les données, vous avez différentes options. Parmi elles, 3 environnements sont populaires :
 
-+ The original Data.frame
-+ The data.table package
-+ The tidyverse ecosystem
++ Le Data.frame original
++ Le paquetage data.table
++ L'écosystème tidyverse
 
-In this section we describe the basic function of the `tidyverse` ecosystems that I find most useful.
+Dans cette section, nous décrivons les manipulations de base possibles avec l'écosystème `tidyverse`
 
 
-## The data set
+## Le jeu de données
 
-In this chapter, we will work with the datasets made available by the package `gapminder`.
-You should now be able to install the package on your own (if not, please see early sections on how to install packages on your computer)
+Dans ce chapitre, nous allons travailler avec le jeux de données mis à disposition par le paquet `gapminder`.
+Vous devriez maintenant être capable d'installer le paquetage par vous-même (si ce n'est pas le cas, veuillez consulter les premières sections sur la façon d'installer des paquetages sur votre ordinateur).
 
-Load the `gapminder` package:
+Chargez le paquetage `gapminder` :
 ```r
 library(gapminder)
 ```
-
-If everyting went ok you should be able to access the gapminder data directly
+Si tout s'est bien passé, vous devriez être capable d'accéder directement aux données de gapminder.
 
 ```r
 gapminder
@@ -58,9 +58,9 @@ gapminder
 ## # ... with 1,694 more rows
 ```
 
-## Load tidyverse
+## Charger les paquetages de l'écosystème tidyverse
 
-Let's now load the tidyverse ecosystems, we call it "ecosystems" because it is composed of several packages. However, you can install these different packages using one command
+Chargeons maintenant les paquetage de l'écosystème `tidyverse`. Nous l'appelons "écosystème" car il est composé de plusieurs paquets. Cependant, vous installez ces différents paquets en utilisant une seule commande:
 
 ```{r, echo=TRUE, warning=TRUE, message=TRUE}
 library(tidyverse)
@@ -83,11 +83,13 @@ Warning messages:
 6: package ‘dplyr’ was built under R version 4.0.5 
 ```
 
-The message indicates the packages that you have just loaded, the potential conflicts. Note again, that red color does not necessarily means it did not work.
+Le message indique les paquetages que vous venez de charger et les conflits potentiels. Notez encore une fois que la couleur rouge ne signifie pas nécessairement que cela n'a pas fonctionné, mais qu'il vous previens des conflits potentiels entre paquetages.
+
+Dans le cas présenté, le paquetage `dplyr` définit une fonction `filter()` qui va masquer la fonction du même nom du paquet `stats`. Si vous voulez vraiment utiliser la fonction filter du paquet stats, il vous faudra mentionner expressément le paquet que vous voulez utiliser en appelant la function comme suit `stats::filter()`.
+
+*Vous êtes maintenant prêt à travailler!*
 
 
-
-*You are now ready to work!*
 
 
 
