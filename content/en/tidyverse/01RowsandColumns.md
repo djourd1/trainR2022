@@ -30,11 +30,13 @@ The command `arrange()` changes the order of the rows. The argument is a set of 
 
 
 ```r
-data %>% arrange(country) %>% head(10)
+data %>% arrange(country) 
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 10 x 7
+## # A tibble: 20 x 7
 ##    country     continent  year lifeExp      pop gdpPercap row_no
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
 ##  1 Afghanistan Asia       1952    28.8  8425333      779.      1
@@ -47,7 +49,20 @@ data %>% arrange(country) %>% head(10)
 ##  8 Afghanistan Asia       1987    40.8 13867957      852.      8
 ##  9 Afghanistan Asia       1992    41.7 16317921      649.      9
 ## 10 Afghanistan Asia       1997    41.8 22227415      635.     10
+## 11 Afghanistan Asia       2002    42.1 25268405      727.     11
+## 12 Afghanistan Asia       2007    43.8 31889923      975.     12
+## 13 Albania     Europe     1952    55.2  1282697     1601.     13
+## 14 Albania     Europe     1957    59.3  1476505     1942.     14
+## 15 Albania     Europe     1962    64.8  1728137     2313.     15
+## 16 Albania     Europe     1967    66.2  1984060     2760.     16
+## 17 Albania     Europe     1972    67.7  2263554     3313.     17
+## 18 Albania     Europe     1977    68.9  2509048     3533.     18
+## 19 Albania     Europe     1982    70.4  2780097     3631.     19
+## 20 Albania     Europe     1987    72    3075321     3739.     20
 ```
+{{< /spoiler >}}
+
+
 
 If you provide more than one column name, the column names are separated with commas.Each additional column will be used to break ties in the values of preceding columns. 
 

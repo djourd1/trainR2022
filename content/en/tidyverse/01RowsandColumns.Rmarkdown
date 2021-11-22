@@ -33,9 +33,17 @@ You are now familiar with `dplyr` commands and the pipe syntax. A second type of
 
 The command `arrange()` changes the order of the rows. The argument is a set of column names to order by. 
 
-```{r}
-data %>% arrange(country) %>% head(10)
+```{r, eval=FALSE}
+data %>% arrange(country) 
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% arrange(country) %>% head(20)
+```
+{{< /spoiler >}}
+
+
 
 If you provide more than one column name, the column names are separated with commas.Each additional column will be used to break ties in the values of preceding columns. 
 
