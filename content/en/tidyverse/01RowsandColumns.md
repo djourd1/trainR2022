@@ -115,36 +115,39 @@ Note: only the first 10 rows are shown here
 
 You have been introduced to the chaining of commands. It is now time to start to feel the advantages of this way of writing commands. 
 
-For exemple, let's select the data of year 2007 and the African continent. Sort the results  in descending order of GDP and show the first 5 results.
+For exemple, let's select the data of year 2007 and the African continent. Sort the results  in descending order of GDP and show the first 6 results.
 
 
 ```r
 data %>% 
   filter(continent == "Africa", year ==2007) %>%
   arrange(-gdpPercap) %>%
-  slice_head(n=6)
+  slice_head(n=5)
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 6 x 7
-##   country           continent  year lifeExp      pop gdpPercap row_no
-##   <fct>             <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Gabon             Africa     2007    56.7  1454867    13206.    552
-## 2 Botswana          Africa     2007    50.7  1639131    12570.    168
-## 3 Equatorial Guinea Africa     2007    51.6   551201    12154.    492
-## 4 Libya             Africa     2007    74.0  6036914    12057.    912
-## 5 Mauritius         Africa     2007    72.8  1250882    10957.    984
-## 6 South Africa      Africa     2007    49.3 43997828     9270.   1416
+## # A tibble: 5 x 7
+##   country           continent  year lifeExp     pop gdpPercap row_no
+##   <fct>             <fct>     <int>   <dbl>   <int>     <dbl>  <int>
+## 1 Gabon             Africa     2007    56.7 1454867    13206.    552
+## 2 Botswana          Africa     2007    50.7 1639131    12570.    168
+## 3 Equatorial Guinea Africa     2007    51.6  551201    12154.    492
+## 4 Libya             Africa     2007    74.0 6036914    12057.    912
+## 5 Mauritius         Africa     2007    72.8 1250882    10957.    984
 ```
+{{< /spoiler >}}
+
 
 _Note that this becomes very easy to follow the succesive data treatments. Beside, with that solution you do not need an intermediate variable._
 
 
 ## Select columns/variables {#subsetting-columns}
 
-When you have a large survey with many variables, it will often be useful to extract the specific variables useful for a particular type of analysis. 
+When you have a large survey with many variables, you may want to extract  variables specific to a particular type of analysis. 
 
-The function `select()` will allow you do create a subset of variables based on their names.
+The function `select()` will allow you to create a subset of variables based on their names.
 
 ### column positions
 A first approach is to list the column positions.  
@@ -153,6 +156,8 @@ A first approach is to list the column positions.
 ```r
 data %>% select(1, 3, 6) 
 ```
+
+{{< spoiler text="Click to see the output" >}}
 
 ```
 ## # A tibble: 1,704 x 3
@@ -170,6 +175,7 @@ data %>% select(1, 3, 6)
 ## 10 Afghanistan  1997      635.
 ## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
 
 However, this is not really recommended as the order of your columns could change, and lead to unexpected manipulations.
 
