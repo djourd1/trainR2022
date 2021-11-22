@@ -2,7 +2,7 @@
 title: "Selecting rows" 
 author: Damien Jourdain
 date: '2021-11-20'
-slug: selection-ligne
+slug: select-rows
 categories:
   - R
 tags: []
@@ -12,24 +12,6 @@ output:
   html_document:
     keep_md: true
 ---
-
-## Objectifs d'apprentissage
-Souvent, lorsque vous voulez comprendre vos données ou exclure certains individus qui sont en dehors du champ de votre analyse, vous aurez besoin de sélectionner des sous-échantillons de votre ensemble de données.
-
-Dans ce chapitre, vous allez apprendre à sélectionner des lignes spécifiques de votre ensemble de données. C'est notre première rencontre avec le paquet `dplyr` et l'utilisation du signe "pipe" (`%>%`) pour enchaîner les commandes. C'est une section importante, car vous utiliserez ce type de syntaxe pour tous les types de manipulations de données qui suivront.  
-
-À la fin de ce chapitre, vous serez capable de sélectionner des lignes spécifiques d'un ensemble de données qui seront sélectionnées soit :
-
-+ par leur numéro de ligne
-+ par un critère logique basé sur les différentes variables décrivant les lignes
-+ de manière aléatoire
-
-Tout d'abord, donnons un nom plus court au dataframe `gapminder` et ajoutons une colonne `row_no`. Cette colonne n'est pas vraiment essentielle, mais elle aidera à visualiser les lignes qui ont été sélectionnées.
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-library(gapminder)
-library(tidyverse)
-```
 
 ## Learning objectives
 Often when you want to understand your data or exclude some individuals that are outside the scope of your analysis, you will need to select subsamples of your data set.
