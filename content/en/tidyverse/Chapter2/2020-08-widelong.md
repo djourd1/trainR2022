@@ -2,9 +2,12 @@
 title: "From wide to long" 
 author: Damien Jourdain
 date: '2020-08-20'
-slug: widetolong
+slug: wide-to-long
 type: book
-weight: 2
+weight: 4
+output:
+  html_document:
+    keep_md: true
 ---
 
 
