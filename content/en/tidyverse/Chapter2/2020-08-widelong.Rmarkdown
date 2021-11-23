@@ -1,0 +1,91 @@
+---
+title: "From wide to long" 
+author: Damien Jourdain
+date: '2020-08-20'
+slug: wide-to-long
+type: book
+weight: 2
+---
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+## The original data
+
+Let's suppose that you capture data in the following format:
+
++ one line per respondent
++ one column per repeated answer (recorded here as ans_1, ans_2 and ans_3)
++ additional columns to describe the respondents
+
+
+```{r, echo=FALSE}
+set.seed(12345)
+N <- 5
+dt <- tibble(resp_id=rep(1:N), age = sample(30:50, N, TRUE), 
+                city = sample(c("Pretoria", "Cape Town"), N, TRUE),
+                ans_1=sample(3,N,TRUE),
+                ans_2=sample(3,N,TRUE),
+                ans_3=sample(2,N,TRUE))
+dt[2,4] <- NA   #create a missing value
+dt
+```
+
+## What do you want to obtain?
+
+If you want to reshape your table as a long format, you will shape in order to obain
+
++ one line per answer, per respondent
++ one column indicating the actual answer
++ additional columns to describe the respondents
+
+## Use pivot_longer()
+
+To do so, we will use the command `pivot_longer()` that is part of the `tidyr` package (a member of the tidyverse family)
+
+So do not forget to load the tidyverse package:
+```{r, eval=FALSE}
+library(tidyverse)
+```
+
+
+The easiest way to pivot the table is to identify the columns that will go from columns to rows.
+In our case, we want the columns ans_1, ans_2, ans_3 to be appearing as rows. We will provide the vector of columns that will be pivoted:
+
+```{r}
+pivot_longer(dt, cols=c(ans_1, ans_2, ans_3))
+```
+
+
+In the new table:
+
++ the three columns ans_1 to ans_3 have disappeared
++ two new columns name and value have been added
+
+  + name corresponds to string identifying the former column name 
+  + value corresponds to the value of the cell in the former column
+
+
+Note that since the question have an easy pattern for names, we could obtain the same result with less effort:
+
+```{r, echo=TRUE}
+pivot_longer(dt, cols=contains("ans"))
+```
+
+The column name and value are not very explicit, so you can rename them with the options names_to, and values_to. 
+
+```{r, echo=TRUE}
+pivot_longer(dt, cols=contains("ans"), 
+             names_to = "Question", values_to = "Answer")
+```
+
+Finally, since the column names had the pattern 'ans_', it may appear strange to have ans_1, ans_2, etc.  as possible values for questions !  You can use the option names_prefix to eliminate it when it is pivoted
+
+```{r, echo=TRUE}
+pivot_longer(dt, cols=contains("ans"), 
+             names_prefix = "ans_", names_to = "Question", values_to = "Answer")
+```
+
+Full details about pivot_long can be found at: <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" target="_blank">pivot_longer</a>
+

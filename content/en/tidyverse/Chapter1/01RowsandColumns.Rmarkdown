@@ -5,7 +5,7 @@ slug: row-col-tidyverse
 type: book
 date: "2021-02-02T00:00:00+01:00"
 
-weight: 30
+weight: 10
 output:
   html_document:
     keep_md: true

@@ -1,0 +1,76 @@
+---
+title: "From long to wide" 
+author: Damien Jourdain
+date: '2020-08-20'
+slug: long-to-wide
+type: book
+weight: 2
+---
+
+
+## The original data
+
+Let's take the gapminder data again. 
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(gapminder)
+gapminder
+```
+
+You can see that for each country, there are several lines, each corresponding to one year.
+This is typical of panel data where you collected the same information about a respondent at different times.
+
+## What do you want to obtain: one variable over time
+
+### Objective
+If you want to reshape this table such as the information about a country are all presented in the same line (from long to wide format).
+
+Let's first assume that you want to have a new table:
+
++ each line corresponds to a unique country
++ each line contains information about the population for the 2000's
+
+
+### Use pivot_wider()
+
+To do so, we will use the command `pivot_wider()`. 
+
+It is part of the `tidyr` package, a member of the tidyverse ecosystem, so do not forget to load the `tidyverse` package:
+
+```{r}
+gapminder %>% 
+  filter(year > 2000) %>%   # we keep only interesting years
+  select(country, continent,year, pop) %>%  # we keep the interesting variables
+  pivot_wider(names_from = year, values_from = c(pop), names_prefix = "popul") %>%
+  arrange(continent, country) # we sort
+```
+
+It created two new columns which names are a combination of the names_prefix (here popul) and the year (which we declared using the argument names_from). Each cell in these columns correspond to the countries' population in the corresponding years.
+
+## What do you want to obtain: two variables over time
+
+### Objective
+
+Let's now assume that you want to have a new table:
+
++ each line corresponds to a unique country
++ each line contains information about the population and life expectancy for the 2000's
+
+### Use pivot_wider()
+
+```{r}
+gapminder %>% 
+  filter(year > 2000) %>%   # we keep only interesting years
+  select(country, continent,year, pop, lifeExp) %>%  # we keep the interesting variables
+  pivot_wider(names_from = year, values_from = c(pop, lifeExp)) %>%
+  arrange(continent, country) # we sort
+```
+
+Since there are two variables retained, the names_prefix is no automtically taken from the names_from variables.
+
+
+More details about pivot_wider can be found at: <a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" target="_blank">pivot_wider</a>
+
+
+## Exercises:
