@@ -20,7 +20,7 @@ In this chapter, you will learn how to:
 + [Select a subset of columns](#subsetting-columns)
 + [Select a subset of rows and columns](#subsetting-rows-and-columns)
 
-For this, you will learn the commands `arrange()` of the `dplyr` package. You will also practice the use of the pipes (`%>%`) to chain successive commands.
+For this, you will learn the commands `arrange()` and `select()`of the `dplyr` package. You will also practice the use of the pipes (`%>%`) to chain successive commands. The chaining of commands will allow you to arrange your data in a very transparent and easy way.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(gapminder)

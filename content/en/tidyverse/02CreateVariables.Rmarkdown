@@ -1,0 +1,45 @@
+---
+title: "Create Variables" 
+author: Damien Jourdain
+date: '2020-08-02'
+slug: create-variables
+categories:
+  - R
+tags: []
+type: book
+weight: 5
+
+output:
+  html_document:
+    keep_md: true
+
+---
+
+```{r, echo=FALSE, warning=FALSE,message=FALSE}
+library(gapminder)
+library(tidyverse)
+data <- gapminder
+data$row_no = 1:nrow(data)
+```
+
+
+
+
+Surveys provides raw data. Often you will need to combine information collected with different variables into a new variable. So you will need to add new columns that are functions of existing columns. 
+
+`mutate()` adds new columns at the end of the table. 
+
+```{r}
+data %>% 
+  select(row_no, gdpPercap, pop) %>%
+  mutate(GDP = gdpPercap * pop)
+```
+
+
+Arithmetic operators can also be very useful. For example, `x / sum(x)` calculates the proportion of a total, and `y - mean(y)` computes the difference from the mean.
+
+```{r}
+data %>% 
+  select(row_no, gdpPercap) %>%
+  mutate(diffMeansGdp = gdpPercap - mean(gdpPercap) )
+```
