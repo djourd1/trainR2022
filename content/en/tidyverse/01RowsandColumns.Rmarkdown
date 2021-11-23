@@ -47,7 +47,7 @@ data %>% arrange(country)
 
 
 
-If you provide more than one column name, the column names are separated with commas.Each additional column will be used to break ties in the values of preceding columns. 
+If you provide more than one column name, the column names are separated with commas. Each additional column will be used to break ties in the values of preceding columns (lexicographic ordering). 
 
 ```{r, eval=FALSE}
 data %>% arrange(continent, country, year)
@@ -60,7 +60,7 @@ data %>% arrange(continent, country, year)
 {{< /spoiler >}}
 
 
-Use desc() to re-order by a column in descending order:
+Use `desc()` to re-order by a column in descending order:
 
 ```{r, eval=FALSE}
 data %>% arrange(desc(continent), country)
@@ -75,9 +75,17 @@ data %>% arrange(desc(continent), country)
 
 ## Chaining data treatments: selecting and sorting rows {#select-sort-rows}
 
-You have been introduced to the chaining of commands. It is now time to start to feel the advantages of this way of writing commands. 
+You have been introduced to the chaining of commands. Let's develop a more complex example.
 
-For example, let's select the data of year 2007 and the African continent. Sort the results  in descending order of GDP and show the first 6 results.
+You want to show the countries with the highest 2007 GDP per capita of the African continent, and limit your results to the first six countries. 
+
+For this, you will need to:
+
++ select countries on the African continent for which we have data in 2007
++ sort the results in descending order of GDP
++ retain only the first six results
+
+This can be done with this chain of commands:
 
 ```{r, eval=FALSE}
 data %>% 
@@ -95,9 +103,12 @@ data %>%
 ```
 {{< /spoiler >}}
 
-
-_Note that this becomes very easy to follow the successive data treatments. Beside, with that solution you do not need an intermediate variable._
-
+{{% callout note%}}
+Note that: 
++ each step corresponds to one command (filter, arrange, etc.) and for increased readability we can present each command on a separate line; 
++ the different steps are chained, i.e., the results of the first command are passed as the first argument to the next command;
++ you did not have to create intermediate variables.
+{{% /callout %}}
 
 ## Select columns/variables {#subsetting-columns}
 
