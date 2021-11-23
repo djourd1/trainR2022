@@ -13,12 +13,14 @@ output:
 
 ## Learning objectives
 
-You will learn how to:
+In this chapter, you will learn how to:
 
 + [Sort rows](#sort-rows)
-+ [Select then order rows](#select-sort-rows)
++ [Select then sort rows](#select-sort-rows)
 + [Select a subset of columns](#subsetting-columns)
 + [Select a subset of rows and columns](#subsetting-rows-and-columns)
+
+For this, you will learn the commands `arrange()` of the `dplyr` package. You will also practice the use of the pipes (`%>%`) to chain successive commands.
 
 
 
@@ -36,7 +38,7 @@ data %>% arrange(country)
 {{< spoiler text="Click to see the output" >}}
 
 ```
-## # A tibble: 10 x 7
+## # A tibble: 1,704 x 7
 ##    country     continent  year lifeExp      pop gdpPercap row_no
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
 ##  1 Afghanistan Asia       1952    28.8  8425333      779.      1
@@ -49,8 +51,8 @@ data %>% arrange(country)
 ##  8 Afghanistan Asia       1987    40.8 13867957      852.      8
 ##  9 Afghanistan Asia       1992    41.7 16317921      649.      9
 ## 10 Afghanistan Asia       1997    41.8 22227415      635.     10
+## # ... with 1,694 more rows
 ```
-Note: only the first 10 rows are shown here
 {{< /spoiler >}}
 
 
@@ -65,7 +67,7 @@ data %>% arrange(continent, country, year)
 {{< spoiler text="Click to see the output" >}}
 
 ```
-## # A tibble: 10 x 7
+## # A tibble: 1,704 x 7
 ##    country continent  year lifeExp      pop gdpPercap row_no
 ##    <fct>   <fct>     <int>   <dbl>    <int>     <dbl>  <int>
 ##  1 Algeria Africa     1952    43.1  9279525     2449.     25
@@ -78,8 +80,8 @@ data %>% arrange(continent, country, year)
 ##  8 Algeria Africa     1987    65.8 23254956     5681.     32
 ##  9 Algeria Africa     1992    67.7 26298373     5023.     33
 ## 10 Algeria Africa     1997    69.2 29072015     4797.     34
+## # ... with 1,694 more rows
 ```
-Note: only the first 10 rows are shown here
 {{< /spoiler >}}
 
 
@@ -93,7 +95,7 @@ data %>% arrange(desc(continent), country)
 {{< spoiler text="Click to see the output" >}}
 
 ```
-## # A tibble: 10 x 7
+## # A tibble: 1,704 x 7
 ##    country   continent  year lifeExp      pop gdpPercap row_no
 ##    <fct>     <fct>     <int>   <dbl>    <int>     <dbl>  <int>
 ##  1 Australia Oceania    1952    69.1  8691212    10040.     61
@@ -106,8 +108,8 @@ data %>% arrange(desc(continent), country)
 ##  8 Australia Oceania    1987    76.3 16257249    21889.     68
 ##  9 Australia Oceania    1992    77.6 17481977    23425.     69
 ## 10 Australia Oceania    1997    78.8 18565243    26998.     70
+## # ... with 1,694 more rows
 ```
-Note: only the first 10 rows are shown here
 {{< /spoiler >}}
 
 
@@ -115,32 +117,33 @@ Note: only the first 10 rows are shown here
 
 You have been introduced to the chaining of commands. It is now time to start to feel the advantages of this way of writing commands. 
 
-For exemple, let's select the data of year 2007 and the African continent. Sort the results  in descending order of GDP and show the first 6 results.
+For example, let's select the data of year 2007 and the African continent. Sort the results  in descending order of GDP and show the first 6 results.
 
 
 ```r
 data %>% 
   filter(continent == "Africa", year ==2007) %>%
   arrange(-gdpPercap) %>%
-  slice_head(n=5)
+  slice_head(n=6)
 ```
 
 {{< spoiler text="Click to see the output" >}}
 
 ```
-## # A tibble: 5 x 7
-##   country           continent  year lifeExp     pop gdpPercap row_no
-##   <fct>             <fct>     <int>   <dbl>   <int>     <dbl>  <int>
-## 1 Gabon             Africa     2007    56.7 1454867    13206.    552
-## 2 Botswana          Africa     2007    50.7 1639131    12570.    168
-## 3 Equatorial Guinea Africa     2007    51.6  551201    12154.    492
-## 4 Libya             Africa     2007    74.0 6036914    12057.    912
-## 5 Mauritius         Africa     2007    72.8 1250882    10957.    984
+## # A tibble: 6 x 7
+##   country           continent  year lifeExp      pop gdpPercap row_no
+##   <fct>             <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Gabon             Africa     2007    56.7  1454867    13206.    552
+## 2 Botswana          Africa     2007    50.7  1639131    12570.    168
+## 3 Equatorial Guinea Africa     2007    51.6   551201    12154.    492
+## 4 Libya             Africa     2007    74.0  6036914    12057.    912
+## 5 Mauritius         Africa     2007    72.8  1250882    10957.    984
+## 6 South Africa      Africa     2007    49.3 43997828     9270.   1416
 ```
 {{< /spoiler >}}
 
 
-_Note that this becomes very easy to follow the succesive data treatments. Beside, with that solution you do not need an intermediate variable._
+_Note that this becomes very easy to follow the successive data treatments. Beside, with that solution you do not need an intermediate variable._
 
 
 ## Select columns/variables {#subsetting-columns}
@@ -184,18 +187,28 @@ However, this is not really recommended as the order of your columns could chang
 A second approach is to list all the names of the variables you want to select
 
 ```r
-data %>% select(country, year, gdpPercap) %>% slice_head(n=4)
+data %>% select(country, year, gdpPercap)
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 4 x 3
-##   country      year gdpPercap
-##   <fct>       <int>     <dbl>
-## 1 Afghanistan  1952      779.
-## 2 Afghanistan  1957      821.
-## 3 Afghanistan  1962      853.
-## 4 Afghanistan  1967      836.
+## # A tibble: 1,704 x 3
+##    country      year gdpPercap
+##    <fct>       <int>     <dbl>
+##  1 Afghanistan  1952      779.
+##  2 Afghanistan  1957      821.
+##  3 Afghanistan  1962      853.
+##  4 Afghanistan  1967      836.
+##  5 Afghanistan  1972      740.
+##  6 Afghanistan  1977      786.
+##  7 Afghanistan  1982      978.
+##  8 Afghanistan  1987      852.
+##  9 Afghanistan  1992      649.
+## 10 Afghanistan  1997      635.
+## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
 
 However, it can become rapidly cumbersome to have to write a long list of variable names. Hopefully, you can use a few tricks.
 
@@ -204,37 +217,60 @@ You can provide a range of variables or a range of column positions
 
 
 ```r
-# This will select of the variables between the column continent and pop
+# This will select the variables 
+# between the column continent and pop
 data %>% select(continent:pop) %>% head(4)
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 4 x 4
-##   continent  year lifeExp      pop
-##   <fct>     <int>   <dbl>    <int>
-## 1 Asia       1952    28.8  8425333
-## 2 Asia       1957    30.3  9240934
-## 3 Asia       1962    32.0 10267083
-## 4 Asia       1967    34.0 11537966
+## # A tibble: 1,704 x 4
+##    continent  year lifeExp      pop
+##    <fct>     <int>   <dbl>    <int>
+##  1 Asia       1952    28.8  8425333
+##  2 Asia       1957    30.3  9240934
+##  3 Asia       1962    32.0 10267083
+##  4 Asia       1967    34.0 11537966
+##  5 Asia       1972    36.1 13079460
+##  6 Asia       1977    38.4 14880372
+##  7 Asia       1982    39.9 12881816
+##  8 Asia       1987    40.8 13867957
+##  9 Asia       1992    41.7 16317921
+## 10 Asia       1997    41.8 22227415
+## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
+
 
 #### Exclude instead of selecting
 If you need to select most variables and exclude only a few variables you can use the sign `-` to signal the variables you want to exclude:
 
 
 ```r
-data %>% select(-gdpPercap) %>% head(4) 
+data %>% select(-gdpPercap)
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 4 x 6
-##   country     continent  year lifeExp      pop row_no
-##   <fct>       <fct>     <int>   <dbl>    <int>  <int>
-## 1 Afghanistan Asia       1952    28.8  8425333      1
-## 2 Afghanistan Asia       1957    30.3  9240934      2
-## 3 Afghanistan Asia       1962    32.0 10267083      3
-## 4 Afghanistan Asia       1967    34.0 11537966      4
+## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop row_no
+##    <fct>       <fct>     <int>   <dbl>    <int>  <int>
+##  1 Afghanistan Asia       1952    28.8  8425333      1
+##  2 Afghanistan Asia       1957    30.3  9240934      2
+##  3 Afghanistan Asia       1962    32.0 10267083      3
+##  4 Afghanistan Asia       1967    34.0 11537966      4
+##  5 Afghanistan Asia       1972    36.1 13079460      5
+##  6 Afghanistan Asia       1977    38.4 14880372      6
+##  7 Afghanistan Asia       1982    39.9 12881816      7
+##  8 Afghanistan Asia       1987    40.8 13867957      8
+##  9 Afghanistan Asia       1992    41.7 16317921      9
+## 10 Afghanistan Asia       1997    41.8 22227415     10
+## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
+
 
 #### Select by type
 
@@ -248,16 +284,25 @@ You can select the variables by their type or any other characteristic using `wh
 data %>% select(where(is.numeric)) %>% head(5)
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 5 x 5
-##    year lifeExp      pop gdpPercap row_no
-##   <int>   <dbl>    <int>     <dbl>  <int>
-## 1  1952    28.8  8425333      779.      1
-## 2  1957    30.3  9240934      821.      2
-## 3  1962    32.0 10267083      853.      3
-## 4  1967    34.0 11537966      836.      4
-## 5  1972    36.1 13079460      740.      5
+## # A tibble: 1,704 x 5
+##     year lifeExp      pop gdpPercap row_no
+##    <int>   <dbl>    <int>     <dbl>  <int>
+##  1  1952    28.8  8425333      779.      1
+##  2  1957    30.3  9240934      821.      2
+##  3  1962    32.0 10267083      853.      3
+##  4  1967    34.0 11537966      836.      4
+##  5  1972    36.1 13079460      740.      5
+##  6  1977    38.4 14880372      786.      6
+##  7  1982    39.9 12881816      978.      7
+##  8  1987    40.8 13867957      852.      8
+##  9  1992    41.7 16317921      649.      9
+## 10  1997    41.8 22227415      635.     10
+## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
 
 
 #### Use additional helpers on variable names
@@ -268,6 +313,8 @@ To make your life easier, you can also use a number of helper function within se
 # Select of the variables with names starting with C
 data %>% select(starts_with("c"))
 ```
+
+{{< spoiler text="Click to see the output" >}}
 
 ```
 ## # A tibble: 1,704 x 2
@@ -285,12 +332,17 @@ data %>% select(starts_with("c"))
 ## 10 Afghanistan Asia     
 ## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
+
+
 
 
 ```r
 # Select of the variables with names containing O
 data %>% select(contains("O"))
 ```
+
+{{< spoiler text="Click to see the output" >}}
 
 ```
 ## # A tibble: 1,704 x 4
@@ -308,12 +360,14 @@ data %>% select(contains("O"))
 ## 10 Afghanistan Asia      22227415     10
 ## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
 
-It was probably not convincing with such an exemple, but imagine that you have a data set with information collected at different time, and you have variables such as x2000, x2001, x2002, x2003
+It was probably not convincing with such an example, but imagine that you have a data set with information collected at different time, and you have variables such as x2000, x2001, x2002, x2003
 
 
 ```r
-# Presented for reference only, we do not have variables x2000, x2001, x2002, x2003!
+# Presented for reference only, 
+# We do not have variables x2000, x2001, x2002, x2003!
 data %>% select(starts_with("x"))
 ```
 
@@ -323,42 +377,63 @@ Note that you can mix the strategies to obtain a list of variables. For example,
 
 
 ```r
-data %>% select(row_no, year, contains("o")) %>% head(5)
+data %>% select(row_no, year, contains("o"))
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 5 x 5
-##   row_no  year country     continent      pop
-##    <int> <int> <fct>       <fct>        <int>
-## 1      1  1952 Afghanistan Asia       8425333
-## 2      2  1957 Afghanistan Asia       9240934
-## 3      3  1962 Afghanistan Asia      10267083
-## 4      4  1967 Afghanistan Asia      11537966
-## 5      5  1972 Afghanistan Asia      13079460
+## # A tibble: 1,704 x 5
+##    row_no  year country     continent      pop
+##     <int> <int> <fct>       <fct>        <int>
+##  1      1  1952 Afghanistan Asia       8425333
+##  2      2  1957 Afghanistan Asia       9240934
+##  3      3  1962 Afghanistan Asia      10267083
+##  4      4  1967 Afghanistan Asia      11537966
+##  5      5  1972 Afghanistan Asia      13079460
+##  6      6  1977 Afghanistan Asia      14880372
+##  7      7  1982 Afghanistan Asia      12881816
+##  8      8  1987 Afghanistan Asia      13867957
+##  9      9  1992 Afghanistan Asia      16317921
+## 10     10  1997 Afghanistan Asia      22227415
+## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
+
 
 ### Reordering columns
 
-Sometimes, you just want to re-order the variables. Indeed you can do this with select, but it can still be cumbersome if you need to move only a few among many colmuns.
+Sometimes, you just want to re-order the variables. Indeed you can do this with select, but it can still be cumbersome if you need to move only a few among many columns.
 
 In such case you can use the function `relocate()`. 
 
-The default behaviour corresponds to the case where you want to move some variables to the front:
+The default behavior corresponds to the case where you want to move some variables to the front:
 
 
 ```r
 # this will make the row_no variable as the first colum
-data %>% relocate(row_no) %>% head(3)
+data %>% relocate(row_no)
 ```
 
+{{< spoiler text="Click to see the output" >}}
+
 ```
-## # A tibble: 3 x 7
-##   row_no country     continent  year lifeExp      pop gdpPercap
-##    <int> <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-## 1      1 Afghanistan Asia       1952    28.8  8425333      779.
-## 2      2 Afghanistan Asia       1957    30.3  9240934      821.
-## 3      3 Afghanistan Asia       1962    32.0 10267083      853.
+## # A tibble: 1,704 x 7
+##    row_no country     continent  year lifeExp      pop gdpPercap
+##     <int> <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+##  1      1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2      2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3      3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4      4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5      5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6      6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7      7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8      8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9      9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10     10 Afghanistan Asia       1997    41.8 22227415      635.
+## # ... with 1,694 more rows
 ```
+{{< /spoiler >}}
 
 Use the function helper if you need more sophisticated changes.
 
@@ -373,6 +448,8 @@ Using tidyverse, you will chain each activities. For example, you want to select
 data %>% filter(continent == "Africa") %>%
   select(country, pop)
 ```
+
+{{< spoiler text="Click to see the output" >}}
 
 ```
 ## # A tibble: 624 x 2
@@ -390,6 +467,8 @@ data %>% filter(continent == "Africa") %>%
 ## 10 Algeria 29072015
 ## # ... with 614 more rows
 ```
+{{< /spoiler >}}
+
 
 Note that the order of the commands can be important. In our example, we selected the row where continent was "Africa" and then selected two variables country and pop. Imagine what would happen if you interchange the two commands:
 
@@ -437,7 +516,7 @@ data %>% filter(year==2007) %>%
 
 ### Exercise 2: 
 
-Show the 2007 life expectency (in 2007). Order by descending GDP per capita. Show the countries with the 5 highest GDP per Capita and the 5 lowest GDP per capita.
+Show the 2007 life expectancy (in 2007). Order by descending GDP per capita. Show the countries with the 5 highest GDP per capita and the 5 lowest GDP per capita.
 
 {{% callout solution%}}
 {{< spoiler text="Click to view the solution" >}}

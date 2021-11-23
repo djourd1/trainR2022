@@ -13,12 +13,14 @@ output:
 
 ## Learning objectives
 
-You will learn how to:
+In this chapter, you will learn how to:
 
 + [Sort rows](#sort-rows)
-+ [Select then order rows](#select-sort-rows)
++ [Select then sort rows](#select-sort-rows)
 + [Select a subset of columns](#subsetting-columns)
 + [Select a subset of rows and columns](#subsetting-rows-and-columns)
+
+For this, you will learn the commands `arrange()` of the `dplyr` package. You will also practice the use of the pipes (`%>%`) to chain successive commands.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(gapminder)
@@ -39,9 +41,8 @@ data %>% arrange(country)
 
 {{< spoiler text="Click to see the output" >}}
 ```{r, echo=FALSE}
-data %>% arrange(country) %>% head(10)
+data %>% arrange(country) 
 ```
-Note: only the first 10 rows are shown here
 {{< /spoiler >}}
 
 
@@ -54,9 +55,8 @@ data %>% arrange(continent, country, year)
 
 {{< spoiler text="Click to see the output" >}}
 ```{r, echo=FALSE}
-data %>% arrange(continent, country, year) %>% head(10)
+data %>% arrange(continent, country, year)
 ```
-Note: only the first 10 rows are shown here
 {{< /spoiler >}}
 
 
@@ -68,9 +68,8 @@ data %>% arrange(desc(continent), country)
 
 {{< spoiler text="Click to see the output" >}}
 ```{r, echo=FALSE}
-data %>% arrange(desc(continent), country) %>% head(10)
+data %>% arrange(desc(continent), country) 
 ```
-Note: only the first 10 rows are shown here
 {{< /spoiler >}}
 
 
@@ -78,13 +77,13 @@ Note: only the first 10 rows are shown here
 
 You have been introduced to the chaining of commands. It is now time to start to feel the advantages of this way of writing commands. 
 
-For exemple, let's select the data of year 2007 and the African continent. Sort the results  in descending order of GDP and show the first 6 results.
+For example, let's select the data of year 2007 and the African continent. Sort the results  in descending order of GDP and show the first 6 results.
 
 ```{r, eval=FALSE}
 data %>% 
   filter(continent == "Africa", year ==2007) %>%
   arrange(-gdpPercap) %>%
-  slice_head(n=5)
+  slice_head(n=6)
 ```
 
 {{< spoiler text="Click to see the output" >}}
@@ -92,12 +91,12 @@ data %>%
 data %>% 
   filter(continent == "Africa", year ==2007) %>%
   arrange(-gdpPercap) %>%
-  slice_head(n=5)
+  slice_head(n=6)
 ```
 {{< /spoiler >}}
 
 
-_Note that this becomes very easy to follow the succesive data treatments. Beside, with that solution you do not need an intermediate variable._
+_Note that this becomes very easy to follow the successive data treatments. Beside, with that solution you do not need an intermediate variable._
 
 
 ## Select columns/variables {#subsetting-columns}
@@ -124,26 +123,47 @@ However, this is not really recommended as the order of your columns could chang
 ### Column names
 
 A second approach is to list all the names of the variables you want to select
-```{r}
-data %>% select(country, year, gdpPercap) %>% slice_head(n=4)
+```{r, eval=FALSE}
+data %>% select(country, year, gdpPercap)
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% select(country, year, gdpPercap)
+```
+{{< /spoiler >}}
 
 However, it can become rapidly cumbersome to have to write a long list of variable names. Hopefully, you can use a few tricks.
 
 #### Select ranges of variables
 You can provide a range of variables or a range of column positions
 
-```{r}
-# This will select of the variables between the column continent and pop
+```{r, eval=FALSE}
+# This will select the variables 
+# between the column continent and pop
 data %>% select(continent:pop) %>% head(4)
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% select(continent:pop)
+```
+{{< /spoiler >}}
+
 
 #### Exclude instead of selecting
 If you need to select most variables and exclude only a few variables you can use the sign `-` to signal the variables you want to exclude:
 
-```{r}
-data %>% select(-gdpPercap) %>% head(4) 
+```{r, eval=FALSE}
+data %>% select(-gdpPercap)
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% select(-gdpPercap)
+```
+{{< /spoiler >}}
+
 
 #### Select by type
 
@@ -151,29 +171,50 @@ You can select the variables by their type or any other characteristic using `wh
 
 `where()` applies a function to all variables and selects those for which the function returns TRUE.
 
-```{r}
+```{r, eval=FALSE}
 # will select only the numeric variables
 data %>% select(where(is.numeric)) %>% head(5)
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% select(where(is.numeric))
+```
+{{< /spoiler >}}
 
 
 #### Use additional helpers on variable names
 To make your life easier, you can also use a number of helper function within select
 
-```{r}
+```{r, eval=FALSE}
 # Select of the variables with names starting with C
 data %>% select(starts_with("c"))
 ```
 
-```{r}
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% select(starts_with("c"))
+```
+{{< /spoiler >}}
+
+
+
+```{r, eval=FALSE}
 # Select of the variables with names containing O
 data %>% select(contains("O"))
 ```
 
-It was probably not convincing with such an exemple, but imagine that you have a data set with information collected at different time, and you have variables such as x2000, x2001, x2002, x2003
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% select(contains("O"))
+```
+{{< /spoiler >}}
+
+It was probably not convincing with such an example, but imagine that you have a data set with information collected at different time, and you have variables such as x2000, x2001, x2002, x2003
 
 ```{r, eval=FALSE}
-# Presented for reference only, we do not have variables x2000, x2001, x2002, x2003!
+# Presented for reference only, 
+# We do not have variables x2000, x2001, x2002, x2003!
 data %>% select(starts_with("x"))
 ```
 
@@ -181,22 +222,35 @@ data %>% select(starts_with("x"))
 
 Note that you can mix the strategies to obtain a list of variables. For example, you want to select the row_no and year variables and the variables containing "O". 
 
-```{r}
-data %>% select(row_no, year, contains("o")) %>% head(5)
+```{r, eval=FALSE}
+data %>% select(row_no, year, contains("o"))
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% select(row_no, year, contains("o"))
+```
+{{< /spoiler >}}
+
 
 ### Reordering columns
 
-Sometimes, you just want to re-order the variables. Indeed you can do this with select, but it can still be cumbersome if you need to move only a few among many colmuns.
+Sometimes, you just want to re-order the variables. Indeed you can do this with select, but it can still be cumbersome if you need to move only a few among many columns.
 
 In such case you can use the function `relocate()`. 
 
-The default behaviour corresponds to the case where you want to move some variables to the front:
+The default behavior corresponds to the case where you want to move some variables to the front:
 
-```{r}
+```{r, eval=FALSE}
 # this will make the row_no variable as the first colum
-data %>% relocate(row_no) %>% head(3)
+data %>% relocate(row_no)
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% relocate(row_no)
+```
+{{< /spoiler >}}
 
 Use the function helper if you need more sophisticated changes.
 
@@ -206,10 +260,18 @@ Use the function helper if you need more sophisticated changes.
 You have all the tools to select rows and columns.
 Using tidyverse, you will chain each activities. For example, you want to select the column country and pop, and consider only the African countries:
 
-```{r}
+```{r, eval=FALSE}
 data %>% filter(continent == "Africa") %>%
   select(country, pop)
 ```
+
+{{< spoiler text="Click to see the output" >}}
+```{r, echo=FALSE}
+data %>% filter(continent == "Africa") %>%
+  select(country, pop)
+```
+{{< /spoiler >}}
+
 
 Note that the order of the commands can be important. In our example, we selected the row where continent was "Africa" and then selected two variables country and pop. Imagine what would happen if you interchange the two commands:
 
@@ -239,7 +301,7 @@ data %>% filter(year==2007) %>%
 
 ### Exercise 2: 
 
-Show the 2007 life expectency (in 2007). Order by descending GDP per capita. Show the countries with the 5 highest GDP per Capita and the 5 lowest GDP per capita.
+Show the 2007 life expectancy (in 2007). Order by descending GDP per capita. Show the countries with the 5 highest GDP per capita and the 5 lowest GDP per capita.
 
 {{% callout solution%}}
 {{< spoiler text="Click to view the solution" >}}
