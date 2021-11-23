@@ -1,6 +1,6 @@
 ---
-linktitle: "Manipulate with data.table"
-summary: Manipulate your data with the data.table package
+linktitle: "Manipulate data with tidyverse"
+summary: Manipulate your data with the tidyverse packages
 icon: book
 icon_pack: fas
 
@@ -24,9 +24,9 @@ To do so, you have different options. Among them, 3 environments are popular:
 
 ## Learning objective
 
-In this section, you will learn how to work with the package `data.table`
+In this section, you will learn how to work with the packages of the ecosystem `tidyverse`
 
-After the first chapter, you will be make basic operations on your raw data. This will include select specific rows and columns, sort the rows, and create new columns.
+After the first chapter, you will be make basic operations on your raw data. This will include select specific rows and columns, sort the rows, and create new columns. You will also learn to chain these different commands.
 
 After the second chapter, you will understand the concept of wide and long formats and you will be able to reshape your data from one format to another.
 

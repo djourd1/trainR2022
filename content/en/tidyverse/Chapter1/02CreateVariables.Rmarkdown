@@ -42,3 +42,33 @@ data %>%
   select(row_no, gdpPercap) %>%
   mutate(diffMeansGdp = gdpPercap - mean(gdpPercap) )
 ```
+
+
+### Exercise: 
+
+Show a table that displays, the annual GDP of Zimbabwe after 1972 xpressed in million USD and sort the results by year.
+
+{{< spoiler text="Click to see the solution" >}} 
+```{r}
+data %>% filter(country=="Zimbabwe" & year >1972) %>%
+  mutate(GDP = gdpPercap * pop / 1000000) %>%
+  select(country, year, GDP) %>%
+  arrange(year)
+```
+
+{{< /spoiler >}}
+
+
+### Exercise: 
+Show a table that displays, the annual 2007 GDP of African countries whose name starts with an A or a B expressed in million USD and sort the results by increasing GDP.
+
+{{< spoiler text="Click to see the solution" >}} 
+```{r}
+data %>% filter(continent=="Africa" & substr(country,1,1) %in% c("A", "B") & year==2007) %>%
+  mutate(GDP = gdpPercap * pop / 1000000) %>%
+  select(country,  GDP) %>%
+  arrange(GDP)
+```
+
+{{< /spoiler >}}
+
