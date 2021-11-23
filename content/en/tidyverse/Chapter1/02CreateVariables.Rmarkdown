@@ -35,7 +35,6 @@ data %>%
   mutate(GDP = gdpPercap * pop)
 ```
 
-
 Arithmetic operators can also be very useful. For example, `x / sum(x)` calculates the proportion of a total, and `y - mean(y)` computes the difference from the mean.
 
 ```{r}

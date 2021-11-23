@@ -1,37 +1,45 @@
 ---
-# Title, summary, and page position.
-linktitle: Manipulate your data with tidyverse
-summary: Manipulate your data with tidyverse
-weight: 1
+linktitle: "Manipulate with data.table"
+summary: Manipulate your data with the data.table package
 icon: book
 icon_pack: fas
 
-# Page metadata.
-title: "Chapter 3: Manipulate your data"
-date: "2020-08-20T00:00:00Z"
-type: book  
+type: book  # Do not modify.
 ---
 
-In most real-life cases, data is not always ready to use immediately. Most of the time it has missing values, missing variable names, or variables scattered into multiple columns that you will need to synthesize. When this kind of data is presented for analysis, it needs intervention to make it *tidy*. 
 
-Up to now, we have been manipulating vectors, matrix and data.frames by reordering them and subsetting them through indexing and the operator `[ ]`. But once we start more advanced analyses, we will want to manipulate with more efficient tools.
+
+## Introduction
+
+In most real-life cases, data will not be ready for immediate use. Most of the time it has missing values, missing variable names, or variables scattered into multiple columns that you will need to synthesize. Therefore, you need to be able to manipulate these data. 
+
+In the section "Getting ready", you have manipulated vectors, matrices and data.frames by reordering them and subsetting them through indexing and the operator `[ ]`. But once you start more advanced analyses, you will want to manipulate your data with more efficient tools.
 {{< figure library="true" src="OIP.jpg" >}}  
 
-To manipulate data, you have different options. Among them, 3 environments are popular:
+To do so, you have different options. Among them, 3 environments are popular:
 
-+ The original Data.frame
++ The original data.frame environment
 + The data.table package
 + The tidyverse ecosystem
 
-In this section we describe the basic function of the `tidyverse` ecosystems that I find most useful.
+## Learning objective
+
+In this section, you will learn how to work with the package `data.table`
+
+After the first chapter, you will be make basic operations on your raw data. This will include select specific rows and columns, sort the rows, and create new columns.
+
+After the second chapter, you will understand the concept of wide and long formats and you will be able to reshape your data from one format to another.
+
+After the third chapter, you will be able to merge information scattered into different but related tables.
 
 
 ## The data set
 
-In this chapter, we will work with the datasets made available by the package `gapminder`.
-You should now be able to install the package on your own (if not, please see early sections on how to install packages on your computer)
+In this chapter, you will work with the datasets made available by the package `gapminder`.
+You should now be able to install the package on your own. 
 
 Load the `gapminder` package:
+
 ```r
 library(gapminder)
 ```
@@ -59,39 +67,8 @@ gapminder
 ## # ... with 1,694 more rows
 ```
 
-## Load tidyverse
 
-Let's now load the tidyverse ecosystems, we call it "ecosystems" because it is composed of several packages. However, you can install these different packages using one command
-
-```{r, echo=TRUE, warning=TRUE, message=TRUE}
-library(tidyverse)
-```
-```
--- Attaching packages -------------------------------------------------------------------------------- tidyverse 1.3.1 --
-v ggplot2 3.3.5     v purrr   0.3.4
-v tibble  3.1.5     v dplyr   1.0.7
-v tidyr   1.1.4     v stringr 1.4.0
-v readr   2.0.2     v forcats 0.5.1
--- Conflicts ----------------------------------------------------------------------------------- tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
-Warning messages:
-1: package ‘tidyverse’ was built under R version 4.0.5 
-2: package ‘ggplot2’ was built under R version 4.0.5 
-3: package ‘tibble’ was built under R version 4.0.5 
-4: package ‘tidyr’ was built under R version 4.0.5 
-5: package ‘readr’ was built under R version 4.0.5 
-6: package ‘dplyr’ was built under R version 4.0.5 
-```
-
-The message indicates the packages that you have just loaded, the potential conflicts. Note again, that red color does not necessarily means it did not work.
-
-
-
-*You are now ready to work!*
-
-
-
+You are now ready to work!
 
 
 
