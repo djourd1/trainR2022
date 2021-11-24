@@ -11,10 +11,11 @@ output:
 ---
 
 
-
 ## When do we encounter wide or long formats ? 
 
-Wide and long formats are generic terms to express how data are stored when you have repeated measurement for one observed unit. 
+{{<figure src="whatLongWide.svg">}}
+
+Wide and long formats are generic terms to express how data are stored when you have repeated measurement for one observed unit. You will encounter wide or long formats when you will work with panel data such as time series and results from choice experiments. 
 
 ## Wide format
 With a wide format, a subject's repeated responses will be in a single row, and each response is in a separate column.
@@ -35,13 +36,9 @@ All the other columns correspond to unique characteristics (or answers) of the r
 ## 5       5    31 Cape Town     2     2     1
 ```
 
-
-
 ## Long format
 
 With a long format, each row correspond to one response. So each respondent will have data in multiple rows. 
-
-
 
 ```
 ## # A tibble: 15 x 5
