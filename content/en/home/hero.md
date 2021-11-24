@@ -2,8 +2,8 @@
 widget: hero
 headless: true
 weight: 10
-title: An introduction to R and R Studio
-hero_media: book.svg
+title: Introduction to data analysis with R
+hero_media: R_logo.svg
 design:
   background:
     gradient_start: '#4bb4e3'
@@ -16,4 +16,4 @@ cta:
   icon: download
 ---
 
-Install R and R Studio and learn the essential functionalities that will useful for the use of econometric models.
+Install R and R Studio and learn the essential functionalities that will useful to understand your data and run econometric models.
