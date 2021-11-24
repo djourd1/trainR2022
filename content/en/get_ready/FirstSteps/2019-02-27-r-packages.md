@@ -14,6 +14,7 @@ output:
 ---
 
 ## Learning objectives
+
 R packages are collections of functions and data sets. They increase the power of R by improving existing base R functionalities, or by adding new ones. 
 
 In this section, you learn the following about packages:
@@ -56,7 +57,7 @@ After running this, you will receive some messages on the console. They will dep
 
 With RStudio, you can also use the menu. Follow Tools -> Install Packages... , and there you will get a pop-up window to select the package you want to install:
 
-{{< figure library="true" src="installpackages/installpackages.png" title="Type in the package name you want to install" numbered="true">}}
+{{< figure src="installpackages.png" title="Type in the package name you want to install" numbered="true">}}
 
 
 Normally, when you type the first letters, you will be proposed list of package names from which you can select.
@@ -71,7 +72,7 @@ R packages are often updated by their developers. It is possible that sooner tha
 
 With R Studio, you can keep track of the packages that are already installed on your computer, by clicking on the Packages tab of the Files, Plots, Packages, Help, Viewer Pane.
 
-{{< figure library="true" src="installpackages/update-packages.png" title="Update packages with R Studio" numbered="true">}}
+{{< figure src="update-packages.png" title="Update packages with R Studio" numbered="true">}}
 
 Once you do that, you will see a list of installed packgages, and have the possibility to update them. It is a good idea to update the packages once a month. 
 
@@ -167,8 +168,7 @@ The vignettes are documents where the authors show some functionalities of their
 
 They are usually accessible at the top of the package help file.
 
-
-{{< figure library="true" src="installpackages/vignettes.png" title="Vignettes provides package documentation" numbered="true">}}
+{{< figure src="vignettes.png" title="Vignettes provides package documentation" numbered="true">}}
 
 You can also browse directly the vignettes available using:
 
