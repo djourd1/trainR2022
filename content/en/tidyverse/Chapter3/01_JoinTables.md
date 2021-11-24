@@ -76,7 +76,7 @@ If you ever need more complex ways to join tables, you are invited to consult th
 
 An inner join will display all the rows from the first table that have a match in the second table. 
 
-{{< figure src="innerjoin.svg" title="Inner join" numbered="true">}}
+{{< figure src="innerjoins.png" title="Inner join" numbered="true">}}
 
 The syntax is: 
 
