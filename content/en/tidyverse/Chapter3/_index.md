@@ -2,7 +2,7 @@
 # Title, summary, and page position.
 linktitle: Merge information from different tables
 summary: Merge information from different tables
-weight: 4
+weight: 10
 icon: book
 icon_pack: fas
 
