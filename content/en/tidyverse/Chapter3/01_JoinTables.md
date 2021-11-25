@@ -18,7 +18,7 @@ output:
 
 ## The case study
 
-Let's suppose that you have conducted a survey, where all respondents gave some demographic informations: name, city and age.
+Let's suppose that you conducted a survey where all respondents gave some demographic informations: name, city and age.
 
 
 ```r
@@ -198,5 +198,4 @@ However, since it takes into account rows that match on both tables, it will pot
 The last two types of joins will not be very useful in creating data set usable for data analysis as it potentially creates some NA cells that will introduce problems for many econometric packages. 
 
 However, the left and full joins are useful because they help you identify problems in your data sets: a `NA` indicates some information went missing on one of the two tables. It should trigger a question for you: is this normal ? or did I encounter some problems in the data entry (wrong ID for example). More generally, they might also be useful for specific applications.
-
 

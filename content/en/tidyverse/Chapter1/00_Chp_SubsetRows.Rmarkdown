@@ -14,6 +14,7 @@ output:
 ---
 
 ## Learning objectives
+
 Often when you want to understand your data or exclude some individuals that are outside the scope of your analysis, you will need to select subsamples of your data set.
 
 In this chapter, you will learn how to select specific rows of your data frame. This is our first encounter with the package `dplyr` and the use of the pipe for chaining commands. This is an important section, as you will be using this kind of syntax for all the subsequent types of data manipulations.  
@@ -139,9 +140,45 @@ A more interesting application is the creation of a random subsample of cases (i
 Again, you can use a slice helper: `slice_sample()` which allows you to random select with or without replacement.
 
 ```{r}
+set.seed(12345)
 data %>% slice_sample(n = 5)
 data %>% slice_sample(n = 5, replace = TRUE)
 ```
+
+{{% callout note %}} 
+{{< spoiler text="A note on the use of seeds" >}}
+You probably noticed that the random samples you obtained are different from this example, and are different each time you run the commands. This is what randomness is about. However, sometimes you want to make sure you can retrieve the exact same random sample to make the output of your R code reproducible. 
+
+For this, you can use a random **seed**. A seed is a number that initializes a pseudorandom number generator. The random numbers that your computer generates are in fact *pseudorandom* numbers that aim to simulate randomness. By setting a specific seed, the random processes in our script always start at the same point and hence lead to the same result.
+
+First, let’s generate some random numbers using the `sample()` function:
+```{r}
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+Let's execute exactly the same R code again:
+
+```{r}
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+The results should be different
+
+Second, let's set a seed before the command and see what happens:
+```{r}
+set.seed(12345)
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+Let’s do this again with the same seed as before:
+```{r}
+set.seed(12345)
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+The output is exactly the same for the two experiences, and they should also be the same than the one on your computer.
+{{< /spoiler>}}
+{{% /callout %}}
+
 
 ### Exercise 3
 
@@ -149,7 +186,6 @@ data %>% slice_sample(n = 5, replace = TRUE)
 2. Generate a random subsample of `data10` containing 20 rows. (tip: understand what the argument replace is doing)
 
 {{< spoiler text="Click to see the solution" >}} 
-
 ```{r}
 data10 <- data %>% slice_head(n=10)
 ```
@@ -199,7 +235,6 @@ head(SA2000,3)
 ```{r}
 filter(data, continent=="Africa" , year > 2003, pop > 30000000)
 ```
-
 {{< /spoiler >}}
 
 ### Exercise 5: Select the data that from South Africa except those from 1962, 1977 and 2003
@@ -208,7 +243,52 @@ filter(data, continent=="Africa" , year > 2003, pop > 30000000)
 ```{r}
 filter(data, country=="South Africa" & !(year %in% c(1962, 1977, 2003)))
 ```
-
 {{< /spoiler >}}
+
+## Advanced sampling
+
+We will now play again with the gapminder data. 
+
+Let's first select a sub-sample of information about the countries from the gapminder data set.
+We want to select only two years (2002 and 2007), and we want to select randomly ten countries.
+
+A first idea would be to use the command `slice_sample()`, as in:
+
+```{r}
+set.seed(123)
+data <- gapminder %>% 
+  filter(year > 2000 ) %>%
+  slice_sample(n=10) %>% arrange(country)
+data
+```
+
+The problem with this approach, is that each country having two records, doing a "blind" sampling of rows, will lead to situations where we have only one record about a country. This is what happened here.
+
+What we really want is a subsample of countries, and once a country is selected, we want to see all the records of that selected country. To do this, we need a different approach and use the base command `sample()`:
+
+```{r}
+# using tidyverse approach:
+random_names <- gapminder %>% 
+  select(country) %>%  
+  unique() %>%      # take only one record per country
+  as_vector() %>%   # as_vector transforms a data.frame into a vector
+  sample(10, replace = FALSE)   # take a 10 random sample 
+
+# sometimes tidyverse can be long
+# it might be easier to use the following command:
+set.seed(123)
+random_names <- sample(unique(data$country), 10, replace=FALSE)
+random_names
+```
+
+Now, we can use this vector of country names to select the corresponding countries
+
+```{r}
+data <- gapminder %>% filter(year > 2000 ) %>%
+  filter(country %in% random_names) %>%   
+  arrange(country)
+data
+```
+
 
 

@@ -14,6 +14,7 @@ output:
 ---
 
 ## Learning objectives
+
 Often when you want to understand your data or exclude some individuals that are outside the scope of your analysis, you will need to select subsamples of your data set.
 
 In this chapter, you will learn how to select specific rows of your data frame. This is our first encounter with the package `dplyr` and the use of the pipe for chaining commands. This is an important section, as you will be using this kind of syntax for all the subsequent types of data manipulations.  
@@ -229,18 +230,19 @@ Again, you can use a slice helper: `slice_sample()` which allows you to random s
 
 
 ```r
+set.seed(12345)
 data %>% slice_sample(n = 5)
 ```
 
 ```
 ## # A tibble: 5 x 7
-##   country      continent  year lifeExp      pop gdpPercap row_no
-##   <fct>        <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Spain        Europe     1992    77.6 39549438    18603.   1425
-## 2 Finland      Europe     1972    70.9  4639657    14359.    521
-## 3 Sierra Leone Africa     1962    32.8  2467895     1117.   1347
-## 4 Mozambique   Africa     1967    38.1  8680909      567.   1036
-## 5 El Salvador  Americas   1987    63.2  4842194     4140.    476
+##   country   continent  year lifeExp       pop gdpPercap row_no
+##   <fct>     <fct>     <int>   <dbl>     <int>     <dbl>  <int>
+## 1 Bolivia   Americas   1997    62.0   7693188     3326.    142
+## 2 Argentina Americas   1962    65.1  21283783     7133.     51
+## 3 Indonesia Asia       2007    70.6 223547000     3541.    720
+## 4 Iran      Asia       1997    68.0  63327987     8264.    730
+## 5 Portugal  Europe     1987    74.1   9915289    13039.   1244
 ```
 
 ```r
@@ -249,14 +251,69 @@ data %>% slice_sample(n = 5, replace = TRUE)
 
 ```
 ## # A tibble: 5 x 7
-##   country  continent  year lifeExp      pop gdpPercap row_no
-##   <fct>    <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-## 1 Togo     Africa     1982    55.5  2644765     1345.   1543
-## 2 Pakistan Asia       1962    47.7 53100671      803.   1167
-## 3 Kuwait   Asia       2007    77.6  2505559    47307.    864
-## 4 Niger    Africa     1997    51.3  9666252      580.   1126
-## 5 Gabon    Africa     1952    37.0   420702     4293.    541
+##   country          continent  year lifeExp      pop gdpPercap row_no
+##   <fct>            <fct>     <int>   <dbl>    <int>     <dbl>  <int>
+## 1 Hong Kong, China Asia       1967    70    3722800     6198.    664
+## 2 Kenya            Africa     1997    54.4 28263827     1360.    826
+## 3 Guatemala        Americas   1972    53.7  5149581     4031.    605
+## 4 Ghana            Africa     2002    58.5 20550751     1112.    587
+## 5 Slovak Republic  Europe     1987    71.1  5199318    12037.   1376
 ```
+
+{{% callout note %}} 
+{{< spoiler text="A note on the use of seeds" >}}
+You probably noticed that the random samples you obtained are different from this example, and are different each time you run the commands. This is what randomness is about. However, sometimes you want to make sure you can retrieve the exact same random sample to make the output of your R code reproducible. 
+
+For this, you can use a random **seed**. A seed is a number that initializes a pseudorandom number generator. The random numbers that your computer generates are in fact *pseudorandom* numbers that aim to simulate randomness. By setting a specific seed, the random processes in our script always start at the same point and hence lead to the same result.
+
+First, let’s generate some random numbers using the `sample()` function:
+
+```r
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+```
+## [1]   2  86  75  38 103
+```
+
+Let's execute exactly the same R code again:
+
+
+```r
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+```
+## [1]  94  10 160  40 167
+```
+The results should be different
+
+Second, let's set a seed before the command and see what happens:
+
+```r
+set.seed(12345)
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+```
+## [1] 142  51 152  58  93
+```
+
+Let’s do this again with the same seed as before:
+
+```r
+set.seed(12345)
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+```
+## [1] 142  51 152  58  93
+```
+
+The output is exactly the same for the two experiences, and they should also be the same than the one on your computer.
+{{< /spoiler>}}
+{{% /callout %}}
+
 
 ### Exercise 3
 
@@ -264,7 +321,6 @@ data %>% slice_sample(n = 5, replace = TRUE)
 2. Generate a random subsample of `data10` containing 20 rows. (tip: understand what the argument replace is doing)
 
 {{< spoiler text="Click to see the solution" >}} 
-
 
 ```r
 data10 <- data %>% slice_head(n=10)
@@ -281,26 +337,26 @@ data10 %>% slice_sample(n = 20, replace = TRUE)
 ## # A tibble: 20 x 7
 ##    country     continent  year lifeExp      pop gdpPercap row_no
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>  <int>
-##  1 Afghanistan Asia       1977    38.4 14880372      786.      6
-##  2 Afghanistan Asia       1952    28.8  8425333      779.      1
-##  3 Afghanistan Asia       1987    40.8 13867957      852.      8
-##  4 Afghanistan Asia       1992    41.7 16317921      649.      9
-##  5 Afghanistan Asia       1952    28.8  8425333      779.      1
+##  1 Afghanistan Asia       1987    40.8 13867957      852.      8
+##  2 Afghanistan Asia       1957    30.3  9240934      821.      2
+##  3 Afghanistan Asia       1977    38.4 14880372      786.      6
+##  4 Afghanistan Asia       1977    38.4 14880372      786.      6
+##  5 Afghanistan Asia       1982    39.9 12881816      978.      7
 ##  6 Afghanistan Asia       1997    41.8 22227415      635.     10
-##  7 Afghanistan Asia       1997    41.8 22227415      635.     10
-##  8 Afghanistan Asia       1992    41.7 16317921      649.      9
-##  9 Afghanistan Asia       1967    34.0 11537966      836.      4
-## 10 Afghanistan Asia       1987    40.8 13867957      852.      8
-## 11 Afghanistan Asia       1977    38.4 14880372      786.      6
+##  7 Afghanistan Asia       1952    28.8  8425333      779.      1
+##  8 Afghanistan Asia       1987    40.8 13867957      852.      8
+##  9 Afghanistan Asia       1982    39.9 12881816      978.      7
+## 10 Afghanistan Asia       1977    38.4 14880372      786.      6
+## 11 Afghanistan Asia       1952    28.8  8425333      779.      1
 ## 12 Afghanistan Asia       1967    34.0 11537966      836.      4
-## 13 Afghanistan Asia       1982    39.9 12881816      978.      7
-## 14 Afghanistan Asia       1972    36.1 13079460      740.      5
+## 13 Afghanistan Asia       1987    40.8 13867957      852.      8
+## 14 Afghanistan Asia       1997    41.8 22227415      635.     10
 ## 15 Afghanistan Asia       1962    32.0 10267083      853.      3
-## 16 Afghanistan Asia       1952    28.8  8425333      779.      1
-## 17 Afghanistan Asia       1982    39.9 12881816      978.      7
-## 18 Afghanistan Asia       1952    28.8  8425333      779.      1
-## 19 Afghanistan Asia       1957    30.3  9240934      821.      2
-## 20 Afghanistan Asia       1992    41.7 16317921      649.      9
+## 16 Afghanistan Asia       1992    41.7 16317921      649.      9
+## 17 Afghanistan Asia       1967    34.0 11537966      836.      4
+## 18 Afghanistan Asia       1997    41.8 22227415      635.     10
+## 19 Afghanistan Asia       1982    39.9 12881816      978.      7
+## 20 Afghanistan Asia       1957    30.3  9240934      821.      2
 ```
 {{< /spoiler >}}
 
@@ -381,11 +437,9 @@ filter(data, continent=="Africa" , year > 2003, pop > 30000000)
 ##  9 Sudan            Africa     2007    58.6  42292929     2602.   1452
 ## 10 Tanzania         Africa     2007    52.5  38139640     1107.   1524
 ```
-
 {{< /spoiler >}}
 
 ### Exercise 5: Select the data that from South Africa except those from 1962, 1977 and 2003
-
 
 {{< spoiler text="Click to see the solution" >}} 
 
@@ -408,7 +462,104 @@ filter(data, country=="South Africa" & !(year %in% c(1962, 1977, 2003)))
 ##  9 South Africa Africa     2002    53.4 44433622     7711.   1415
 ## 10 South Africa Africa     2007    49.3 43997828     9270.   1416
 ```
-
 {{< /spoiler >}}
+
+## Advanced sampling
+
+We will now play again with the gapminder data. 
+
+Let's first select a sub-sample of information about the countries from the gapminder data set.
+We want to select only two years (2002 and 2007), and we want to select randomly ten countries.
+
+A first idea would be to use the command `slice_sample()`, as in:
+
+
+```r
+set.seed(123)
+data <- gapminder %>% 
+  filter(year > 2000 ) %>%
+  slice_sample(n=10) %>% arrange(country)
+data
+```
+
+```
+## # A tibble: 10 x 6
+##    country         continent  year lifeExp        pop gdpPercap
+##    <fct>           <fct>     <int>   <dbl>      <int>     <dbl>
+##  1 Austria         Europe     2007    79.8    8199783    36126.
+##  2 France          Europe     2007    80.7   61083916    30470.
+##  3 Gabon           Africa     2002    56.8    1299304    12522.
+##  4 India           Asia       2007    64.7 1110396331     2452.
+##  5 Madagascar      Africa     2002    57.3   16473477      895.
+##  6 Nepal           Asia       2002    61.3   25873917     1057.
+##  7 Pakistan        Asia       2002    63.6  153403524     2093.
+##  8 Slovak Republic Europe     2002    73.8    5410052    13639.
+##  9 Swaziland       Africa     2007    39.6    1133066     4513.
+## 10 Zimbabwe        Africa     2002    40.0   11926563      672.
+```
+
+The problem with this approach, is that each country having two records, doing a "blind" sampling of rows, will lead to situations where we have only one record about a country. This is what happened here.
+
+What we really want is a subsample of countries, and once a country is selected, we want to see all the records of that selected country. To do this, we need a different approach and use the base command `sample()`:
+
+
+```r
+# using tidyverse approach:
+random_names <- gapminder %>% 
+  select(country) %>%  
+  unique() %>%      # take only one record per country
+  as_vector() %>%   # as_vector transforms a data.frame into a vector
+  sample(10, replace = FALSE)   # take a 10 random sample 
+
+# sometimes tidyverse can be long
+# it might be easier to use the following command:
+set.seed(123)
+random_names <- sample(unique(data$country), 10, replace=FALSE)
+random_names
+```
+
+```
+##  [1] Gabon           Zimbabwe        France          Slovak Republic
+##  [5] Nepal           Swaziland       Austria         Pakistan       
+##  [9] Madagascar      India          
+## 142 Levels: Afghanistan Albania Algeria Angola Argentina Australia ... Zimbabwe
+```
+
+Now, we can use this vector of country names to select the corresponding countries
+
+
+```r
+data <- gapminder %>% filter(year > 2000 ) %>%
+  filter(country %in% random_names) %>%   
+  arrange(country)
+data
+```
+
+```
+## # A tibble: 20 x 6
+##    country         continent  year lifeExp        pop gdpPercap
+##    <fct>           <fct>     <int>   <dbl>      <int>     <dbl>
+##  1 Austria         Europe     2002    79.0    8148312    32418.
+##  2 Austria         Europe     2007    79.8    8199783    36126.
+##  3 France          Europe     2002    79.6   59925035    28926.
+##  4 France          Europe     2007    80.7   61083916    30470.
+##  5 Gabon           Africa     2002    56.8    1299304    12522.
+##  6 Gabon           Africa     2007    56.7    1454867    13206.
+##  7 India           Asia       2002    62.9 1034172547     1747.
+##  8 India           Asia       2007    64.7 1110396331     2452.
+##  9 Madagascar      Africa     2002    57.3   16473477      895.
+## 10 Madagascar      Africa     2007    59.4   19167654     1045.
+## 11 Nepal           Asia       2002    61.3   25873917     1057.
+## 12 Nepal           Asia       2007    63.8   28901790     1091.
+## 13 Pakistan        Asia       2002    63.6  153403524     2093.
+## 14 Pakistan        Asia       2007    65.5  169270617     2606.
+## 15 Slovak Republic Europe     2002    73.8    5410052    13639.
+## 16 Slovak Republic Europe     2007    74.7    5447502    18678.
+## 17 Swaziland       Africa     2002    43.9    1130269     4128.
+## 18 Swaziland       Africa     2007    39.6    1133066     4513.
+## 19 Zimbabwe        Africa     2002    40.0   11926563      672.
+## 20 Zimbabwe        Africa     2007    43.5   12311143      470.
+```
+
 
 
