@@ -11,32 +11,31 @@ type: book  # Do not modify.
 
 ## Introduction
 
-In most real-life cases, data will not be ready for immediate use. Most of the time it has missing values, missing variable names, or variables scattered into multiple columns that you will need to synthesize. Therefore, you need to be able to manipulate these data. 
+In most real-life cases, data will not be ready for immediate use. It will have missing values, missing variable names, or variables scattered into multiple columns that you will need to synthesize. Therefore, you need to be able to _manipulate_ these data. 
 
-In the section "Getting ready", you have manipulated vectors, matrices and data.frames by reordering them and subsetting them through indexing and the operator `[ ]`. But once you start more advanced analyses, you will want to manipulate your data with more efficient tools.
 {{< figure library="true" src="OIP.jpg" >}}  
 
-To do so, you have different options. Among them, 3 environments are popular:
+In the section "Getting ready", you have manipulated vectors, matrices and data.frames by reordering them and subsetting them through indexing and the operator `[ ]`. But once you start more advanced analyses, you will want to manipulate your data with more efficient tools.
 
-+ The original data.frame environment
+To do so, you have different options. Among them, 2 environments are popular:
+
 + The data.table package
 + The tidyverse ecosystem
 
-## Learning objective
-
 In this section, you will learn how to work with the packages of the ecosystem `tidyverse`
 
-After the first chapter, you will be make basic operations on your raw data. This will include select specific rows and columns, sort the rows, and create new columns. You will also learn to chain these different commands.
+## Learning objective
 
-After the second chapter, you will understand the concept of wide and long formats and you will be able to reshape your data from one format to another.
+After the first chapter, you will be able to perform basic operations on your raw data. These include selecting specific rows and columns, sorting rows and creating new columns. You will also learn how to chain these different commands together.
+
+After the second chapter, you will be able to identify wide and long formats and be able to reshape your data from one format to another.
 
 After the third chapter, you will be able to merge information scattered into different but related tables.
 
-
 ## The data set
 
-In this chapter, you will work with the datasets made available by the package `gapminder`.
-You should now be able to install the package on your own. 
+In this chapter, you will work with the datasets available in the `gapminder` package.
+You should now be able to install the package yourself. (If not, please refer to the section {{% staticref "get_ready/FirstSteps/r-packages/" %}}R packages{{% /staticref %}} )
 
 Load the `gapminder` package:
 
@@ -44,7 +43,7 @@ Load the `gapminder` package:
 library(gapminder)
 ```
 
-If everyting went ok you should be able to access the gapminder data directly
+If everything went well, you should be able to access the gapminder data directly:
 
 ```r
 gapminder
