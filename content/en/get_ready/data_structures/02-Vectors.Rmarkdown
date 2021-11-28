@@ -203,11 +203,11 @@ The output is exactly the same for the two experiences, and they should also be 
 Vectors can be used in arithmetic expressions, in which case the operations are performed **element by element**. 
 For example, if you add two vectors:
 
-begin{equation}
+\\begin{equation}
 \\left(\\begin{matrix}a\\\b\\\c\\\d \\end{matrix} \\right)  + 
 \\left(\\begin{matrix}e\\\f\\\g\\\h  \\end{matrix} \\right) =
 \\left(\\begin{matrix}a+e\\\b+f\\\c+g\\\d+h \\end{matrix} \\right) 
-end{equation}
+\\end{equation}
 
 In R:
 

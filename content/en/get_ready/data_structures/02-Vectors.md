@@ -193,8 +193,8 @@ To create a sample of 10 observations from the Standard Normal Distribution. Tha
 ```
 
 ```
-##  [1] -1.0448994  1.4354529  0.1825237 -1.7441388  0.5296384 -1.1835851
-##  [7] -0.5102506 -1.2395420  0.2162293  0.1214268
+##  [1] -1.7861668  0.3392857  0.6429364  0.8170546 -1.5424263 -2.0591444
+##  [7]  0.8829094  1.2583032 -0.1387157  0.1171966
 ```
 
 To create a sample of 15 observations from the Normal Distribution with mean  20 and standard deviation 2. 
@@ -205,8 +205,8 @@ To create a sample of 15 observations from the Normal Distribution with mean  20
 ```
 
 ```
-##  [1] 24.02319 20.42686 21.15790 17.76278 19.61071 15.06345 20.15601 20.21090
-##  [9] 19.56549 21.35276 19.01923 18.51843 18.10681 18.38466 19.74965
+##  [1] 21.56632 16.21337 19.86190 19.52691 21.03591 22.08679 23.58797 21.26675
+##  [9] 17.62617 22.34498 19.29021 19.24062 19.05535 18.20919 16.98289
 ```
 
 ### from a uniform distribution
@@ -225,8 +225,8 @@ To create a sample of 10 observations with numbers between 0 and 1.
 ```
 
 ```
-##  [1] 0.7089979 0.6260779 0.2691199 0.3898438 0.3992532 0.3203724 0.1144032
-##  [8] 0.2375500 0.2098060 0.3259667
+##  [1] 0.21615222 0.38689754 0.17006235 0.02347693 0.24039768 0.99663087
+##  [7] 0.38336996 0.16042471 0.39826320 0.78892966
 ```
 
 To create a sample of 10 observations with numbers between 10 and 20. 
@@ -237,8 +237,8 @@ To create a sample of 10 observations with numbers between 10 and 20.
 ```
 
 ```
-##  [1] 15.58460 12.35803 11.80840 19.08494 17.79536 12.25906 12.18108 19.77259
-##  [9] 17.82757 18.90235
+##  [1] 18.06569 12.35653 10.76850 14.02639 16.80833 14.92544 12.70117 18.53457
+##  [9] 14.29487 10.98766
 ```
 
 ### with random integers
@@ -327,11 +327,11 @@ The output is exactly the same for the two experiences, and they should also be 
 Vectors can be used in arithmetic expressions, in which case the operations are performed **element by element**. 
 For example, if you add two vectors:
 
-begin{equation}
+\\begin{equation}
 \\left(\\begin{matrix}a\\\b\\\c\\\d \\end{matrix} \\right)  + 
 \\left(\\begin{matrix}e\\\f\\\g\\\h  \\end{matrix} \\right) =
 \\left(\\begin{matrix}a+e\\\b+f\\\c+g\\\d+h \\end{matrix} \\right) 
-end{equation}
+\\end{equation}
 
 In R:
 
