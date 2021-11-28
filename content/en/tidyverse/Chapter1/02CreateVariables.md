@@ -12,11 +12,7 @@ weight: 20
 output:
   html_document:
     keep_md: true
-
 ---
-
-
-
 
 
 
@@ -74,10 +70,9 @@ data %>%
 ## # ... with 1,694 more rows
 ```
 
-
 ### Exercise: 
 
-Show a table that displays, the annual GDP of Zimbabwe after 1972 xpressed in million USD and sort the results by year.
+Show a table that displays, the annual GDP of Zimbabwe after 1972 expressed in million USD and sort the results by year.
 
 {{< spoiler text="Click to see the solution" >}} 
 
@@ -105,6 +100,7 @@ data %>% filter(country=="Zimbabwe" & year >1972) %>%
 
 
 ### Exercise: 
+
 Show a table that displays, the annual 2007 GDP of African countries whose name starts with an A or a B expressed in million USD and sort the results by increasing GDP.
 
 {{< spoiler text="Click to see the solution" >}} 

@@ -11,6 +11,7 @@ weight: 2
 output:
   html_document:
     keep_md: true
+
 ---
 
 ## Learning objectives
@@ -19,26 +20,23 @@ If you want exclude some individuals that are outside the scope of your analysis
 
 At the end of this section, you should be able to select specific rows of a data set :
 
-+ using their row number
-+ using a logical criteria based on the different variables describing the rows
-+ randomly
++ [using their row number](#select-rows-position)
++ [using a logical criteria based on the different variables describing the rows](#random-rows)
++ [randomly](#logical-criteria)
+
+## Data set up
 
 First, let's rename the dataframe `gapminder` with a shorter name, and let's add a column `row_no` using the data.frame commands. That column is not really essential, but it will help visualizing the rows that have been selected.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-library(gapminder)
+```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
-```
+library(gapminder)
 
-
-```{r}
 data <- gapminder
 data$row_no = 1:nrow(data)
 ```
 
-We have several ways to subset rows.
-
-## Selecting rows by their position
+## Selecting rows by their position {#select-rows-position}
 
 To do this we will start to use the `dplyr` package. Note that `dplyr` was loaded when you loaded the package `tidyverse`, so you do not need an additional command. 
 
@@ -48,11 +46,20 @@ The command `slice()` lets you index rows by their positions. It allows you to s
 
 The easiest way to use slice is to indicate the vector of row numbers you wish to keep as in:
 
-```{r}
+```{r, eval=FALSE}
 slice(data, 2:5)  # to select the row from 2 to 5
 slice(data, c(7, 5, 1)) # to select specific rows in a specific order
 slice(data, 10) #note that including a numeric and not a vector also works
 ```
+
+{{< spoiler text="Click to view the results" >}}
+```{r, echo=FALSE}
+slice(data, 2:5)  # to select the row from 2 to 5
+slice(data, c(7, 5, 1)) # to select specific rows in a specific order
+slice(data, 10) #note that including a numeric and not a vector also works
+```
+{{< /spoiler >}}
+
 
 Note that all `dplyr` related commands work in the same way:
 
@@ -65,9 +72,16 @@ Note that all `dplyr` related commands work in the same way:
 A very convenient feature of tidyverse is the `%>%` operator. 
 To understand how it works, we can reproduce the precedent example using it. 
 
-```{r}
+```{r, eval=FALSE}
 data %>% slice(2:5)
 ```
+
+{{< spoiler text="Click to view the results" >}}
+```{r, echo=FALSE}
+data %>% slice(2:5)
+```
+{{< /spoiler >}}
+
 
 How did that work:
 
@@ -110,6 +124,7 @@ data2 <- data %>% slice_tail(n=10)
 ``` 
 
 {{% callout warning%}}
+
 You may want to overwrite the old data
 ```{r, eval=FALSE}
 data <- data %>% slice_tail(n=10)  
@@ -136,50 +151,25 @@ data %>% slice(c(3,50, 200))
 {{% /callout %}}
 
 
-## Randomly selecting rows
+## Randomly selecting rows{#random-rows}
 
 A more interesting application is the creation of a random subsample of cases (i.e., rows).
 Again, you can use a slice helper`slice_sample()` which allows you to random select with or without replacement.
 
-```{r}
+```{r, eval=FALSE}
 set.seed(12345)
 data %>% slice_sample(n = 5)
 data %>% slice_sample(n = 5, replace = TRUE)
 ```
 
-{{% callout note %}} 
-{{< spoiler text="A note on the use of seeds" >}}
-You probably noticed that the random samples you obtained on your computer are different from the example displayed on this web site, and are different each time you run the commands. This is what randomness is about. However, sometimes you want to make sure you can retrieve the exact same random sample to make the output of your R code reproducible. 
-
-The random numbers that your computer generates are in fact *pseudorandom* numbers that aim to simulate randomness.A seed is a number that initializes a pseudorandom number generator.  By setting a specific **seed**, the random processes in our script always start at the same point and hence lead to the same result.
-
-First, let's generate some random numbers using the `sample()` function:
-```{r}
-sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+{{< spoiler text="Click to view the results" >}}
+```{r, echo=FALSE}
+set.seed(12345)
+data %>% slice_sample(n = 5)
+data %>% slice_sample(n = 5, replace = TRUE)
 ```
+{{< /spoiler >}}
 
-Let's execute exactly the same R code again:
-
-```{r}
-sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
-```
-The results should be different.
-
-Second, let's set a seed before the command and see what happens:
-```{r}
-set.seed(12345)  # set the seed for pseudorandom generator
-sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
-```
-
-Let’s do this again with the same seed as before:
-```{r}
-set.seed(12345) # set the seed for pseudorandom generator
-sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
-```
-
-The output is exactly the same for the two experiences, and they should also be the same than the one on your computer.
-{{< /spoiler>}}
-{{% /callout %}}
 
 
 ### Exercise 3
@@ -199,16 +189,24 @@ data10 %>% slice_sample(n = 20, replace = TRUE)
 ```
 {{< /spoiler >}}
 
-## Selecting rows based on logical criteria
+## Selecting rows based on logical criteria{#logical-criteria}
 
 Let say you want to look only at South Africa data. 
 
 We will now use another command from the dplyr package : `filter()`
 
-```{r}
+```{r, eval=FALSE}
 SAdata <- filter(data, country=="South Africa")
 SAdata
 ```
+
+{{< spoiler text="Click to view the results" >}}
+```{r, echo=FALSE}
+SAdata <- filter(data, country=="South Africa")
+SAdata
+```
+{{< /spoiler >}}
+
 
 Note again how the command worked :
 
@@ -262,13 +260,23 @@ Let's first select a sub-sample. We want to select only two years (2002 and 2007
 
 A first idea would be to use the command `slice_sample()`, as in:
 
-```{r}
+```{r, eval=FALSE}
 set.seed(123)
 data <- gapminder %>% 
   filter(year > 2000 ) %>%
   slice_sample(n=10) %>% arrange(country)
 data
 ```
+
+{{< spoiler text="Click to view the results" >}}
+```{r, echo=FALSE}
+set.seed(123)
+data <- gapminder %>% 
+  filter(year > 2000 ) %>%
+  slice_sample(n=10) %>% arrange(country)
+data
+```
+{{< /spoiler >}}
 
 The problem with this approach is that each country has two records. So with "blind" line sampling, we will encounter cases where we only have one record for a country. That is what happened here, and that is not what we wanted.
 
@@ -291,11 +299,15 @@ random_names
 
 Now, we can use this vector of country names to select the corresponding countries
 
-```{r}
-gapminder %>% filter(country %in% random_names & year > 2000) %>%   
-  arrange(country)
-
+```{r, eval=FALSE}
+gapminder %>% filter(country %in% random_names & year > 2000) 
 ```
+
+{{< spoiler text="Click to view the results" >}}
+```{r, echo=FALSE}
+gapminder %>% filter(country %in% random_names & year > 2000) %>% arrange(country)
+```
+{{< /spoiler >}}
 
 
 

@@ -12,7 +12,6 @@ weight: 20
 output:
   html_document:
     keep_md: true
-
 ---
 
 ```{r, echo=FALSE, warning=FALSE,message=FALSE}
@@ -21,9 +20,6 @@ library(tidyverse)
 data <- gapminder
 data$row_no = 1:nrow(data)
 ```
-
-
-
 
 Surveys provides raw data. Often you will need to combine information collected with different variables into a new variable. So you will need to add new columns that are functions of existing columns. 
 
@@ -43,10 +39,9 @@ data %>%
   mutate(diffMeansGdp = gdpPercap - mean(gdpPercap) )
 ```
 
-
 ### Exercise: 
 
-Show a table that displays, the annual GDP of Zimbabwe after 1972 xpressed in million USD and sort the results by year.
+Show a table that displays, the annual GDP of Zimbabwe after 1972 expressed in million USD and sort the results by year.
 
 {{< spoiler text="Click to see the solution" >}} 
 ```{r}
@@ -60,6 +55,7 @@ data %>% filter(country=="Zimbabwe" & year >1972) %>%
 
 
 ### Exercise: 
+
 Show a table that displays, the annual 2007 GDP of African countries whose name starts with an A or a B expressed in million USD and sort the results by increasing GDP.
 
 {{< spoiler text="Click to see the solution" >}} 

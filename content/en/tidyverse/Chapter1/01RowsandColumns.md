@@ -55,8 +55,6 @@ data %>% arrange(country)
 ```
 {{< /spoiler >}}
 
-
-
 If you provide more than one column name, the column names are separated with commas. Each additional column will be used to break ties in the values of preceding columns (lexicographic ordering). 
 
 
@@ -113,9 +111,9 @@ data %>% arrange(desc(continent), country)
 {{< /spoiler >}}
 
 
-## Chaining data treatments: selecting and sorting rows {#select-sort-rows}
+## Chaining data manipulation: selecting and sorting rows {#select-sort-rows}
 
-You have been introduced to the chaining of commands. Let's develop a more complex example.
+Let's develop a more complex example.
 
 You want to show the countries with the highest 2007 GDP per capita of the African continent, and limit your results to the first six countries. 
 
@@ -159,11 +157,11 @@ Note that:
 
 ## Select columns/variables {#subsetting-columns}
 
-When you have a large survey with many variables, you may want to extract  variables specific to a particular type of analysis. 
+When you have a large survey with many variables, you may want to work only with the variables needed for your analysis.
 
-The function `select()` will allow you to create a subset of variables based on their names.
+The function `select()` will allow you to create a subset of variables.
 
-### column positions
+### Column positions
 A first approach is to list the column positions.  
 
 
@@ -191,11 +189,11 @@ data %>% select(1, 3, 6)
 ```
 {{< /spoiler >}}
 
-However, this is not really recommended as the order of your columns could change, and lead to unexpected manipulations.
+However, this is not really recommended as the order of your columns could change, and lead to unexpected results. So, it is advisable to use column names instead.
 
 ### Column names
 
-A second approach is to list all the names of the variables you want to select
+A second approach is to list all the names of the variables you want to select:
 
 ```r
 data %>% select(country, year, gdpPercap)
@@ -230,7 +228,7 @@ You can provide a range of variables or a range of column positions
 ```r
 # This will select the variables 
 # between the column continent and pop
-data %>% select(continent:pop) %>% head(4)
+data %>% select(continent:pop)
 ```
 
 {{< spoiler text="Click to see the output" >}}
@@ -292,7 +290,7 @@ You can select the variables by their type or any other characteristic using `wh
 
 ```r
 # will select only the numeric variables
-data %>% select(where(is.numeric)) %>% head(5)
+data %>% select(where(is.numeric))
 ```
 
 {{< spoiler text="Click to see the output" >}}
@@ -451,8 +449,7 @@ Use the function helper if you need more sophisticated changes.
 
 ## Selecting rows and columns {#subsetting-rows-and-columns}
 
-You have all the tools to select rows and columns.
-Using tidyverse, you will chain each activities. For example, you want to select the column country and pop, and consider only the African countries:
+You have all the tools to select rows and columns. Using tidyverse, you will chain each manipulation. For example, you want to select the column `country` and `pop`, and consider only the African countries:
 
 
 ```r
@@ -480,8 +477,7 @@ data %>% filter(continent == "Africa") %>%
 ```
 {{< /spoiler >}}
 
-
-Note that the order of the commands can be important. In our example, we selected the row where continent was "Africa" and then selected two variables country and pop. Imagine what would happen if you interchange the two commands:
+Note that the order of the commands can be important. In our example, we selected the row where continent was "Africa" and then selected two variables `country` and `pop`. Imagine what would happen if you interchange the two commands:
 
 
 ```r

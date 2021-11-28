@@ -19,6 +19,7 @@ The vectors are an essential structure of R language and functionning. In this s
   + [The : operator](#the-colon-operator)
   + [The seq() function](#the-seq-function)
   + [The rep() function](#the-rep-function)
++ [Generating a vector of random number](#generating-random)
 + [Vector Arithmetic](#vector-arithmetic)
 + [Useful functions applied to a vector](#useful-functions-applied-to-a-vector)
 + [Vectors with other types of data](#vectors-with-other-types-of-data)
@@ -99,16 +100,99 @@ To repeat each element of three times before moving on to the next, use the argu
 (s6 <- rep(x, each=3))
 ```
 
+## Generating a vector of random numbers {#generating-random}
+
+### Creating a Vector with Random Numbers from the Normal Distribution
+
+To generate numbers from a Normal Distribution, you use the `rnorm()` function. This function has 3 arguments, namely the sample size, and the mean and standard deviation of the normal distribution.
+
+The mean and standard deviation are optional arguments. If you do not include them, you will create a vector of random numbers from the Standard Normal Distribution, i.e. where mean = 0 and sd =1.
+
+To create a sample of 10 observations from the Standard Normal Distribution. That is to say, a normal distribution with a mean of 0 and a standard deviation of 1.
+```{r}
+(tennorm <-rnorm(10))
+```
+
+### Creating a Vector with Random Numbers from a uniform distribution
+
+You create a vector with randomly generated numbers falling between two values with the `runif()` function. This R function has three arguments:
+
++ A positive integer that specifies the sample size.
++ The minimum of the sample population. For example, if you want to generate a sample with numbers between 0 and 1, you should set this argument to 0.
++ The maximum of the sample population. For example, if you want to genereate a sample with numbers between 0 and 1, you should set this argument to 1.
+
+To create a sample of 10 observations with numbers between 0 and 1. 
+
+```{r}
+tenunif <- runif(10)
+tenunif
+```
+
+### Creating a Vector with Random Integers
+
+You create a vector with random integers with the `sample()` function. This function has two obligatory arguments, namely the integers from which you want to sample, and the number of samples you want to take. A third, optional argument, tells R to sample with or without replacement.
+
+The first argument, the population from which R takes a sample, can have different forms. For examples:
+
++ A continuous list of integers, e.g., 1:200
++ A discontinuous list of integers, e.g. c(1, 3, 5, 15, 30)
++ A combination of the two list above, e.g., c(1:100, -16, -2)
+
+The second argument, the sample size, must be a positive whole number.
+
+To create a sample of 20 randomly generated integers between -20 and 20 without replacement:
+```{r}
+set.seed(1234)
+sample20 <- sample(-20:20, 20, replace = FALSE)
+sample20
+```
+
+{{% callout note %}} 
+{{< spoiler text="A note on the use of seeds" >}}
+You probably noticed that the random samples you obtained on your computer are different from the example displayed on this web site, and are different each time you run the commands. This is what randomness is about. However, sometimes you want to make sure you can retrieve the exact same random sample to make the output of your R code reproducible. 
+
+The random numbers that your computer generates are in fact *pseudorandom* numbers that aim to simulate randomness.A seed is a number that initializes a pseudorandom number generator.  By setting a specific **seed**, the random processes in our script always start at the same point and hence lead to the same result.
+
+First, let's generate some random numbers using the `sample()` function:
+```{r}
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+Let's execute exactly the same R code again:
+
+```{r}
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+The results should be different.
+
+Second, let's set a seed before the command and see what happens:
+```{r}
+set.seed(12345)  # set the seed for pseudorandom generator
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+Let’s do this again with the same seed as before:
+```{r}
+set.seed(12345) # set the seed for pseudorandom generator
+sample(1:200, 5)  # sample out 5 numbers from the vector 1:200
+```
+
+The output is exactly the same for the two experiences, and they should also be the same than the one on your computer.
+{{< /spoiler>}}
+{{% /callout %}}
+
+
+
 ## Vector arithmetic
 
 Vectors can be used in arithmetic expressions, in which case the operations are performed **element by element**. 
 For example, if you add two vectors:
 
-\\begin{equation}
-\\left(\\begin{matrix}a\\\b\\\c\\\d \\end{matrix} \\right)  + 
-\\left(\\begin{matrix}e\\\f\\\g\\\h  \\end{matrix} \\right) =
-\\left(\\begin{matrix}a+e\\\b+f\\\c+g\\\d+h \\end{matrix} \\right) 
-\\end{equation}
+begin{equation}
+\left(\begin{matrix}a\\b\\c\\d \end{matrix} \right)  + 
+\left(\begin{matrix}e\\f\\g\\h  \end{matrix} \right) =
+\left(\begin{matrix}a+e\\b+f\\c+g\\d+h \end{matrix} \right) 
+end{equation}
 
 In R:
 
