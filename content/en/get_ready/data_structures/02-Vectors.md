@@ -179,7 +179,7 @@ To repeat each element of three times before moving on to the next, use the argu
 
 ## Generating a vector of random numbers {#generating-random}
 
-### Creating a Vector with Random Numbers from the Normal Distribution
+### from the Normal distribution
 
 To generate numbers from a Normal Distribution, you use the `rnorm()` function. This function has 3 arguments, namely the sample size, and the mean and standard deviation of the normal distribution.
 
@@ -187,16 +187,29 @@ The mean and standard deviation are optional arguments. If you do not include th
 
 To create a sample of 10 observations from the Standard Normal Distribution. That is to say, a normal distribution with a mean of 0 and a standard deviation of 1.
 
+
 ```r
 (tennorm <-rnorm(10))
 ```
 
 ```
-##  [1]  0.44779464 -0.36994963 -0.59802774  1.21976496 -0.03536352  0.19849650
-##  [7]  0.19746364  1.09130330  0.30707245  0.61990376
+##  [1] -1.0448994  1.4354529  0.1825237 -1.7441388  0.5296384 -1.1835851
+##  [7] -0.5102506 -1.2395420  0.2162293  0.1214268
 ```
 
-### Creating a Vector with Random Numbers from a uniform distribution
+To create a sample of 15 observations from the Normal Distribution with mean  20 and standard deviation 2. 
+
+
+```r
+(fifteennorm <-rnorm(n=15, mean=20, sd=2))
+```
+
+```
+##  [1] 24.02319 20.42686 21.15790 17.76278 19.61071 15.06345 20.15601 20.21090
+##  [9] 19.56549 21.35276 19.01923 18.51843 18.10681 18.38466 19.74965
+```
+
+### from a uniform distribution
 
 You create a vector with randomly generated numbers falling between two values with the `runif()` function. This R function has three arguments:
 
@@ -208,16 +221,27 @@ To create a sample of 10 observations with numbers between 0 and 1.
 
 
 ```r
-tenunif <- runif(10)
-tenunif
+(tenunif <- runif(10))
 ```
 
 ```
-##  [1] 0.75813455 0.57644421 0.26679595 0.39159843 0.98405894 0.03957182
-##  [7] 0.04832552 0.80206849 0.25489255 0.55598810
+##  [1] 0.7089979 0.6260779 0.2691199 0.3898438 0.3992532 0.3203724 0.1144032
+##  [8] 0.2375500 0.2098060 0.3259667
 ```
 
-### Creating a Vector with Random Integers
+To create a sample of 10 observations with numbers between 10 and 20. 
+
+
+```r
+(tenunif2 <- runif(n=10, min=10, max=20))
+```
+
+```
+##  [1] 15.58460 12.35803 11.80840 19.08494 17.79536 12.25906 12.18108 19.77259
+##  [9] 17.82757 18.90235
+```
+
+### with random integers
 
 You create a vector with random integers with the `sample()` function. This function has two obligatory arguments, namely the integers from which you want to sample, and the number of samples you want to take. A third, optional argument, tells R to sample with or without replacement.
 
@@ -304,9 +328,9 @@ Vectors can be used in arithmetic expressions, in which case the operations are 
 For example, if you add two vectors:
 
 begin{equation}
-\left(\begin{matrix}a\\b\\c\\d \end{matrix} \right)  + 
-\left(\begin{matrix}e\\f\\g\\h  \end{matrix} \right) =
-\left(\begin{matrix}a+e\\b+f\\c+g\\d+h \end{matrix} \right) 
+\\left(\\begin{matrix}a\\\b\\\c\\\d \\end{matrix} \\right)  + 
+\\left(\\begin{matrix}e\\\f\\\g\\\h  \\end{matrix} \\right) =
+\\left(\\begin{matrix}a+e\\\b+f\\\c+g\\\d+h \\end{matrix} \\right) 
 end{equation}
 
 In R:
