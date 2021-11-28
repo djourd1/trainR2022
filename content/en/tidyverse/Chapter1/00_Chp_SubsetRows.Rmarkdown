@@ -11,7 +11,6 @@ weight: 2
 output:
   html_document:
     keep_md: true
-
 ---
 
 ## Learning objectives
