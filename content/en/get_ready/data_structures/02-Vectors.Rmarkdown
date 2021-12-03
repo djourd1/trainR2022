@@ -532,6 +532,7 @@ l3 <- length(v400_sup14)
 (l1+l2 + l3)/3
 
 ```
+{{< /spoiler >}}
 
 {{< spoiler text="Show the comments" >}}
 The number 14 corresponds to `mean + 2 sd`; When we draw repeated samples from the normally distributed variable, we know we have a probability of 2.5% to get number larger than  `mean + 2 sd`. 

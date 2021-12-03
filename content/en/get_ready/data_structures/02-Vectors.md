@@ -250,8 +250,8 @@ To create a sample of 10 observations from the Standard Normal Distribution. Tha
 ```
 
 ```
-##  [1]  0.09261951  0.63977460 -1.77004474  1.20425305  0.20217454  1.09582156
-##  [7]  2.26276934 -1.26445180 -1.21526793 -0.57470793
+##  [1] -0.6187597 -1.4341134  0.2803946 -0.8798178  0.2492879 -0.4770505
+##  [7] -0.7679168  0.6407749  1.5782463  1.4659428
 ```
 
 To create a sample of 15 observations from the Normal Distribution with mean  20 and standard deviation 2. 
@@ -262,8 +262,8 @@ To create a sample of 15 observations from the Normal Distribution with mean  20
 ```
 
 ```
-##  [1] 23.42073 19.80675 22.75684 19.10192 20.73464 16.68803 19.73379 18.93500
-##  [9] 21.44864 18.98346 20.40214 20.59522 20.13611 21.54356 18.26494
+##  [1] 21.02947 22.74956 19.10751 20.94218 21.75377 20.73055 18.59042 20.56382
+##  [9] 19.89690 19.07548 18.93012 22.86697 19.34974 22.90076 17.38866
 ```
 
 ### from a uniform distribution
@@ -282,8 +282,8 @@ To create a sample of 10 observations with numbers between 0 and 1.
 ```
 
 ```
-##  [1] 0.53198543 0.98721679 0.18808858 0.70985926 0.73208100 0.07419112
-##  [7] 0.23576100 0.39783108 0.96724771 0.12302788
+##  [1] 0.17737971 0.35235946 0.48607743 0.12355695 0.51740531 0.72740601
+##  [7] 0.12056646 0.03424792 0.59779236 0.45061566
 ```
 
 To create a sample of 10 observations with numbers between 10 and 20. 
@@ -294,8 +294,8 @@ To create a sample of 10 observations with numbers between 10 and 20.
 ```
 
 ```
-##  [1] 16.37070 12.64834 19.20492 17.66582 18.57329 11.68217 15.38139 10.75216
-##  [9] 15.57836 17.26091
+##  [1] 18.06609 11.62873 12.37628 10.28437 15.41323 13.06141 14.37762 13.65973
+##  [9] 15.11610 18.70800
 ```
 
 ### with random integers
@@ -844,6 +844,7 @@ l3 <- length(v400_sup14)
 ```
 ## [1] 11.33333
 ```
+{{< /spoiler >}}
 
 {{< spoiler text="Show the comments" >}}
 The number 14 corresponds to `mean + 2 sd`; When we draw repeated samples from the normally distributed variable, we know we have a probability of 2.5% to get number larger than  `mean + 2 sd`. 
