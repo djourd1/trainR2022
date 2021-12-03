@@ -250,8 +250,8 @@ To create a sample of 10 observations from the Standard Normal Distribution. Tha
 ```
 
 ```
-##  [1] -0.6187597 -1.4341134  0.2803946 -0.8798178  0.2492879 -0.4770505
-##  [7] -0.7679168  0.6407749  1.5782463  1.4659428
+##  [1]  2.31030585  3.06284740  0.22703777 -0.28375554 -0.64176929 -0.36351264
+##  [7]  0.60470040  2.67345603 -0.03207421  0.81098907
 ```
 
 To create a sample of 15 observations from the Normal Distribution with mean  20 and standard deviation 2. 
@@ -262,8 +262,8 @@ To create a sample of 15 observations from the Normal Distribution with mean  20
 ```
 
 ```
-##  [1] 21.02947 22.74956 19.10751 20.94218 21.75377 20.73055 18.59042 20.56382
-##  [9] 19.89690 19.07548 18.93012 22.86697 19.34974 22.90076 17.38866
+##  [1] 19.01629 21.25624 19.19516 22.75972 19.82810 20.33711 22.58036 18.72087
+##  [9] 22.71749 20.06088 19.07769 20.07592 19.87079 20.82687 25.39120
 ```
 
 ### from a uniform distribution
@@ -282,8 +282,8 @@ To create a sample of 10 observations with numbers between 0 and 1.
 ```
 
 ```
-##  [1] 0.17737971 0.35235946 0.48607743 0.12355695 0.51740531 0.72740601
-##  [7] 0.12056646 0.03424792 0.59779236 0.45061566
+##  [1] 0.8781464 0.9701189 0.1418080 0.7841559 0.6326371 0.5215025 0.7837864
+##  [8] 0.7932695 0.9956854 0.7924282
 ```
 
 To create a sample of 10 observations with numbers between 10 and 20. 
@@ -294,8 +294,8 @@ To create a sample of 10 observations with numbers between 10 and 20.
 ```
 
 ```
-##  [1] 18.06609 11.62873 12.37628 10.28437 15.41323 13.06141 14.37762 13.65973
-##  [9] 15.11610 18.70800
+##  [1] 13.61179 15.19997 12.77611 19.30214 11.86252 12.63189 17.01847 18.27715
+##  [9] 10.78930 19.22866
 ```
 
 ### with random integers
@@ -848,7 +848,7 @@ l3 <- length(v400_sup14)
 
 {{< spoiler text="Show the comments" >}}
 The number 14 corresponds to `mean + 2 sd`; When we draw repeated samples from the normally distributed variable, we know we have a probability of 2.5% to get number larger than  `mean + 2 sd`. 
-So, if we take repeated samples, the mean size of the number above 14 should be: 400 *(1-0.975) = `400 *(1-0.975)`
+So, if we take repeated samples, the mean size of the number above 14 should be: `400 *(1-0.975) =` 10
 
 You took only 3 samples, so you may have found a different result. But if you repeat this experience more times, you should see that the average sample size is converging towards the value of ten.
 

@@ -536,7 +536,7 @@ l3 <- length(v400_sup14)
 
 {{< spoiler text="Show the comments" >}}
 The number 14 corresponds to `mean + 2 sd`; When we draw repeated samples from the normally distributed variable, we know we have a probability of 2.5% to get number larger than  `mean + 2 sd`. 
-So, if we take repeated samples, the mean size of the number above 14 should be: 400 *(1-0.975) = `400 *(1-0.975)`
+So, if we take repeated samples, the mean size of the number above 14 should be: `400 *(1-0.975) =` `r 400 *(1-0.975)`
 
 You took only 3 samples, so you may have found a different result. But if you repeat this experience more times, you should see that the average sample size is converging towards the value of ten.
 
