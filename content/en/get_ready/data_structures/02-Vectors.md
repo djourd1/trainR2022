@@ -13,6 +13,62 @@ output:
     keep_md: true
 ---
 
+## Why do we need vectors?
+
+In the previous section, we dealt with different objects and variables. Each variable had only one value. So we defined one by one. Now let's consider situation where you need to enter several values for a concept. 
+
+Think about the expenses of all the member of your household during a month, or your monthly expenses in the last twelve month. In the former case, you could create and give values to twelve variables:
+
+
+```r
+exp_1 <- 100
+exp_2 <- 300
+exp_3 <- 1000
+...
+exp_12 <- 500
+```
+
+Let say, you have recorded these values in one currency, and now you want to convert them into another currency. To simplify, think the exchange rate was constant during the last twelve months. To do the conversion you will need to create twelve new variables:
+
+
+```r
+exch_rate = 1.5
+exp_1_c2 <- exp_1 / exch_rate
+exp_2_c2 <- exp_2 / exch_rate
+exp_3_c2 <- exp_3 / exch_rate
+...
+exp_12_c2 <- exp_12 / exch_rate
+```
+
+Let say, now that instead of converting, you want to calculate your expenses during the all year. Then you need to calculate the sum of the different variables:
+
+
+```r
+total_expenses = exp_1 + exp_2 + exp_3 + ... + exp(12)
+```
+
+In both cases, you see that you need to make some repeative work: create many variables, or add-up many variables. This is both cunbersome, and prone to many typing errors.
+
+Vectors simplify these types of operations, by collecting objects of similar types under one composite object.
+
+In our case, we can define a new variable monthly_expenses that will include 12 values (one for each month), and operations will be done on this unique variable.
+
+
+```r
+# we will declare a vector (more details to come)
+monthly_expenses <- c(400, 200, 1000, 200, 550, 220, 300, 400, 888, 875, 1000, 2000) 
+
+# convert into another currency
+exch_rate = 1.5
+monthly_expenses_c2 <- monthly_expenses / exch_rate
+
+# apply a summury function to the vector
+annual_expenses <- sum(monthly_expenses)
+```
+
+You can see that vectors will greatly simplify your writing and reduce the number of errors you will make.
+Now you are convinced vectors are useful, let's study them in more details.
+
 ## Learning objectives
 
 The vectors are an essential structure of R language and functionning. In this section you will learn about vectors, how to create different types of vector, and how to manipulate them.
@@ -27,6 +83,7 @@ The vectors are an essential structure of R language and functionning. In this s
 + [Useful functions applied to a vector](#useful-functions-applied-to-a-vector)
 + [Vectors with other types of data](#vectors-with-other-types-of-data)
 + [Automatic coercing within vectors](#automatic-coercing-within-vectors)
+
 
 ## Numeric vectors
 
@@ -193,8 +250,8 @@ To create a sample of 10 observations from the Standard Normal Distribution. Tha
 ```
 
 ```
-##  [1] -1.7861668  0.3392857  0.6429364  0.8170546 -1.5424263 -2.0591444
-##  [7]  0.8829094  1.2583032 -0.1387157  0.1171966
+##  [1]  0.09261951  0.63977460 -1.77004474  1.20425305  0.20217454  1.09582156
+##  [7]  2.26276934 -1.26445180 -1.21526793 -0.57470793
 ```
 
 To create a sample of 15 observations from the Normal Distribution with mean  20 and standard deviation 2. 
@@ -205,8 +262,8 @@ To create a sample of 15 observations from the Normal Distribution with mean  20
 ```
 
 ```
-##  [1] 21.56632 16.21337 19.86190 19.52691 21.03591 22.08679 23.58797 21.26675
-##  [9] 17.62617 22.34498 19.29021 19.24062 19.05535 18.20919 16.98289
+##  [1] 23.42073 19.80675 22.75684 19.10192 20.73464 16.68803 19.73379 18.93500
+##  [9] 21.44864 18.98346 20.40214 20.59522 20.13611 21.54356 18.26494
 ```
 
 ### from a uniform distribution
@@ -225,8 +282,8 @@ To create a sample of 10 observations with numbers between 0 and 1.
 ```
 
 ```
-##  [1] 0.21615222 0.38689754 0.17006235 0.02347693 0.24039768 0.99663087
-##  [7] 0.38336996 0.16042471 0.39826320 0.78892966
+##  [1] 0.53198543 0.98721679 0.18808858 0.70985926 0.73208100 0.07419112
+##  [7] 0.23576100 0.39783108 0.96724771 0.12302788
 ```
 
 To create a sample of 10 observations with numbers between 10 and 20. 
@@ -237,8 +294,8 @@ To create a sample of 10 observations with numbers between 10 and 20.
 ```
 
 ```
-##  [1] 18.06569 12.35653 10.76850 14.02639 16.80833 14.92544 12.70117 18.53457
-##  [9] 14.29487 10.98766
+##  [1] 16.37070 12.64834 19.20492 17.66582 18.57329 11.68217 15.38139 10.75216
+##  [9] 15.57836 17.26091
 ```
 
 ### with random integers
@@ -725,3 +782,74 @@ seq6
 ## [1] 1 1 2 2 3 3
 ```
 {{< /spoiler >}}
+
+### Problem 1 
+
+*Study the normal distribution*
+
+Sample 400 numbers from a normal distribution with mean 10 and standard deviation 2.
+From these 400 numbers, select the numbers that are higher than 14. 
+How many numbers did you find? Save this size in a variable `l1`
+Repeat this exercise another 2 times, and save the size into variables `l2`and `l3`
+Take the mean value of the sizes.
+
+Comment your results. (is this in line with what you know about the normal distribution?)
+
+{{< spoiler text="Show the calculations" >}}
+
+```r
+v400 <- rnorm(400, mean=10, sd=2)
+v400_sup14 <- v400[v400>14]
+v400_sup14
+```
+
+```
+##  [1] 14.39367 14.09838 14.29013 14.66102 14.95422 14.31544 14.36000 15.31158
+##  [9] 14.96710 14.13249 15.49481 14.32519 14.53572 14.15342 14.51954 14.48407
+```
+
+```r
+l1 <- length(v400_sup14)
+
+# let's repeat it
+v400 <- rnorm(400, mean=10, sd=2)
+v400_sup14 <- v400[v400>14]
+v400_sup14
+```
+
+```
+##  [1] 14.47825 16.66147 14.22826 14.25493 14.18614 14.23701 14.63445 14.33866
+##  [9] 14.60725 14.04179 14.22526 16.18739 14.99384 14.23403
+```
+
+```r
+l2 <- length(v400_sup14)
+
+# let's repeat it
+v400 <- rnorm(400, mean=10, sd=2)
+v400_sup14 <- v400[v400>14]
+v400_sup14
+```
+
+```
+## [1] 14.72872 14.64848 14.91415 14.04389
+```
+
+```r
+l3 <- length(v400_sup14)
+
+(l1+l2 + l3)/3
+```
+
+```
+## [1] 11.33333
+```
+
+{{< spoiler text="Show the comments" >}}
+The number 14 corresponds to `mean + 2 sd`; When we draw repeated samples from the normally distributed variable, we know we have a probability of 2.5% to get number larger than  `mean + 2 sd`. 
+So, if we take repeated samples, the mean size of the number above 14 should be: 400 *(1-0.975) = `400 *(1-0.975)`
+
+You took only 3 samples, so you may have found a different result. But if you repeat this experience more times, you should see that the average sample size is converging towards the value of ten.
+
+{{< /spoiler >}}
+

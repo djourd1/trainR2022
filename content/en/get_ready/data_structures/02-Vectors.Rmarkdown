@@ -13,6 +13,58 @@ output:
     keep_md: true
 ---
 
+## Why do we need vectors?
+
+In the previous section, we dealt with different objects and variables. Each variable had only one value. So we defined one by one. Now let's consider situation where you need to enter several values for a concept. 
+
+Think about the expenses of all the member of your household during a month, or your monthly expenses in the last twelve month. In the former case, you could create and give values to twelve variables:
+
+```{r, eval=FALSE}
+exp_1 <- 100
+exp_2 <- 300
+exp_3 <- 1000
+...
+exp_12 <- 500
+```
+
+Let say, you have recorded these values in one currency, and now you want to convert them into another currency. To simplify, think the exchange rate was constant during the last twelve months. To do the conversion you will need to create twelve new variables:
+
+```{r, eval=FALSE}
+exch_rate = 1.5
+exp_1_c2 <- exp_1 / exch_rate
+exp_2_c2 <- exp_2 / exch_rate
+exp_3_c2 <- exp_3 / exch_rate
+...
+exp_12_c2 <- exp_12 / exch_rate
+```
+
+Let say, now that instead of converting, you want to calculate your expenses during the all year. Then you need to calculate the sum of the different variables:
+
+```{r, eval=FALSE}
+total_expenses = exp_1 + exp_2 + exp_3 + ... + exp(12)
+```
+
+In both cases, you see that you need to make some repeative work: create many variables, or add-up many variables. This is both cunbersome, and prone to many typing errors.
+
+Vectors simplify these types of operations, by collecting objects of similar types under one composite object.
+
+In our case, we can define a new variable monthly_expenses that will include 12 values (one for each month), and operations will be done on this unique variable.
+
+```{r}
+# we will declare a vector (more details to come)
+monthly_expenses <- c(400, 200, 1000, 200, 550, 220, 300, 400, 888, 875, 1000, 2000) 
+
+# convert into another currency
+exch_rate = 1.5
+monthly_expenses_c2 <- monthly_expenses / exch_rate
+
+# apply a summury function to the vector
+annual_expenses <- sum(monthly_expenses)
+```
+
+You can see that vectors will greatly simplify your writing and reduce the number of errors you will make.
+Now you are convinced vectors are useful, let's study them in more details.
+
 ## Learning objectives
 
 The vectors are an essential structure of R language and functionning. In this section you will learn about vectors, how to create different types of vector, and how to manipulate them.
@@ -27,6 +79,7 @@ The vectors are an essential structure of R language and functionning. In this s
 + [Useful functions applied to a vector](#useful-functions-applied-to-a-vector)
 + [Vectors with other types of data](#vectors-with-other-types-of-data)
 + [Automatic coercing within vectors](#automatic-coercing-within-vectors)
+
 
 ## Numeric vectors
 
@@ -444,3 +497,47 @@ seq6 <- seq10[seq10<4]
 seq6
 ```
 {{< /spoiler >}}
+
+### Problem 1 
+
+*Study the normal distribution*
+
+Sample 400 numbers from a normal distribution with mean 10 and standard deviation 2.
+From these 400 numbers, select the numbers that are higher than 14. 
+How many numbers did you find? Save this size in a variable `l1`
+Repeat this exercise another 2 times, and save the size into variables `l2`and `l3`
+Take the mean value of the sizes.
+
+Comment your results. (is this in line with what you know about the normal distribution?)
+
+{{< spoiler text="Show the calculations" >}}
+```{r}
+v400 <- rnorm(400, mean=10, sd=2)
+v400_sup14 <- v400[v400>14]
+v400_sup14
+l1 <- length(v400_sup14)
+
+# let's repeat it
+v400 <- rnorm(400, mean=10, sd=2)
+v400_sup14 <- v400[v400>14]
+v400_sup14
+l2 <- length(v400_sup14)
+
+# let's repeat it
+v400 <- rnorm(400, mean=10, sd=2)
+v400_sup14 <- v400[v400>14]
+v400_sup14
+l3 <- length(v400_sup14)
+
+(l1+l2 + l3)/3
+
+```
+
+{{< spoiler text="Show the comments" >}}
+The number 14 corresponds to `mean + 2 sd`; When we draw repeated samples from the normally distributed variable, we know we have a probability of 2.5% to get number larger than  `mean + 2 sd`. 
+So, if we take repeated samples, the mean size of the number above 14 should be: 400 *(1-0.975) = `400 *(1-0.975)`
+
+You took only 3 samples, so you may have found a different result. But if you repeat this experience more times, you should see that the average sample size is converging towards the value of ten.
+
+{{< /spoiler >}}
+
