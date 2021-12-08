@@ -27,7 +27,7 @@ There are different ways to consider this problem, but for this example we will 
 
 $$ m = L . \frac{(\frac{r}{1200})(1 +\frac{r}{1200})^N}{(1+ \frac{r}{1200})^N -1 } $$
 
-One advantage of a programming language is that we can define variables and keep such expressions general. So, if we are asked to answer this question when borrowing 2000\$ for 24 months at an interest of 6\% per year, we can define $L$ to be $10000$, $N$ to be $24$, and $r$ to be $6$.
+One advantage of a programming language is that we can define variables and keep such expressions general. So, if we are asked to answer this question when borrowing 2000 for 24 months at an interest of 6\% per year, we can define $L$ as $10000$, $N$ as $24$, and $r$ as $6$.
 
 First, we will launch the R programme we have just installed (for example, by clicking at the R icon present in your desktop).
 
