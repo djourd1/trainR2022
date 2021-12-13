@@ -15,7 +15,7 @@ output:
 
 ## Learning objectives
 
-If you want exclude some individuals that are outside the scope of your analysis, you will need to select subsamples of your data set. In this section, you will learn how to select specific rows of your data set. This is our first encounter with the package `dplyr` and the use of pipes (`%>%`) for chaining commands. **This is an important section**, as you will use this syntax for all types of data manipulation that follow.  
+If you want exclude some individuals that are outside the scope of your analysis, you need to be able to select subsamples of your data set. In this section, you will learn how to select specific rows of your data set. This is our first encounter with the package `dplyr` and the use of pipes (`%>%`) for chaining commands. **This is an important section**, as you will use this syntax for all types of data manipulation that follow.  
 
 At the end of this section, you should be able to select specific rows of a data set :
 
