@@ -159,7 +159,7 @@ diag(4)
 
 {{< spoiler text="Show the answer" >}}
 
-For the first question we will use the function rnorm()
+For the first question we will use the function `rnorm()`
 ```{r}
 vec <- rnorm(n = 20) # the default is standardized normal distribution
 ```
@@ -209,7 +209,6 @@ ans[indices]  # will return a vector
 ```
 
 
-
 ## Matrix calculations
 ### Multiplication by a Scalar
 ```{r}
@@ -225,8 +224,8 @@ A - B
 ```
 
 ### Element-wise multiplication
-
-$$  \\begin{pmatrix}
+$$
+\\begin{pmatrix}
     x_{11} & x_{12}  \\\\
     x_{21} & x_{22}  
 \\end{pmatrix}
@@ -239,7 +238,9 @@ $$  \\begin{pmatrix}
 \\begin{pmatrix}
    x_{11} \\times y_{11} & x_{12} \\times y_{12}   \\\\
    x_{21} \\times y_{21} & x_{22} \\times y_{22} 
-\\end{pmatrix} $$
+\\end{pmatrix} 
+$$
+
 
 ```{r}
 A*B
@@ -373,7 +374,42 @@ invA %*% A
 A %*% invA
 ```
 
-### Computing Column and Row Sums
+#### Exercise: solve a system of linear equations
+
+So far, we have used the function solve with one argument, the matrix to be inversed.
+However, solve can be used to solve systems of linear equations.
+
+Use the function solve() to resolve the following system of equation
+
+$$ \\begin{pmatrix}
+    3 t + 2 u  & = & 1 \\\\
+   -3 t + 4 u  & = & 0.5 
+\\end{pmatrix} $$
+
+{{< spoiler text="Show the answer" >}}
+
+The problem is a generic algebra problem such as A.x = b where A is the matrix, and x and b are vectors.
+
+So let's create the square matrix A and the vector b
+```{r}
+A <- matrix(c(3,-3,2,4), ncol=2); A
+b <- c(1, 0.5); b
+```
+Now we can find the vector sol = (u,t) using the function solve
+
+```{r}
+sol <- solve(A,b)
+sol
+```
+
+You can check your solutions by the outer product of A and sol, and verify it is equal to b
+```{r}
+A %*% sol
+```
+
+{{< /spoiler >}}
+
+### Computing Column and Row sums
 
 ```{r}
 colSums(A)

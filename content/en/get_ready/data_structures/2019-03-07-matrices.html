@@ -521,7 +521,7 @@ cbind(A, B)</code></pre>
 <li>Change the names of the rows to “row_1”, “row_2”, etc. and display the final matrix</li>
 </ol>
 <p>{{&lt; spoiler text=“Show the answer” &gt;}}</p>
-<p>For the first question we will use the function rnorm()</p>
+<p>For the first question we will use the function <code>rnorm()</code></p>
 <pre class="r"><code>vec &lt;- rnorm(n = 20) # the default is standardized normal distribution</code></pre>
 <p>For the second question, you can use the function matrix</p>
 <pre class="r"><code>mat &lt;- matrix(vec, ncol=5, byrow=TRUE)</code></pre>
@@ -536,11 +536,11 @@ cbind(A, B)</code></pre>
 <pre class="r"><code>rownames(mat) = paste(&quot;row&quot;, 1:4, sep=&quot;_&quot;)</code></pre>
 <p>Note that you can use a single line of command for these different operations. But the code becomes a bit more difficult to read.</p>
 <pre class="r"><code>(mat &lt;- matrix(rnorm(20), ncol=5, byrow=TRUE, dimnames = list(paste(&quot;row&quot;, 1:4, sep=&quot;_&quot;), c())))</code></pre>
-<pre><code>##             [,1]       [,2]        [,3]       [,4]       [,5]
-## row_1  1.0061299  0.2611879 -0.02498967 -0.1926046 -1.0972937
-## row_2  0.8449396 -1.4987443 -0.46023761  1.1947942 -0.1551077
-## row_3 -1.4924593 -0.1243750 -0.81946876 -1.2015201  0.2509683
-## row_4 -0.1456185  0.3837287  0.58681525  0.2288613  0.9416436</code></pre>
+<pre><code>##             [,1]       [,2]      [,3]      [,4]       [,5]
+## row_1  1.9211059 -0.5377386 0.1727964 -1.349382 -0.3106437
+## row_2 -0.3817356  0.4438438 0.4456105 -1.431383  1.2422670
+## row_3  0.9281413  0.8320622 0.4099465  1.247669 -0.3144409
+## row_4 -1.6254245  0.4100944 0.5464723 -3.619193  0.6386614</code></pre>
 <p>{{&lt; /spoiler &gt;}}</p>
 </div>
 </div>
@@ -609,7 +609,8 @@ indices  </code></pre>
 </div>
 <div id="element-wise-multiplication" class="section level3">
 <h3>Element-wise multiplication</h3>
-<p><span class="math display">\[  \\begin{pmatrix}
+<p><span class="math display">\[
+\\begin{pmatrix}
     x_{11} &amp; x_{12}  \\\\
     x_{21} &amp; x_{22}  
 \\end{pmatrix}
@@ -622,7 +623,8 @@ indices  </code></pre>
 \\begin{pmatrix}
    x_{11} \\times y_{11} &amp; x_{12} \\times y_{12}   \\\\
    x_{21} \\times y_{21} &amp; x_{22} \\times y_{22} 
-\\end{pmatrix} \]</span></p>
+\\end{pmatrix} 
+\]</span></p>
 <pre class="r"><code>A*B</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    2   20   56  110
@@ -787,15 +789,43 @@ eigA$values</code></pre>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    0
 ## [2,]    0    1</code></pre>
+<div id="exercise-solve-a-system-of-linear-equations" class="section level4">
+<h4>Exercise: solve a system of linear equations</h4>
+<p>So far, we have used the function solve with one argument, the matrix to be inversed. However, solve can be used to solve systems of linear equations.</p>
+<p>Use the function solve() to resolve the following system of equation</p>
+<p><span class="math display">\[ \\begin{pmatrix}
+    3 t + 2 u  &amp; = &amp; 1 \\\\
+   -3 t + 4 u  &amp; = &amp; 0.5 
+\\end{pmatrix} \]</span></p>
+<p>{{&lt; spoiler text=“Show the answer” &gt;}}</p>
+<p>The problem is a generic algebra problem such as A.x = b where A is the matrix, and x and b are vectors.</p>
+<p>So let’s create the square matrix A and the vector b</p>
+<pre class="r"><code>A &lt;- matrix(c(3,-3,2,4), ncol=2); A</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    3    2
+## [2,]   -3    4</code></pre>
+<pre class="r"><code>b &lt;- c(1, 0.5); b</code></pre>
+<pre><code>## [1] 1.0 0.5</code></pre>
+<p>Now we can find the vector sol = (u,t) using the function solve</p>
+<pre class="r"><code>sol &lt;- solve(A,b)
+sol</code></pre>
+<pre><code>## [1] 0.1666667 0.2500000</code></pre>
+<p>You can check your solutions by the outer product of A and sol, and verify it is equal to b</p>
+<pre class="r"><code>A %*% sol</code></pre>
+<pre><code>##      [,1]
+## [1,]  1.0
+## [2,]  0.5</code></pre>
+<p>{{&lt; /spoiler &gt;}}</p>
+</div>
 </div>
 <div id="computing-column-and-row-sums" class="section level3">
-<h3>Computing Column and Row Sums</h3>
+<h3>Computing Column and Row sums</h3>
 <pre class="r"><code>colSums(A)</code></pre>
-<pre><code>## [1]  6 14</code></pre>
+<pre><code>## [1] 0 6</code></pre>
 <pre class="r"><code>rowSums(A)</code></pre>
-<pre><code>## [1]  8 12</code></pre>
+<pre><code>## [1] 5 1</code></pre>
 <pre class="r"><code>sum(A)  #total over all elements</code></pre>
-<pre><code>## [1] 20</code></pre>
+<pre><code>## [1] 6</code></pre>
 </div>
 </div>
 
