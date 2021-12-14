@@ -1,11 +1,11 @@
 ---
 title: Matrices
 author: Damien Jourdain
-date: '2021-12-20'
 slug: matrices
 categories:
   - R
-tags: []
+  - data structure
+tags: [R, matrix]
 type: book
 weight: 40 
 output:
@@ -350,11 +350,13 @@ When postmultiplying a one row matrix with a compatible vector of 1, you obtain 
 Use this property to calculate rapidly the sum of integers between 1 and 200.
 
 {{< spoiler text="Show the answer" >}}
+
 ```{r}
 x <- 1:200
 i = rep(1, 200)
 x%*%i
 ```
+
 {{< /spoiler>}}
 
 #### Idempotent matrices
@@ -382,6 +384,7 @@ theta <- pi/6;  #note that pi is predefined in R
 ID <- matrix(c(1- cos(theta), sin(theta), sin(theta), 1+ cos(theta)), ncol=2, byrow=TRUE)/2; ID
 ID %*% ID
 ```
+
 {{< /spoiler>}}
 
 ## Common matrix functions

@@ -1,11 +1,11 @@
 ---
 title: Matrices
 author: Damien Jourdain
-date: '2021-12-20'
 slug: matrices
 categories:
   - R
-tags: []
+  - data structure
+tags: [R, matrix]
 type: book
 weight: 40 
 output:
@@ -321,10 +321,10 @@ Note that you can use a single line of command for these different operations. B
 
 ```
 ##             [,1]       [,2]       [,3]       [,4]       [,5]
-## row_1  0.1439303 -0.3859316  1.3291691  1.1271403  1.2922673
-## row_2 -0.9437445  0.5035485  0.3032572 -0.3626729 -0.9984886
-## row_3 -0.8967474  0.1530902 -0.1855755  0.6816710  0.4073554
-## row_4 -0.9565652 -0.2678362 -0.9229384 -0.1957694 -2.0873036
+## row_1  0.3215269 0.09482649  0.9144622  1.0498334 -0.2017840
+## row_2  0.8209751 0.58913519  0.4788462  2.7134179  0.2499724
+## row_3 -1.0131840 1.61204372 -0.2734918  1.4927598  0.8982830
+## row_4  0.6053441 1.00681576 -1.4009713 -0.6289064 -1.1003863
 ```
 {{< /spoiler >}}
 
@@ -676,6 +676,7 @@ Use this property to calculate rapidly the sum of integers between 1 and 200.
 
 {{< spoiler text="Show the answer" >}}
 
+
 ```r
 x <- 1:200
 i = rep(1, 200)
@@ -686,6 +687,7 @@ x%*%i
 ##       [,1]
 ## [1,] 20100
 ```
+
 {{< /spoiler>}}
 
 #### Idempotent matrices
@@ -729,6 +731,7 @@ ID %*% ID
 ## [1,] 0.0669873 0.2500000
 ## [2,] 0.2500000 0.9330127
 ```
+
 {{< /spoiler>}}
 
 ## Common matrix functions
