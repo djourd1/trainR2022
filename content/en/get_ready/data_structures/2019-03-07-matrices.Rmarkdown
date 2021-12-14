@@ -1,7 +1,7 @@
 ---
 title: Matrices
 author: Damien Jourdain
-date: '2020-08-20'
+date: '2021-12-20'
 slug: matrices
 categories:
   - R
@@ -344,13 +344,22 @@ A %*% V
 
 ### Exercises
 
-#### Sum of values using vectors
+#### Sum of values 
 
+When postmultiplying a one row matrix with a compatible vector of 1, you obtain the sum of the numbers in that row.
+
+$$ \\begin{pmatrix} x_1 x_2 x_3 x_4 \\end{pmatrix} 
+\times \\begin{pmatrix} 1 \\\\ 1 \\\\  1 \\\\  1 \\end{pmatrix} \= x_1 + x_2 + x_3 + x_4 $$
+
+Use this property to calculate rapidly the sum of integers between 1 and 200.
+
+{{< spoiler text="Show the answer" >}}
 ```{r}
-x <- 1:2
-i = rep(1, 2)
+x <- 1:200
+i = rep(1, 200)
 x%*%i
 ```
+{{< /spoiler>}}
 
 #### Idempotent matrices
 
@@ -373,7 +382,7 @@ In this exercise, you will not prove it, but you can quickly check whether this 
 {{< spoiler text="Show the answer" >}}
 
 ```{r}
-theta <- pi/2;
+theta <- pi/6;  #note that pi is predefined in R
 ID <- matrix(c(1- cos(theta), sin(theta), sin(theta), 1+ cos(theta)), ncol=2, byrow=TRUE)/2; ID
 ID %*% ID
 ```
