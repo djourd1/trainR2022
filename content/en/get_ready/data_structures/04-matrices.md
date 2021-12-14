@@ -321,11 +321,11 @@ Note that you can use a single line of command for these different operations. B
 ```
 
 ```
-##             [,1]       [,2]        [,3]        [,4]        [,5]
-## row_1  0.7640681  0.7402867  1.67311924 -0.06720667 -0.05969374
-## row_2  2.0909401 -0.5044371  0.21545560  1.53733142 -0.15203338
-## row_3  0.4272884 -1.7769048 -0.60171347 -1.56472151  1.30189173
-## row_4 -0.5401465  0.1553324 -0.04447054 -0.87770587  2.16306072
+##              [,1]        [,2]       [,3]        [,4]       [,5]
+## row_1  0.71458339 -0.47112870  0.7640231 -1.03600302  0.1530098
+## row_2 -0.04358561 -0.61723012 -0.5253329 -0.02281476 -0.3810934
+## row_3 -1.82312287 -1.77686785 -0.5086865  0.52864998 -1.0648693
+## row_4 -0.12326139  0.06124819  0.3912242  1.09162831  0.3034446
 ```
 {{< /spoiler >}}
 
@@ -672,9 +672,6 @@ A %*% V
 #### Sum of values 
 
 When postmultiplying a one row matrix with a compatible vector of 1, you obtain the sum of the numbers in that row.
-
-$$ \\begin{pmatrix} x_1 x_2 x_3 x_4 \\end{pmatrix} 
-\times \\begin{pmatrix} 1 \\\\ 1 \\\\  1 \\\\  1 \\end{pmatrix} \= x_1 + x_2 + x_3 + x_4 $$
 
 Use this property to calculate rapidly the sum of integers between 1 and 200.
 

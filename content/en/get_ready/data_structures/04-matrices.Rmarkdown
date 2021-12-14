@@ -348,9 +348,6 @@ A %*% V
 
 When postmultiplying a one row matrix with a compatible vector of 1, you obtain the sum of the numbers in that row.
 
-$$ \\begin{pmatrix} x_1 x_2 x_3 x_4 \\end{pmatrix} 
-\times \\begin{pmatrix} 1 \\\\ 1 \\\\  1 \\\\  1 \\end{pmatrix} \= x_1 + x_2 + x_3 + x_4 $$
-
 Use this property to calculate rapidly the sum of integers between 1 and 200.
 
 {{< spoiler text="Show the answer" >}}
