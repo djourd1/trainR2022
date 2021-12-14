@@ -320,11 +320,11 @@ Note that you can use a single line of command for these different operations. B
 ```
 
 ```
-##            [,1]       [,2]       [,3]       [,4]       [,5]
-## row_1  0.300010 -0.4809690  0.4703999 -1.5126234 -1.0465087
-## row_2 -0.811087  0.3845180 -0.7881310  0.2952316 -1.5643954
-## row_3 -1.728209 -0.7233588  1.1691032  1.3014495 -1.0522695
-## row_4  0.964143 -0.1110103  1.6801585 -1.1388680 -0.2428898
+##             [,1]        [,2]       [,3]       [,4]       [,5]
+## row_1 -0.4863633  0.17631181 -1.3389148  1.6461737  0.1397620
+## row_2 -1.1975558 -1.49929516  1.0700292  0.4640998 -0.3016797
+## row_3 -1.0489792 -0.05523892 -0.0508977 -0.1612939 -0.9387939
+## row_4 -0.6748280  1.64409801  2.3691276  1.9742008 -0.5267514
 ```
 {{< /spoiler >}}
 
@@ -703,9 +703,9 @@ ID=\\frac{1}{2}{\\begin{pmatrix}1-\\cos \\theta &\\sin \\theta \\\ \\sin \\theta
 $$
 In this exercise, you will not prove it, but you can quickly check whether this is true for a few values of theta.
 
-1. Initiate a variable `theta` and assign the value of 1
+1. Initiate a variable `theta` and assign the value of $\pi / 6$
 2. Create the matrix $ID$
-3. Calculate $ID^2$
+3. Calculate $ID^2$ and check whether $ID^2 = ID$
 5. Check that it is still working with another value of `theta`
 
 {{< spoiler text="Show the answer" >}}

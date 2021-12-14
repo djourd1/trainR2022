@@ -372,9 +372,9 @@ ID=\\frac{1}{2}{\\begin{pmatrix}1-\\cos \\theta &\\sin \\theta \\\ \\sin \\theta
 $$
 In this exercise, you will not prove it, but you can quickly check whether this is true for a few values of theta.
 
-1. Initiate a variable `theta` and assign the value of 1
+1. Initiate a variable `theta` and assign the value of $\pi / 6$
 2. Create the matrix $ID$
-3. Calculate $ID^2$
+3. Calculate $ID^2$ and check whether $ID^2 = ID$
 5. Check that it is still working with another value of `theta`
 
 {{< spoiler text="Show the answer" >}}
