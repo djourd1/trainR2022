@@ -145,4 +145,29 @@ vec <- c("Sun","Mon")
 c(lis,vec)
 ```
 
+## Exercise
 
+1. Create a list that include 2 books, each book will be described by their title, authors (enter them as a vector of characters), number of pages, and a logical value that tells if you read it already or not. Name each members of lists, so that you can retrieve easily the information you are looking for.
+2. Search for the authors of your second book
+3. Edit the list to indicate that you have read your first book and not the second book
+
+{{< spoiler text="Show the answer" >}}
+
+```{r}
+#Q1
+mybooks <- list( book1 = list(title = "Advanced R", authors = c("Hadley Wickham"), pages = 200, readit=FALSE),
+    book2 = list(title = "Advanced R Solutions", authors = c("Malte Grosser","Henning Bumann","Hadley Wickham"), pages=300, readit=FALSE))
+
+#Q2
+mybooks$book2$authors
+
+#Alternative to Q2
+mybooks[[2]][[2]]
+
+# Q3
+mybooks$book2$readit <- TRUE
+
+```
+
+
+{{< /spoiler >}}

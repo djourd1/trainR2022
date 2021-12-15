@@ -485,6 +485,7 @@ You can check your solutions by the outer product of A and sol, and verify it is
 ```{r}
 A %*% sol
 ```
+
 {{< /spoiler >}}
 
 ### Computing Column and Row sums
