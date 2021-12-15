@@ -69,6 +69,34 @@ ans <- vector("list", 3)
 ans
 ```
 
+## How to analyse the structure of a list
+
+In many cases, you will not create a list yourself. Instead, many package functions create complex outputs in the form of lists. The packages usually provide summary functions to display these results. However, sometimes, you will need to access specific part of the output for further analyses.
+
+We will take the example of linear regression.
+
+Do not worry for the moment on how it works, just the following commands.
+```{r}
+# install.packages("wooldridge")   # if not installed on your machine only
+library(wooldridge)
+data(wage2)  # load the data set
+lr <- lm(wage ~ IQ + age, data=wage2)  # run a linear regression & save the results in lr
+```
+
+When you display the object lr, it is in fact giving you only a tiny portion of all the information contained in the object.
+
+```{r}
+lr
+```
+
+In fact, the output of a linear regression is a list with 12 elements. In order to see the complete structure of the list, you can use the function `str()`:
+
+```{r}
+str(lr)
+```
+
+This is not the purpose of this class to comment these results. But you can see that although you will probably not create lists by yourself, you still need to understand how they function!
+
 ## How to access the elements of a list
 
 ```{r}
