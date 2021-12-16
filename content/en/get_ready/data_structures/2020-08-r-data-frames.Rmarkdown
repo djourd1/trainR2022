@@ -7,18 +7,22 @@ categories: R
 tags: []
 type: book
 weight: 60
+output:
+  html_document:
+    keep_md: true
+
 ---
 
 ## Learning objectives
 
-`data.frame` objects allow to store data of *different types* into a single tabular structure. I will use the "Dataframe" spelling.
+`data.frame` objects allow to store data of *different basic types* into a single tabular structure. I will use the "Data frame" spelling.
  
-Dataframes are very handy to work with survey data since they are usually stored in tabular form, with many columns corresponding to the responses to the survey and many rows (usually, but not always, one row corresponding to one survey). 
+Data frames are very handy to work with survey data since they are usually stored in tabular form, with many columns corresponding to the responses to the survey and many rows (usually, but not always, one row corresponding to one survey). 
 
 In this section, you will learn:
 
 + [What is a data frame](#what-is-a-data-frame)
-+ [How to create a data.frame](#create-a-data-frame)
++ [How to create a data.frame object](#create-a-data-frame)
 + [How to access the data](#how-to-retrieve-the-data)
 + [How to sort the data](#how-to-sort-a-data-frame)
 + [How to quickly summarize the data](#quick-summary)
@@ -41,11 +45,8 @@ Following are the characteristics of a data frame.
 
 We can use built-in dataframes in R to understand this. For example, here is a built-in data frame in R, called `mtcars`. You can access it by just simplying typing its name.
 
-```{r, echo=F}
-mtcars <- mtcars[1:10, ]
-```
-```{r, eval=T}
-mtcars   #for this document we used a modified version of mtcars with only 10 rows
+```{r}
+mtcars   
 ```
 
 The top line of the table, called the *header*, contains the *column names*. Each horizontal line afterward denotes a *data row*, which begins with the name of the row, and then followed by the actual data. Each data member of a row is called a *cell*. 
@@ -99,8 +100,8 @@ There are several ways to retrieve the data contained into the columns.
 
 First, we can retrieve a single column with the "$" operator:
 ```{r}
-mtcars$am 
-class(mtcars$am)
+mtcars$hp 
+class(mtcars$hp)
 ```
 
 Note that you need to know the name of the column you want to retrieve. However, if using R Studio, if you once you have typed mtcars$ a list of possible names will be suggested to you. (yet another good reason to use R Studio instead of R)
@@ -108,8 +109,8 @@ Note that you need to know the name of the column you want to retrieve. However,
 Second, we can retrieve the same column with the single square bracket "[]" operator. To do this, we have to prepend the column name (or column number) with a comma character, which signals that we want to take consider all the rows:
 
 ```{r}
-mtcars[,"am"] 
-mtcars[,9] 
+mtcars[,"hp"] 
+mtcars[,4] 
 ```
 Note that :
 
@@ -117,17 +118,17 @@ Note that :
 + in both cases: 
 
   + a single number is technically a vector, but that in general, they have several entries. The function `length` tells you how many.
-  + the order of the entries in the mtcars$am list preserves the order of the rows in our data table. This is important this it allows us to manipulate one variable based on the results of another.
-  + the object, mtcars$am, is not one number. It's a vector containing 10 numbers.
+  + the order of the entries in the mtcars$hp list preserves the order of the rows in our data table. This is important this it allows us to manipulate one variable based on the results of another.
+  + the object, mtcars$hp, is not one number. It's a vector containing 32 numbers.
 
 
 ```{r}
-am <- mtcars$am 
-class(am)
-length(am)
+hp <- mtcars$hp 
+class(hp)
+length(hp)
 ```
 
-This particular vector is a numeric vector since `am` column contains numbers.
+This particular vector is a numeric vector since `hp` column contains numbers.
 
 
 ### Data contained in several columns
@@ -139,16 +140,16 @@ carsub <- mtcars[,2:4]
 head(carsub)  # the function head displays the first six rows of the table
 ```
 
-This example shows that you can extract the columns 2, 3 and 4 of the table mtcars and store them in a new data.frame called carsub. 
+This example shows that you can extract the columns 2, 3 and 4 of the table `mtcars` and store them in a new data.frame called `carsub`. 
 
-Remember that if you want to show several columns that are not in the same sequence of numbers, you can use the R function `c()`. Remember that c() is a generic function to combine arguments (and forming a vector). So if you want to select the columns 3,7 and 11:
+Remember that if you want to show several columns that are not in the same sequence of numbers, you can use the R function `c()`. Remember that c() is a generic function to combine arguments into a vector. So if you want to select the columns 3,7 and 11:
 
 ```{r}
 carsub <- mtcars[,c(3,7,11)]
 head(carsub)
 ```
 
-Note that the function `c()` is not limited to combine numbers. It can combine many different types of objects into one vector. (as long as all the objects you want to combine are of the same type).
+Note that the function `c()` is not limited to combine numbers. It can combine many different types of objects into one vector (as long as all the objects you want to combine are of the same type).
 
 So you would obtain the result by typing a vector of column names:
 
@@ -174,8 +175,22 @@ Once you understand this syntax and what was said in the previous section about 
 ### Sub-set of rows and columns
 
 ```{r}
-mtcars[c(1,3,10), c(2, 3:5) ] 
+mtcars[c(1,3,10), c(2, 4:5) ] 
 ```
+
+### Subset based on logical criteria
+
+When looking to create subsets based on a logical condition, you can use the `subset()` function. 
+
+```{r}
+subset(mtcars, hp < 90)
+```
+
+Note that: 
+
++ the first argument you pass to `subset()` is the name of the dataframe you want to subset
++ you shouldn't use quotes around hp
++ you should use the traditional comparators to contrusct your conditions: `==`, `>`, etc. 
 
 ## How to sort a data.frame?
 
@@ -215,9 +230,9 @@ summary(carsub)
 
 ### Tibbles
 
-Tibble is a new class of data frames (developed by RStudio teams). They are also capturing data in tabular forms, and have internal features that make working with some packages a little easier. 
+Tibble is a new class of data frames (developed by RStudio). They are also capturing data in tabular forms, and have internal features that make working with some packages a little easier. 
 
-You can work with tibbles by installing the suite of packages tidyverse or the specific package tibble.
+You can work with tibbles by installing the suite of packages `tidyverse` or the specific package `tibble`.
 
 ```{r, eval = F}
 # install a suite of related packages
@@ -237,7 +252,9 @@ library(tibble)
 
 Like data.frame, you can create a new tibble from individual vectors with tibble(). 
 
-However, there are a few improvements; tibble() will: 
+However, there are a few differences: 
+
+tibble() will: 
 
 + keep strings as characters (and not convert them automatically into factors)
 + allows you to refer to variables that you just created
@@ -308,4 +325,71 @@ df[[1]] # Extract by position
 
 data.table is a package that extends data.frames. Two of its most notable features are speed and cleaner syntax.
 I will give much more details about data.table in a separate section.
+
+
+## Exercises
+
+### Exercise 1: 
+
+1. Create the following vectors corresponding to Name, Age, Height, Weigth and Sex. Make sure Sex is a factor.
+```{r, echo=FALSE}
+Name <- c("Alex", "Moses", "Stephan", "Zakhele", "Leane", "Lucas", "Nobhule")
+Age <- c(25, 31, 23, 52, 76, 49, 26)
+Height <- c(177, 163, 190, 179, 163, 183, 164)
+Weight <- c(57, 69, 83, 75, 70, 83, 53)
+Sex <- as.factor(c("F", "F", "M", "M", "F", "M", "F"))
+Age
+Height
+Weight
+Sex
+```
+
+2. Using these vectors, create the following data frame. (Be careful the vector Name must be used for the creation of row names)
+
+```{r, echo=FALSE}
+df <- data.frame (row.names = Name, Age, Height, Weight, Sex)
+df
+```
+
+{{< spoiler text="Show the answer" >}}
+
+Question 1:
+
+```{r, echo=TRUE}
+Name <- c("Alex", "Moses", "Stephan", "Zakhele", "Leane", "Lucas", "Nobhule")
+Age <- c(25, 31, 23, 52, 76, 49, 26)
+Height <- c(177, 163, 190, 179, 163, 183, 164)
+Weight <- c(57, 69, 83, 75, 70, 83, 53)
+Sex <- as.factor(c("F", "F", "M", "M", "F", "M", "F"))
+Age
+Height
+Weight
+Sex
+```
+
+Question 2:
+
+```{r, echo=TRUE}
+df <- data.frame (row.names = Name, Age, Height, Weight, Sex)
+df
+```
+
+{{< /spoiler >}}
+
+
+### Exercise 2
+
+Using the dataframe `mtcars`, create a new data frame that: 
+
++ only includes cars with a horse power (hp) greater or equal to 120 and lower or equal to 200, 
++ only contains the columns `disp`, `drat` and `hp`,
++ is sorted by decreasing `hp`
+
+{{< spoiler text="Show the answer" >}}
+```{r}
+sub <- subset(mtcars[, c("disp", "drat", "hp")], hp >= 120 & hp <=200)
+sub2 <- sub[order(-sub$hp),]
+sub2
+```
+{{< /spoiler >}}
 
