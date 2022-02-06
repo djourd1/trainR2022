@@ -1,17 +1,18 @@
 ---
-title: Why R ?
-author: Damien Jourdain
+title: "Why R ?"
+author: "Damien Jourdain"
 date: '2019-02-20'
-slug: why-r
 output:
-  pdf_document:
-      toc : false
-categories:
-  - R
+  html_document:
+    keep_md: true
+slug: why-r
 tags: []
+categories: R
 type: book
 weight: 1
 ---
+
+{{< youtube CXpHSYRiJ9g>}}
 
 R is a statistical program: it will help you perform statistical analyses to better understand your data. It will also allow you to run almost any statistical model (linear regression, etc.) on these data.
 
