@@ -33,7 +33,7 @@ First, we will launch the R programme we have just installed (for example, by cl
 
 In R, we can declare variables using the assignment symbol `<-`, which is the "less than" sign followed by a minus. Note that it looks like a little arrow. `L <- 10000` means that __you're assigning the number 10000 to the variable named L__.
 
-Note: We coud also use `=` the equals sign for assignment, but we recommend against it, because using it can cause confusion.
+Note: We could also use `=` the equals sign for assignment. Both are correct, but we tend to prefer the "<-" assignement.
 
 Try it out in your console.
 
@@ -84,7 +84,6 @@ To be able to calculate the  formula, we will again rely on R predefined operato
 L * (r/1200) *(1+r/1200)^N / ((1 + r/1200)^N - 1) 
 ```
 
-
 Note that simply typing the formula with the variables gives you the solution, but does not store it into the workspace. If you want to use the solutions obtained for further calculations, you need to assign them to a new variable. 
 
 ```{r}
@@ -92,12 +91,28 @@ Note that simply typing the formula with the variables gives you the solution, b
 m <- L * (r/1200) *(1+r/1200)^N / ((1 + r/1200)^N - 1) 
 ```
 
-Again the solutions are not printed out to your console, but they are stored in the workspace and ready to be used for further work.
+Again the solutions are not printed out to your console, but they are stored in the workspace and ready to be used for further work. If you want to see the variable, you have to type it on another line and press CTRL + Enter keys.
+
+```{r}
+m 
+```
+
+{{< callout note >}}
+
+Note that $m$ was calculated with the variables $L$, $R$ and $N$, but is stored as a numeric value: m does not store the formula that was used to create it. You can verify this, by changing the value of $L$, and check the value of $m$: although you changed L, the value of $m$ has not changed
+
+```{r}
+L <- 20000
+m
+```
+{{< /callout >}}
+
 
 As a small trick, if you want to store the value to the workspace and at the same time see the result on the console, you can surround your assignment with brackets:
 
 ```{r}
-#surround assignments with brackets to see print the results of the assignment
+# Surround assignments with brackets to see print the results of the assignment
+# Note that the value of L have changed, so the calculation will give you different results
 (m <- L * (r/1200) *(1+r/1200)^N / ((1 + r/1200)^N - 1))
 (extra <-  (m * N) - L )
 ```
