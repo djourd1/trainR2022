@@ -401,6 +401,15 @@ nrow(A)
 ncol(A)
 ```
 
+### Computing Column and Row sums
+
+```{r}
+colSums(A)
+rowSums(A)
+sum(A)  #total over all elements
+```
+
+
 ### Diagonal elements 
 ```{r}
 diag(A)
@@ -447,7 +456,7 @@ invA %*% A
 A %*% invA
 ```
 
-#### Exercise: solve a system of linear equations
+### Exercise: solve a system of linear equations
 
 So far, we have used the function `solve()` with only one argument, the matrix to be inversed. When we do this, the output is the inverse of the matrix.
 
@@ -488,10 +497,3 @@ A %*% sol
 
 {{< /spoiler >}}
 
-### Computing Column and Row sums
-
-```{r}
-colSums(A)
-rowSums(A)
-sum(A)  #total over all elements
-```

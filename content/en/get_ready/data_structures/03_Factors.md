@@ -18,7 +18,6 @@ Factors are used to store categorical variables, i.e. variables that take a limi
 
 Here you will learn how to create and manipulate factors. 
 
-
 ## Factors
 
 Factors are stored as a vector of strings - the levels.
@@ -27,17 +26,28 @@ Factors are stored as a vector of strings - the levels.
 
 To create a factor, we use the function `factor()`. The only required argument to factor is a vector of values which will be returned as a vector of factor values. Both numeric and character variables can be made into factors, but a factor's levels will always be character values. You can see the possible levels for a factor through the `levels()` command. 
 
-```{r}
+
+```r
 # Transform character vector into a factor
 gender = c("male","female","female","male","female","female")
 gender.fac = factor(gender)
 gender.fac
 ```
 
+```
+## [1] male   female female male   female female
+## Levels: female male
+```
+
 You can examine the structure of a factor function by using `str(gender.fac)`
-```{r}
+
+```r
 # examine the structure of the factor gender.fac
 str(gender.fac)
+```
+
+```
+##  Factor w/ 2 levels "female","male": 2 1 1 2 1 1
 ```
 
 You can see that gender.fac is a factor with 2 levels. The function `factor` converted the character vector into a vector of integer values. "Female" is the first level encoded as 1 whereas the "Male" is the second level, encoded as 2.
@@ -46,22 +56,46 @@ We can see that creating a factor is an efficient way to store a vector of chara
 
 ### Changing the order of the levels
 
-The levels of a factor are used when displaying the factor. You can change these levels at the time you create a factor by passing a vector with the new values through the `levels= argument`. 
+The levels of a factor are used when displaying the factor. 
+By default, when factoring a vector of string, the levels are generated using alphabetic order. In the previous example, this is why "female" were assigned to 1, and "male" were assigned to 2.
 
-To convert the vector gender into a factor where Male is coded 1, and Female is coded 2, we use the following command:
+You can change these levels when you create a factor by passing a vector with the new values through the `levels= argument`. 
 
-```{r}
+To convert the vector gender into a factor where male is coded 1, and female is coded 2, we use the following command:
+
+
+```r
 gender
-gender.fac2 = factor(gender, levels=c("Male", "Female"))
+```
+
+```
+## [1] "male"   "female" "female" "male"   "female" "female"
+```
+
+```r
+gender.fac2 = factor(gender, levels=c("male", "female"))
 gender.fac2
+```
+
+```
+## [1] male   female female male   female female
+## Levels: male female
+```
+
+```r
 str(gender.fac2)
+```
+
+```
+##  Factor w/ 2 levels "male","female": 1 2 2 1 2 2
 ```
 
 The manipulation of factor levels becomes very interesting when you want to control the order of appearance of the different levels.
 
 Consider a vector theMonths containing a list of months:
 
-```{r}
+
+```r
 theMonths = c("March","April","March", "January","November","January",
  "September","October","September","November","August",
  "January","November","November","February","May","August",
@@ -70,17 +104,36 @@ theMonths = c("March","April","March", "January","November","January",
  theMonths <- factor(theMonths)
  theMonths
 ```
+
+```
+##  [1] March     April     March     January   November  January   September
+##  [8] October   September November  August    January   November  November 
+## [15] February  May       August    July      December  August    August   
+## [22] September November  February  April    
+## 11 Levels: April August December February January July March May ... September
+```
+
 By default, the levels will be coded using alphabetic order. As a result, April is coded 1, August is coded 2, etc. In the case of Months, this will make the readings of results a bit difficult when summarizing information.
  
-For example, the function `table()` will tell us how many times each month has appeared in our vector theMonths
+For example, the function `table()` will tell us how many times each month has appeared in our vector theMonths, but you can see the months appear in a un-natural way.
 
-```{r}
+
+```r
 table(theMonths)
+```
+
+```
+## theMonths
+##     April    August  December  February   January      July     March       May 
+##         2         4         1         2         3         1         2         1 
+##  November   October September 
+##         5         1         3
 ```
 
 If you want to circonvent this problem, you can use the levels argument when creating your vector theMonths
 
-```{r}
+
+```r
 theMonths_ord <- factor(theMonths,levels=c("January","February","March",
              "April","May","June","July","August","September",
              "October","November","December"))
@@ -88,48 +141,106 @@ theMonths_ord <- factor(theMonths,levels=c("January","February","March",
 table(theMonths_ord)
 ```
 
+```
+## theMonths_ord
+##   January  February     March     April       May      June      July    August 
+##         3         2         2         2         1         0         1         4 
+## September   October  November  December 
+##         3         1         5         1
+```
+
 
 ### Ordered vs. Unordered Factors
 
 Although the months clearly have an ordering, this is not reflected in the output of the table function. 
 
-```{r}
+
+```r
 theMonths <- factor(theMonths,levels=c("January","February","March",
              "April","May","June","July","August","September",
              "October","November","December"))
 
 table(theMonths)
+```
+
+```
+## theMonths
+##   January  February     March     April       May      June      July    August 
+##         3         2         2         2         1         0         1         4 
+## September   October  November  December 
+##         3         1         5         1
+```
+
+```r
 theMonths[2] > theMonths[3]
+```
+
+```
+## Warning in Ops.factor(theMonths[2], theMonths[3]): '>' not meaningful for
+## factors
+```
+
+```
+## [1] NA
 ```
  
 As the results of the last operation shows, the comparison operators are not supported for unordered factors. Creating an ordered factor solves this problem: 
 
-```{r}
+
+```r
 theMonths <- factor(theMonths,levels=c("January","February","March",
              "April","May","June","July","August","September",
              "October","November","December"), ordered = TRUE)
 
-theMonths[2] > theMonths[3]  # now we can compare January and July
+theMonths[2] > theMonths[3]  # now we can compare February and March
+```
+
+```
+## [1] TRUE
 ```
 
 ### Creating a factor using the function cut()
 
-Another common way to create factors is to split a continuous variables into intervals using the `cut` function. The `breaks= argument` to cut is used to describe how ranges of numbers will be converted to factor values. If a number is provided through the `breaks= argument`, the resulting factor will be created by dividing the range of the variable into that number of equal length intervals; if a vector of values is provided, the values in the vector are used to determine the breakpoint. Note that if a vector of values is provided, the number of levels of the resultant factor will be one less than the number of values in the vector.
+Another common way to create factors is to split a continuous numeric variables into intervals using the `cut()` function. The `breaks= argument` to cut is used to describe how ranges of numbers will be converted to factor values. If a number is provided through the `breaks= argument`, the resulting factor will be created by dividing the range of the variable into that number of equal length intervals; if a vector of values is provided, the values in the vector are used to determine the breakpoint. Note that if a vector of values is provided, the number of levels of the resultant factor will be one less than the number of values in the vector.
 
 For example, consider a vector `women.heights` where you recorded the height for a sample of women. If we wanted to create a factor corresponding to weight, with three equally-spaced levels, we could use the following:
 
-```{r}
+
+```r
 women.heights <- c(158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 155)
 women.heights.factor = cut(women.heights,3)  
 women.heights.factor
+```
+
+```
+##  [1] (155,161] (155,161] (155,161] (161,166] (161,166] (161,166] (161,166]
+##  [8] (161,166] (161,166] (166,172] (166,172] (166,172] (166,172] (166,172]
+## [15] (166,172] (155,161]
+## Levels: (155,161] (161,166] (166,172]
+```
+
+```r
 table(women.heights.factor)
+```
+
+```
+## women.heights.factor
+## (155,161] (161,166] (166,172] 
+##         4         6         6
 ```
 
 If you want to change the way the factor levels are displayed, use the `labels= argument`. It allows you to specify the levels of the factors, instead of the intervals:
 
-```{r}
+
+```r
 women.heights.factor2 = cut(women.heights,3,labels=c('Low','Medium','High'))
 table(women.heights.factor2)
+```
+
+```
+## women.heights.factor2
+##    Low Medium   High 
+##      4      6      6
 ```
 
 ## Exercises
@@ -138,8 +249,9 @@ table(women.heights.factor2)
 
 R provides a predefined variable `month.abb` with the first three letters of months:
 
-```{r, echo=FALSE}
-month.abb
+
+```
+##  [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
 ```
 
 1. Using month.abb, create a random sample of 20 months selected from month.abb and transform it as a factor; when doing so, make sure the coding will not be made according to alphabetic order of the months.
@@ -149,15 +261,29 @@ month.abb
 {{< spoiler text="Show the answer" >}}
 
 For the first question, you can use the function sample with the argument `replace = TRUE`
-```{r}
+
+```r
 themonths <- sample(month.abb, 30, replace = TRUE)
 themonths.factor <- factor(themonths, levels=month.abb)
 themonths.factor
 ```
 
+```
+##  [1] Oct Apr Dec Nov Mar Jul Sep Mar Jan Feb Jun Oct Feb Feb Oct Sep Feb Jul Oct
+## [20] Dec Jun Dec Oct Oct Dec Oct Dec Oct Aug Nov
+## Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+```
+
 For the second question, you can use the function table
-```{r}
+
+```r
 table(themonths.factor)
+```
+
+```
+## themonths.factor
+## Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+##   1   4   2   1   0   2   2   1   2   8   2   5
 ```
 
 {{< /spoiler >}}

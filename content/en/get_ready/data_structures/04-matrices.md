@@ -320,11 +320,11 @@ Note that you can use a single line of command for these different operations. B
 ```
 
 ```
-##             [,1]        [,2]       [,3]       [,4]       [,5]
-## row_1 -0.4863633  0.17631181 -1.3389148  1.6461737  0.1397620
-## row_2 -1.1975558 -1.49929516  1.0700292  0.4640998 -0.3016797
-## row_3 -1.0489792 -0.05523892 -0.0508977 -0.1612939 -0.9387939
-## row_4 -0.6748280  1.64409801  2.3691276  1.9742008 -0.5267514
+##              [,1]       [,2]         [,3]       [,4]        [,5]
+## row_1 -0.17060617  0.1508352 -0.456188977 -0.4094545  0.11977180
+## row_2 -0.01789341 -0.2084555 -2.060163210  0.9443676 -2.74297045
+## row_3 -0.95768499 -1.2404368 -0.005662902  0.2545656 -0.41545993
+## row_4  0.52004921 -0.1741887 -0.406370489 -0.7070530 -0.09037533
 ```
 {{< /spoiler >}}
 
@@ -774,6 +774,34 @@ ncol(A)
 ## [1] 2
 ```
 
+### Computing Column and Row sums
+
+
+```r
+colSums(A)
+```
+
+```
+## [1]  6 14
+```
+
+```r
+rowSums(A)
+```
+
+```
+## [1]  8 12
+```
+
+```r
+sum(A)  #total over all elements
+```
+
+```
+## [1] 20
+```
+
+
 ### Diagonal elements 
 
 ```r
@@ -906,7 +934,7 @@ A %*% invA
 ## [2,]    0    1
 ```
 
-#### Exercise: solve a system of linear equations
+### Exercise: solve a system of linear equations
 
 So far, we have used the function `solve()` with only one argument, the matrix to be inversed. When we do this, the output is the inverse of the matrix.
 
@@ -970,31 +998,6 @@ A %*% sol
 ## [1,]  1.0
 ## [2,]  0.5
 ```
+
 {{< /spoiler >}}
 
-### Computing Column and Row sums
-
-
-```r
-colSums(A)
-```
-
-```
-## [1] 0 6
-```
-
-```r
-rowSums(A)
-```
-
-```
-## [1] 5 1
-```
-
-```r
-sum(A)  #total over all elements
-```
-
-```
-## [1] 6
-```
