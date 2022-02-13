@@ -11,13 +11,18 @@ weight: 10
 output:
   html_document:
     keep_md: true
-customjs:
- - //cdn.datacamp.com/dcl-react.js.gz
 ---
+
+```{=html}
+<script type="text/javascript" src="https://cdn.datacamp.com/dcl/script-41eb27f7cc.js" charset="utf-8">
+</script>
+```
+
 
 ## Learning objectives
 
 All objects have two intrinsic attributes: *mode* and *length*. The mode is the basic type of the elements of the object. There are four main modes: numeric, character, complex, and logical (FALSE or TRUE). 
+
 <div data-datacamp-exercise data-lang="r">
 	<code data-type="pre-exercise-code">
 		# This will get executed each time the exercise gets initialized

@@ -11,9 +11,15 @@ weight: 10
 output:
   html_document:
     keep_md: true
-customjs:
- - //cdn.datacamp.com/dcl-react.js.gz
 ---
+
+```{r}
+htmltools::tagList(
+  htmltools::tags$script(src="//cdn.datacamp.com/dcl-react.js.gz")
+)
+```
+
+
 
 ## Learning objectives
 
