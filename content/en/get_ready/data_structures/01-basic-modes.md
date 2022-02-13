@@ -35,7 +35,6 @@ output:
 		test_function("print")
 		success_msg("Great job!")
 	</code>
-	<div data-type="hint">Use the assignment operator (<code><-</code>) to create the variable <code>a</code>.</div>
 </div>
 
 
