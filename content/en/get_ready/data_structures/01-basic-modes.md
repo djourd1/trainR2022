@@ -13,44 +13,12 @@ output:
     keep_md: true
 ---
 
-```{=html}
-<script type="text/javascript" src="https://cdn.datacamp.com/dcl/script-41eb27f7cc.js" charset="utf-8">
-</script>
-```
+
 
 
 ## Learning objectives
 
 All objects have two intrinsic attributes: *mode* and *length*. The mode is the basic type of the elements of the object. There are four main modes: numeric, character, complex, and logical (FALSE or TRUE). 
-
-<div data-datacamp-exercise data-lang="r">
-	<code data-type="pre-exercise-code">
-		# This will get executed each time the exercise gets initialized
-		b = 6
-	</code>
-	<code data-type="sample-code">
-		# Create a variable a, equal to 5
-
-
-		# Print out a
-
-
-	</code>
-	<code data-type="solution">
-		# Create a variable a, equal to 5
-		a <- 5
-
-		# Print out a
-		print(a)
-	</code>
-	<code data-type="sct">
-		test_object("a")
-		test_function("print")
-		success_msg("Great job!")
-	</code>
-	<div data-type="hint">Use the assignment operator (<code><-</code>) to create the variable <code>a</code>.</div>
-</div>
-
 
 Once the mode of an object is known, it they can be assembled into into more complex data structures (vectors, arrays, dataframes, etc.) that we will study later.
 
