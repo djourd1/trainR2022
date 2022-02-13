@@ -13,13 +13,8 @@ output:
     keep_md: true
 ---
 
-initAddedDCLightExercises();
 
 <div data-datacamp-exercise data-lang="r">
-	<code data-type="pre-exercise-code">
-		# This will get executed each time the exercise gets initialized
-		b = 6
-	</code>
 	<code data-type="sample-code">
 		# Create a variable a, equal to 5
 
