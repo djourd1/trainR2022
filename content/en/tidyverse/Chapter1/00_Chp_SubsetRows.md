@@ -523,5 +523,5 @@ gapminder %>% filter(country %in% random_names & year > 2000)
 ```
 {{< /spoiler >}}
 
-[A publication]({{< relref "x" >}})
+[A publication]({{< relref "x.html" >}})
 
