@@ -7,9 +7,6 @@ main:
   - name: Start with R
     url: get_ready/
     weight: 30
-  - name: tidyverse
+  - name: Select and Format Data
     url: tidyverse
     weight: 40
-  - name: "data.table"
-    url: data_table/
-    weight: 50
