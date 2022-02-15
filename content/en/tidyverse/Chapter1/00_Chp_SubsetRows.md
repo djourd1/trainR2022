@@ -11,12 +11,11 @@ weight: 2
 output:
   html_document:
     keep_md: true
-
 ---
 
 ## Learning objectives
 
-If you want exclude some individuals that are outside the scope of your analysis, you will need to select subsamples of your data set. In this section, you will learn how to select specific rows of your data set. This is our first encounter with the package `dplyr` and the use of pipes (`%>%`) for chaining commands. **This is an important section**, as you will use this syntax for all types of data manipulation that follow.  
+If you want exclude some individuals that are outside the scope of your analysis, you need to be able to select subsamples of your data set. In this section, you will learn how to select specific rows of your data set. This is our first encounter with the package `dplyr` and the use of pipes (`%>%`) for chaining commands. **This is an important section**, as you will use this syntax for all types of data manipulation that follow.  
 
 At the end of this section, you should be able to select specific rows of a data set :
 
@@ -89,6 +88,37 @@ Note that all `dplyr` related commands work in the same way:
 + The first argument is a data frame.
 + The subsequent arguments describe what to do with the data frame, using the variable names **without quotes** or sometimes some vectors of numbers.
 + The result is a new data frame.
+
+<div data-datacamp-exercise data-lang="r">
+	<code data-type="pre-exercise-code">
+		# This will get executed each time the exercise gets initialized
+		b = 6
+	</code>
+	<code data-type="sample-code">
+		# Create a variable a, equal to 5
+
+
+		# Print out a
+
+
+	</code>
+	<code data-type="solution">
+		# Create a variable a, equal to 5
+		a <- 5
+
+		# Print out a
+		print(a)
+	</code>
+	<code data-type="sct">
+		test_object("a")
+		test_function("print")
+		success_msg("Great job!")
+	</code>
+	<div data-type="hint">Use the assignment operator (<code><-</code>) to create the variable <code>a</code>.</div>
+</div>
+
+
+
 
 ### Using the `%>%` (pipe) operator
 
