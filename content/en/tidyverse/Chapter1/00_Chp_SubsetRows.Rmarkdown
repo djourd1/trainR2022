@@ -66,11 +66,8 @@ Note that all `dplyr` related commands work in the same way:
 + The subsequent arguments describe what to do with the data frame, using the variable names **without quotes** or sometimes some vectors of numbers.
 + The result is a new data frame.
 
+<div encaps>
 <div data-datacamp-exercise data-lang="r">
-	<code data-type="pre-exercise-code">
-		# This will get executed each time the exercise gets initialized
-		b = 6
-	</code>
 	<code data-type="sample-code">
 		# Create a variable a, equal to 5
 
@@ -86,12 +83,7 @@ Note that all `dplyr` related commands work in the same way:
 		# Print out a
 		print(a)
 	</code>
-	<code data-type="sct">
-		test_object("a")
-		test_function("print")
-		success_msg("Great job!")
-	</code>
-	<div data-type="hint">Use the assignment operator (<code><-</code>) to create the variable <code>a</code>.</div>
+</div>
 </div>
 
 
