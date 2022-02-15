@@ -309,5 +309,3 @@ gapminder %>% filter(country %in% random_names & year > 2000) %>% arrange(countr
 ```
 {{< /spoiler >}}
 
-[A publication]({{< relref "x.html" >}})
-
