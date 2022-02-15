@@ -3,6 +3,7 @@ title: data.table principles
 author: Damien Jourdain
 date: '2020-08-20'
 slug: dt-principles
+draft: true
 categories:
   - R
 tags: []

@@ -3,6 +3,7 @@ linktitle: "Manipulate with data.table"
 summary: Manipulate your data with the data.table package
 icon: book
 icon_pack: fas
+draft: true
 
 type: book  # Do not modify.
 ---
