@@ -1,0 +1,126 @@
+---
+title: "Group and summarize your data" 
+author: Damien Jourdain
+date: '2022-02-23'
+slug: summarize-data
+categories:
+  - R
+tags: []
+type: book
+weight: 30
+
+output:
+  html_document:
+    keep_md: true
+---
+
+```{r, echo=FALSE, warning=FALSE,message=FALSE}
+library(gapminder)
+library(tidyverse)
+data <- gapminder
+data$row_no = 1:nrow(data)
+```
+
+## Objectives
+
+At times, you do not need all the detailed information available, but you will only be interested in the summarized data. As an example, with our gapminder data, you may only be interested by the country means of population or GDP data. 
+
+To do that, you will need to use the `summarize` and `group_by` functions.
+
+## Group and summarize data
+
++ group_by: allows you to group by a one or more variables.
++ summarize:  creates a new data.frame containing calculated summary information about a grouped variable.
+
+For example, if you want the mean of each country's population, you would use the following sequence of commands:
+
+1. indicate what grouping you want to use using the `group_by` function
+2. create the summary variables using the `summarize` function.
+
+In our case, to make things easier to read, we divided the data per 1,000,000 and rounded the figures.
+
+```{r}
+data %>% 
+  group_by(country) %>%
+  summarize(m_pop = round(mean(pop/1000000),1))
+```
+
+Note that you created a new data set with only 142 rows (one per available country). 
+
+The data available per country may vary between countries, so you may want to add another variable indicating the number of records are summarized for each country. For this, you can add another variable and use the function `n()`.
+
+```{r}
+data %>% 
+  group_by(country) %>%
+  summarize(m_pop = round(mean(pop/1000000),1), N = n())
+```
+
+You can see that you can create as many new variables as you want, and organize them as needed.
+
+Sometimes, the analysis you will want to carry can be more complex. For example, you may want to calculate the percentage growth over the year for each country, and sort them by growth rate.
+
+This is quite complex. But in fact, you can see that tidyverse can help us in decomposing this seemingly complex task into simple sub-tasks.
+
+As a piece of advice, before you start to code, think about your ultimate goal. Rather than simply jumping into coding, you will be better of if you plan things out !
+
+In particular, what we call **pseudocode** can be very useful for organization your coding operations. It allows you to think through what you wish to accomplish and the most efficient way to go about it BEFORE you write your code.
+
+To do so, write out the steps that you will need to implement in order to achieve your goal. It's ok if you don't know all of the functions yet to implement this. Organize first, look up functions second. 
+
+In our case, we want to see the difference in population between the first year (1952) and the last year (2007). So we will want 
+
+1. keep data related to 1952 and 2007
+2. you want to summarize the information at the country level, group the information per country
+3. find a function that can make calculations using previous rows (a research will lead you to the function lag()), and calculate the difference in population between these two years.
+4. Keep the columns that are useful 
+4. Sort the results per growth rate.
+
+Once you have figured out the right sequence of elementary tasks, writing the code becomes very easy. As usual, for readibilty of your code, you will find useful to use one row for one task:
+
+
+```{r}
+data %>% 
+  filter(year %in% c(1952, 2007)) %>%
+  group_by(country) %>%
+  mutate(diffPop = pop - lag(pop), growthPop = diffPop/lag(pop)) %>%
+  select(country, year, pop, diffPop, growthPop) %>% 
+  filter(!is.na(growthPop)) %>%
+  arrange(desc(growthPop))
+```
+
+
+### Exercise: 
+
+Calculate the average and standard deviation of the growth of the GDP between 2002 and 2007 per capita for each continent. Sort your results by decreasing growth. You will need some pseudo-coding !!
+
+
+{{< spoiler text="Click to see the solution" >}} 
+Let's think about the different elementary tasks before we can reach our goal:
+
+1. You will need the growth of GDP for each country first
+
+  +  Select the years 2002 and 2007
+  + Calculate the growth per country
+  + Eliminate the NA values
+
+2. Summarize the information per continent. So we need to:
+
+  + Group by continent
+  + Create summary variables
+
+3. Sort your final results
+
+
+```{r}
+data %>% 
+  filter(year %in% c(2002, 2007)) %>%
+  group_by(country) %>%
+  mutate(diffGDP = gdpPercap - lag(gdpPercap), growthGDP = diffGDP/lag(gdpPercap)) %>%
+  filter(!is.na(growthGDP)) %>%
+  group_by(continent) %>%
+  summarize(mGrowth = mean(growthGDP), sdGrowth = sd(growthGDP))  %>%
+  arrange(desc(mGrowth))
+```
+
+{{< /spoiler >}}
+

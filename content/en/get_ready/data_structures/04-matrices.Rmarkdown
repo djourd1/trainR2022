@@ -464,10 +464,10 @@ However, `solve()`, as its name suggests, can be also used to solve systems of l
 
 In this exercise, you will use the function `solve()` to resolve the following system of equation.
 
-$$ \\begin{pmatrix}
+$$ \\begin{matrix}
     3 u_1 + 2 u_2  & = & 1 \\\\
    -3 u_1 + 4 u_2  & = & 0.5 
-\\end{pmatrix} $$
+\\end{matrix} $$
 
 This system can be written in the matrix format A.x = b, 
 
