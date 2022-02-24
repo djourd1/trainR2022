@@ -1,5 +1,5 @@
 ---
-title: Part 1: Getting ready
+title: "Part 1: Getting ready"
 type: book  # Do not modify.
 ---
 
