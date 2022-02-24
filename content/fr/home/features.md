@@ -9,8 +9,12 @@ feature:
     icon_pack: fas
     name: Installer 
     description: R and R studio
-  - icon: question
+  - icon: cubes
     icon_pack: fas
-    name: Base de connaissance
-    description: For teams
+    name: Objets R
+    description: Principaux types de données et de structures
+  - icon: wrench
+    icon_pack: fas
+    name: Importer et manipuler ses données Data
+    description: Outils pour travailler sur les données
 ---

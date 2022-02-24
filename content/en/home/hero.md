@@ -16,4 +16,4 @@ cta:
   icon: download
 ---
 
-Install R and R Studio and learn the essential functionalities that will useful to understand your data and run econometric models.
+Install R and R Studio and learn the essential functionalities that will be useful to understand your data and run econometric models.

@@ -1,6 +1,6 @@
 ---
 # Data Structures
-linktitle: "Chapitre 2: Les Types et les structures de données"
+linktitle: "Chapitre 2: Les types et les structures de données"
 summary: Les types de données manipulées par R
 weight: 2
 icon: book
