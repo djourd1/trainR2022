@@ -11,10 +11,6 @@ feature:
     description: R and R studio
   - icon: question
     icon_pack: fas
-    name: Knowledge Base
+    name: Base de connaissance
     description: For teams
-  - icon: list-alt
-    icon_pack: fas
-    name: Personal Notebook
-    description: For yourself
 ---

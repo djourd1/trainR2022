@@ -2,7 +2,7 @@
 widget: hero
 headless: true
 weight: 10
-title: Une introduction a R et R Studio
+title: Une introduction à R et R Studio
 hero_media: book.svg
 design:
   background:
@@ -10,10 +10,10 @@ design:
     gradient_end: '#2b94c3'
     text_color_light: true
 cta:
-  url: docs/
+  url: get_ready/
   label: Commencer le cours
   icon_pack: fas
   icon: download
 ---
 
-Installer R et R Studio et maitriser leurs fonctions essentielles pour le développement de modèles économétriques.
+Installer R et R Studio et maitriser les fonctions essentielles pour le développement de modèles économétriques.

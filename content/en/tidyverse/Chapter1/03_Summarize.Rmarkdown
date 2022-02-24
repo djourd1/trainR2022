@@ -1,11 +1,9 @@
 ---
 title: "Group and summarize your data" 
 author: Damien Jourdain
-date: '2022-02-23'
+date: '2022-01-01'
 slug: summarize-data
-categories:
-  - R
-tags: []
+
 type: book
 weight: 30
 
@@ -88,11 +86,41 @@ data %>%
   arrange(desc(growthPop))
 ```
 
+### Exercise 1: 
 
-### Exercise: 
+Calculate the mean and standard deviation of the life expectancy per continent in 1952 and in 2007. Arrange your data per year and mean life expectancy. 
+Is the ranking of continents changed? 
+You will need some pseudo-coding !!
+
+{{< spoiler text="Click to see the solution" >}} 
+Let's think about the different elementary tasks before we can reach our goal:
+
+1. Restrict data to 1952 and 2007 only 
+2. Group data per continent and per year
+3. Create new variables calculating the mean and standard deviation
+4. Sort the data
+
+Each line will correspond to a tidyverse command:
+
+```{r}
+data %>% 
+  filter(year %in% c(1952, 2007)) %>%
+  group_by(continent, year) %>%
+  summarize(meanLife = mean(lifeExp), sdLife= sd(lifeExp)) %>%
+  select(continent, year, meanLife, sdLife) %>%
+  arrange(year, meanLife)
+  
+```
+
+{{< /spoiler >}}
+
+
+
+
+
+### Exercise 2: 
 
 Calculate the average and standard deviation of the growth of the GDP between 2002 and 2007 per capita for each continent. Sort your results by decreasing growth. You will need some pseudo-coding !!
-
 
 {{< spoiler text="Click to see the solution" >}} 
 Let's think about the different elementary tasks before we can reach our goal:

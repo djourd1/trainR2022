@@ -3,12 +3,6 @@ title: Pourquoi utiliser R ?
 author: Damien Jourdain
 date: '2021-02-04'
 slug: why-r
-output:
-  pdf_document:
-      toc : false
-categories:
-  - R
-tags: []
 type: book
 weight: 1
 ---
@@ -25,7 +19,7 @@ D'autres caractéristiques attrayantes sont :
 + R est un logiciel libre et ouvert, ce qui signifie que vous pouvez consulter les codes (en particulier les codes des paquets que vous utiliserez). Ainsi, vous saurez exactement ce que vous faites !
 + R fonctionne sur toutes les grandes plates-formes : Windows, Mac OS, Unix, Linux.
 + R a une communauté d'utilisateurs importante et active. Il existe donc de nombreuses ressources pour apprendre et poser des questions.
-+ R permet de construire facilement des tracés significatifs (et magnifiques) à partir de vos données
++ R permet de construire facilement des graphes d'excellente qualité à partir de vos données
 + R permet aux développeurs de partager les mises en œuvre logicielles des nouvelles techniques de la science des données sous la forme de "paquetages", qui sont des extensions de R. Il y a maintenant des milliers de ces paquetages disponibles pour une utilisation immédiate.
 
 L'analyse interactive des données se fait dans la console R. Dans la console R, vous pouvez exécuter des commandes au fur et à mesure que vous les tapez. Il existe plusieurs façons d'accéder à une console, mais la plus simple est de télécharger et d'installer R, puis de le démarrer sur votre ordinateur.
