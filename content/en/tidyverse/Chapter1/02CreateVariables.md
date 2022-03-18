@@ -100,9 +100,9 @@ Indeed, you can use the `ifelse()` function within a tidyverse syntax.
 
 ```r
 df  %>%
-  mutate( dR1 = ifelse(df$Region == 'Reg1', 1, 0), 
-          dR2 = ifelse(df$Region == 'Reg2', 1, 0),
-          dR3 = ifelse(df$Region == 'Reg3', 1, 0)) 
+  mutate( dR1 = ifelse(Region == 'Reg1', 1, 0), 
+          dR2 = ifelse(Region == 'Reg2', 1, 0),
+          dR3 = ifelse(Region == 'Reg3', 1, 0)) 
 ```
 
 {{% callout note %}}
