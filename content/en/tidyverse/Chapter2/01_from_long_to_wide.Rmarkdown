@@ -12,7 +12,7 @@ output:
 
 ## The original data
 
-Let's take the gapminder data again. To help visualize how data are reshaped, let's retain only data available after 2000.
+Let's take the gapminder data again. To help visualize how data are reshaped, let's retain only data available after year 2000.
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -56,7 +56,7 @@ Let's now assume that you want to have another table where:
 + each line corresponds to a unique country
 + each line contains information about the population *and* life expectancy for the 2000's
 
-Since there are two variables to be reshaped, the names_prefix is now automatically taken from the names_from variables.
+Since there are two variables to be reshaped, the names_prefix is now automatically taken from the `names_from` argument.
 
 
 ```{r}

@@ -18,6 +18,31 @@ output:
 
 ## The case study
 
+{{< spoiler text="Click here, if you want to reproduce the data sets" >}} 
+
+```r
+# run these lines to create the two data sets
+library(tidyverse)
+set.seed(12345)
+N <- 6
+d <- tibble(resp_id=rep(1:N), 
+                name = sample(c("John", "Mary", "Mosis", "Steven"), N, TRUE),
+                age = sample(30:50, N, TRUE), 
+                city = sample(c("Pretoria", "Cape Town"), N, TRUE),
+                ans_1=sample(3,N,TRUE),
+                ans_2=sample(3,N,TRUE),
+                ans_3=sample(2,N,TRUE))
+dt <- pivot_longer(d, cols=contains("ans"), 
+             names_prefix = "ans_", names_to = "question", values_to = "answer")
+
+
+questions <- dt %>% select(resp_id, question, answer) %>% filter((resp_id != 4 | question!=2) & resp_id != 5)
+questions <- questions %>% add_row(resp_id=7, question="1", answer=2)
+demog <- dt %>% select(resp_id, name, age, city) %>% distinct() 
+```
+{{< /spoiler  >}} 
+
+
 Let's suppose that you conducted a survey where all respondents gave some demographic informations: name, city and age.
 
 
@@ -65,9 +90,10 @@ questions
 ## 15       7 1             2
 ```
 
+
 Note also, that you have a row referring to an resp_ID =7 for which you do not have demographic information. 
 
-We will have different options to merge these two information table into on table. The package `dplyr` proposes a complete set of joins. As we will not use them all for our class, I am only presenting the three most common ways to join 2 tables. 
+We will have different options to merge these two information table into one table. The package `dplyr` proposes a complete set of joins. As we will not use them all for our class, I am only presenting the three most common ways to join 2 tables. 
 
 If you ever need more complex ways to join tables, you are invited to consult the <a href="https://dplyr.tidyverse.org/reference/join.html" target="_blank">dplyr - joins documentation</a>.
 
@@ -195,7 +221,7 @@ Most of the time, you will use the inner joins.
 
 However, since it takes into account rows that match on both tables, it will potentially drop down some information available in one of the two tables. You have to check carefully the results obtained after a join to make sure you obtained what you wanted.
 
-The last two types of joins will not be very useful in creating data set usable for data analysis as it potentially creates some NA cells that will introduce problems for many econometric packages. 
+The last two types of joins will not be very useful in creating data set usable for data analysis as it potentially creates some `NA` cells that will introduce problems for many econometric packages. 
 
 However, the left and full joins are useful because they help you identify problems in your data sets: a `NA` indicates some information went missing on one of the two tables. It should trigger a question for you: is this normal ? or did I encounter some problems in the data entry (wrong ID for example). More generally, they might also be useful for specific applications.
 

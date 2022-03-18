@@ -1,7 +1,7 @@
 ---
 title: "Wide or Long" 
 author: Damien Jourdain
-date: '2020-08-20'
+date: '2022-03-18'
 slug: wide-long-formats
 type: book
 weight: 1
@@ -39,7 +39,7 @@ All the other columns correspond to unique characteristics (or answers) of the r
 
 ## Long format
 
-With a long format, each row correspond to one response. So each respondent will have data in multiple rows. 
+With a long format, each row corresponds to one response. So each respondent will have data in multiple rows. 
 
 
 
@@ -66,7 +66,7 @@ With a long format, each row correspond to one response. So each respondent will
 
 As you can see, each respondents are described in three rows, one per question. The question is described by a question id, and an answer. 
 
-Note also variables that don’t change across responses will have the same value in all the rows of the corresponding respondent. This leads to some repetitions, but may be useful when conducting data analysis. 
+Note also variables that do not change across responses will have the same value in all the rows of the corresponding respondent. This leads to some repetitions, but may be useful when conducting data analysis. 
 
 Depending on data analysis needs, you will have to change from one format to another. Therefore, it is important that you master the functions to reshape data in one format or another. 
 

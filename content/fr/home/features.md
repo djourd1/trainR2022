@@ -2,7 +2,7 @@
 widget: featurette
 headless: true
 weight: 20
-title: Features
+title: Fonctionnalités
 subtitle: 
 feature:
   - icon: book-open
@@ -15,6 +15,6 @@ feature:
     description: Principaux types de données et de structures
   - icon: wrench
     icon_pack: fas
-    name: Importer et manipuler ses données Data
+    name: Importer et manipuler ses données
     description: Outils pour travailler sur les données
 ---

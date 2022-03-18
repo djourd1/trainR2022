@@ -16,7 +16,7 @@ library(tidyverse)
 
 ## The original data
 
-Let's suppose that you capture data in the following format:
+Let's suppose that you captured data in the following format:
 
 + one line per respondent
 + one column per repeated answer (recorded here as ans_1, ans_2 and ans_3)
@@ -37,7 +37,7 @@ dt
 
 ## What do you want to obtain?
 
-If you want to reshape your table as a long format, you will shape in order to obain
+If you want to reshape your table as a *long* format, you will shape in order to obain
 
 + one line per answer, per respondent
 + one column indicating the actual answer
@@ -45,13 +45,10 @@ If you want to reshape your table as a long format, you will shape in order to o
 
 ## Use pivot_longer()
 
-To do so, we will use the command `pivot_longer()` that is part of the `tidyr` package (a member of the tidyverse family)
-
-So do not forget to load the tidyverse package:
+To do so, we will use the command `pivot_longer()` that is part of the `tidyr` package (a member of the tidyverse family). So do not forget to load the `tidyverse` or the `tidyr` package:
 ```{r, eval=FALSE}
 library(tidyverse)
 ```
-
 
 The easiest way to pivot the table is to identify the columns that will go from columns to rows.
 In our case, we want the columns ans_1, ans_2, ans_3 to be appearing as rows. We will provide the vector of columns that will be pivoted:
@@ -69,14 +66,13 @@ In the new table:
   + name corresponds to string identifying the former column name 
   + value corresponds to the value of the cell in the former column
 
-
 Note that since the question have an easy pattern for names, we could obtain the same result with less effort:
 
 ```{r, echo=TRUE}
 pivot_longer(dt, cols=contains("ans"))
 ```
 
-The column name and value are not very explicit, so you can rename them with the options names_to, and values_to. 
+The column name and value are not very explicit, so you can rename them with the arguments `names_to`, and `values_to`. 
 
 ```{r, echo=TRUE}
 pivot_longer(dt, cols=contains("ans"), 

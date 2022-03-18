@@ -7,8 +7,8 @@ icon: book
 icon_pack: fas
 
 # Page metadata.
-title: "Chapter 4: Reshape your data"
-date: "2020-08-20T00:00:00Z"
+title: "Chapter 2: Reshape your data"
+date: "2022-03-18T00:00:00Z"
 type: book  
 ---
 
