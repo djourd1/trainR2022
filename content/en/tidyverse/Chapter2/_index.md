@@ -18,12 +18,6 @@ For the analysis of experimental and survey data, we often have to store repeate
 
 In this chapter you will learn:
 
-+ What are the wide and long formats?
-+ How to reshape a data set from wide to long format?
-+ How to reshape a data set from long to wide format?
-
-
-
-
-
-
++ {{% staticref "tidyverse/chapter2/wide-long-formats/" %}}What are the wide and long formats?{{% /staticref %}}
++ {{% staticref "tidyverse/chapter2/long-to-wide/" %}}How to reshape a data set from long to wide format?{{% /staticref %}}
++ {{% staticref "tidyverse/chapter2/wide-to-long/" %}}How to reshape a data set from wide to long format?{{% /staticref %}}
