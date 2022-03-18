@@ -77,16 +77,37 @@ These are necessary when your variable of interest contains categories and chara
 
 As a reminder, a dummy variable is a variable that indicates whether an observation has a particular characteristic and assumes the values 0 and 1, where 0 indicates the absence of the property, and 1 indicates the presence of the same. For example, if you want to dummy code a variable `region` that has three unique values, you could create the following dummies:
 
+Region | dR1 | dR2 | dR3
+:-----|:----|:----|:----
+Reg1 |1 | 0 | 0
+Reg2 | 0 | 1 | 0
+Reg3 | 0 | 0 | 1
 
-\\begin{table}[!h]
-\\begin{tabular}{llll}
-Region & Reg1  & Reg2  & Reg3  \\\\
-R1 &  1&0  &0  \\\\
-R2 &  0&1  &0  \\\\
-R3 &  0&0  &1 
-\\end{tabular}
-\\end{table}
+To create a dummy variable in R you can use the function `ifelse()`
 
+With our example with regions, you could create three new variables in your dataset `df` using the command: 
+
+```r
+df$dR1 <- ifelse(df$Region == 'Reg1', 1, 0)
+df$dR2 <- ifelse(df$Region == 'Reg2', 1, 0)
+df$dR3 <- ifelse(df$Region == 'Reg3', 1, 0) 
+```
+
+This code will create three new columns where, in the column “dR1” you will get the number "1" when the the interview was in conducted in Region 1 and "0" when conducted in another region. The same would apply for the following two columns.
+
+Indeed, you can use the `ifelse()` function within a tidyverse syntax.
+
+
+```r
+df  %>%
+  mutate( dR1 = ifelse(df$Region == 'Reg1', 1, 0), 
+          dR2 = ifelse(df$Region == 'Reg2', 1, 0),
+          dR3 = ifelse(df$Region == 'Reg3', 1, 0)) 
+```
+
+{{% callout note %}}
+The careful reader, will remember that when you have three modalities for a categorical variables, you will only need to use two dummies !  I created the three dummies, but you will in fact need only two most of the time.
+{{% callout %}}
 
 ## Exercise 1: 
 

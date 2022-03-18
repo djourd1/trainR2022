@@ -320,11 +320,11 @@ Note that you can use a single line of command for these different operations. B
 ```
 
 ```
-##              [,1]       [,2]         [,3]       [,4]        [,5]
-## row_1 -0.17060617  0.1508352 -0.456188977 -0.4094545  0.11977180
-## row_2 -0.01789341 -0.2084555 -2.060163210  0.9443676 -2.74297045
-## row_3 -0.95768499 -1.2404368 -0.005662902  0.2545656 -0.41545993
-## row_4  0.52004921 -0.1741887 -0.406370489 -0.7070530 -0.09037533
+##            [,1]        [,2]        [,3]       [,4]        [,5]
+## row_1 1.4493214 -0.10130734 -0.50930456 0.97077085 -0.05189897
+## row_2 1.0230492  0.08673889 -0.25763844 0.05754572 -1.35857052
+## row_3 0.1698261  0.08999405  1.23277103 0.77352446 -1.59767633
+## row_4 1.3099937  0.35407839 -0.03681879 0.38166302 -0.25082216
 ```
 {{< /spoiler >}}
 
@@ -942,10 +942,10 @@ However, `solve()`, as its name suggests, can be also used to solve systems of l
 
 In this exercise, you will use the function `solve()` to resolve the following system of equation.
 
-$$ \\begin{pmatrix}
+$$ \\begin{matrix}
     3 u_1 + 2 u_2  & = & 1 \\\\
    -3 u_1 + 4 u_2  & = & 0.5 
-\\end{pmatrix} $$
+\\end{matrix} $$
 
 This system can be written in the matrix format A.x = b, 
 
