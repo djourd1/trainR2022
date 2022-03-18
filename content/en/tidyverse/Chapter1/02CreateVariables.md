@@ -77,14 +77,16 @@ These are necessary when your variable of interest contains categories and chara
 
 As a reminder, a dummy variable is a variable that indicates whether an observation has a particular characteristic and assumes the values 0 and 1, where 0 indicates the absence of the property, and 1 indicates the presence of the same. For example, if you want to dummy code a variable `region` that has three unique values, you could create the following dummies:
 
-\begin{table}[!h]
-\begin{tabular}{llll}
-Region & Reg1  & Reg2  & Reg3  \\
-R1 &  1&0  &0  \\
-R2 &  0&1  &0  \\
+
+\\begin{table}[!h]
+\\begin{tabular}{llll}
+Region & Reg1  & Reg2  & Reg3  \\\\
+R1 &  1&0  &0  \\\\
+R2 &  0&1  &0  \\\\
 R3 &  0&0  &1 
-\end{tabular}
-\end{table}
+\\end{tabular}
+\\end{table}
+
 
 ## Exercise 1: 
 
