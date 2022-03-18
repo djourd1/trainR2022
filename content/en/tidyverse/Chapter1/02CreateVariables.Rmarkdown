@@ -74,7 +74,7 @@ df  %>%
 
 {{% callout note %}}
 The careful reader, will remember that when you have three modalities for a categorical variables, you will only need to use two dummies !  I created the three dummies, but you will in fact need only two most of the time.
-{{% callout %}}
+{{% /callout %}}
 
 ## Exercise 1: 
 
