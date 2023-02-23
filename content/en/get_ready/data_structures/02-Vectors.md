@@ -250,8 +250,8 @@ To create a sample of 10 observations from the Standard Normal Distribution. Tha
 ```
 
 ```
-##  [1]  2.31030585  3.06284740  0.22703777 -0.28375554 -0.64176929 -0.36351264
-##  [7]  0.60470040  2.67345603 -0.03207421  0.81098907
+##  [1]  0.6410429  1.0937554 -0.1794122  0.3467170  0.1892545  0.3258685
+##  [7] -0.3040468  0.3280670 -0.1874509 -0.9884942
 ```
 
 To create a sample of 15 observations from the Normal Distribution with mean  20 and standard deviation 2. 
@@ -262,8 +262,8 @@ To create a sample of 15 observations from the Normal Distribution with mean  20
 ```
 
 ```
-##  [1] 19.01629 21.25624 19.19516 22.75972 19.82810 20.33711 22.58036 18.72087
-##  [9] 22.71749 20.06088 19.07769 20.07592 19.87079 20.82687 25.39120
+##  [1] 21.91140 20.02186 19.06241 20.60229 20.51897 19.36367 21.80472 22.38955
+##  [9] 21.64531 21.67763 21.97322 19.88553 20.94936 17.32909 19.65251
 ```
 
 ### from a uniform distribution
@@ -282,8 +282,8 @@ To create a sample of 10 observations with numbers between 0 and 1.
 ```
 
 ```
-##  [1] 0.8781464 0.9701189 0.1418080 0.7841559 0.6326371 0.5215025 0.7837864
-##  [8] 0.7932695 0.9956854 0.7924282
+##  [1] 0.91141721 0.57367814 0.03447464 0.17784982 0.08807546 0.95169066
+##  [7] 0.32938634 0.74796032 0.64574264 0.68630751
 ```
 
 To create a sample of 10 observations with numbers between 10 and 20. 
@@ -294,8 +294,8 @@ To create a sample of 10 observations with numbers between 10 and 20.
 ```
 
 ```
-##  [1] 13.61179 15.19997 12.77611 19.30214 11.86252 12.63189 17.01847 18.27715
-##  [9] 10.78930 19.22866
+##  [1] 18.49331 16.26863 12.42000 19.74370 15.81262 13.99035 12.22740 10.74780
+##  [9] 11.88104 12.96033
 ```
 
 ### with random integers
@@ -675,6 +675,10 @@ lunch
 Note in this case, that we added a feature to the vector, because each element of the vector is associated with a name. This is obtained by using the function `names()`. 
 
 The advantage is that alphanumeric names are often easier to remember than numeric indices. 
+
+## Summarizing video
+
+{{< youtube RpRuUFI1yb0 >}}
 
 ## Exercices
 
