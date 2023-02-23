@@ -250,8 +250,8 @@ To create a sample of 10 observations from the Standard Normal Distribution. Tha
 ```
 
 ```
-##  [1]  0.6410429  1.0937554 -0.1794122  0.3467170  0.1892545  0.3258685
-##  [7] -0.3040468  0.3280670 -0.1874509 -0.9884942
+##  [1]  2.38554832  1.04953154 -2.13332367 -0.70774975  0.90145811  0.73237387
+##  [7]  0.93277389 -0.68708343 -0.03759419  1.12707504
 ```
 
 To create a sample of 15 observations from the Normal Distribution with mean  20 and standard deviation 2. 
@@ -262,8 +262,8 @@ To create a sample of 15 observations from the Normal Distribution with mean  20
 ```
 
 ```
-##  [1] 21.91140 20.02186 19.06241 20.60229 20.51897 19.36367 21.80472 22.38955
-##  [9] 21.64531 21.67763 21.97322 19.88553 20.94936 17.32909 19.65251
+##  [1] 21.97945 18.32466 20.88837 23.64549 19.20852 19.78507 19.65717 21.29929
+##  [9] 16.21428 18.91326 19.03250 16.92520 16.71323 19.82775 18.16541
 ```
 
 ### from a uniform distribution
@@ -282,8 +282,8 @@ To create a sample of 10 observations with numbers between 0 and 1.
 ```
 
 ```
-##  [1] 0.91141721 0.57367814 0.03447464 0.17784982 0.08807546 0.95169066
-##  [7] 0.32938634 0.74796032 0.64574264 0.68630751
+##  [1] 0.9835031 0.1974553 0.3687065 0.2099483 0.8428938 0.6662661 0.3887351
+##  [8] 0.7984937 0.8667221 0.6056339
 ```
 
 To create a sample of 10 observations with numbers between 10 and 20. 
@@ -294,8 +294,8 @@ To create a sample of 10 observations with numbers between 10 and 20.
 ```
 
 ```
-##  [1] 18.49331 16.26863 12.42000 19.74370 15.81262 13.99035 12.22740 10.74780
-##  [9] 11.88104 12.96033
+##  [1] 13.96971 15.97898 12.18529 16.63422 11.08718 13.92169 14.58772 10.78407
+##  [9] 15.29448 19.19020
 ```
 
 ### with random integers
@@ -676,7 +676,9 @@ Note in this case, that we added a feature to the vector, because each element o
 
 The advantage is that alphanumeric names are often easier to remember than numeric indices. 
 
-## Summarizing video
+## Videos
+
+### How to create a vector 
 
 {{< youtube RpRuUFI1yb0 >}}
 

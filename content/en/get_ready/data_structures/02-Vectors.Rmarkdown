@@ -433,7 +433,9 @@ Note in this case, that we added a feature to the vector, because each element o
 
 The advantage is that alphanumeric names are often easier to remember than numeric indices. 
 
-## Summarizing video
+## Videos
+
+### How to create a vector 
 
 {{< youtube RpRuUFI1yb0 >}}
 
