@@ -104,7 +104,9 @@ Finally, note that the function matrix can be used to create an "empty" matrix, 
 matrix(nrow = 2, ncol = 4)
 ```
 
+Here is a video, that reviews the functions you just read about
 
+{{<youtube Cmn7IEUDRu8 >}}
 
 ### Using cbind() and rbind() functions
 
