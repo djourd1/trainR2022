@@ -138,28 +138,6 @@ str(df1)
 ##  $ start_date: Date, format: "2012-01-01" "2013-09-23" ...
 ```
 
-Beware of the default conversion of strings to factors. Use `stringsAsFactors = FALSE` to suppress this and keep character vectors as character vectors:
-
-
-```r
-df2 <- data.frame(
-   emp_id = c (1:5), 
-   emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
-   salary = c(623.3, 515.2, 611.0, 729.0, 843.25), 
-   start_date = as.Date(c("2012-01-01", "2013-09-23", "2021-11-15", "2014-05-11", "2015-03-27")),
-   stringsAsFactors = FALSE   # avoid converting the strings as factors
-)
-
-str(df2)
-```
-
-```
-## 'data.frame':	5 obs. of  4 variables:
-##  $ emp_id    : int  1 2 3 4 5
-##  $ emp_name  : chr  "Rick" "Dan" "Michelle" "Ryan" ...
-##  $ salary    : num  623 515 611 729 843
-##  $ start_date: Date, format: "2012-01-01" "2013-09-23" ...
-```
 
 
 ## How to retrieve the data? 
@@ -636,16 +614,16 @@ ans
 ## # A tibble: 50 × 4
 ##        x t        x2 e    
 ##    <int> <chr> <dbl> <chr>
-##  1     1 a         1 x    
-##  2     2 b         4 s    
-##  3     3 c         9 q    
-##  4     4 d        16 w    
-##  5     5 e        25 y    
-##  6     6 f        36 t    
-##  7     7 g        49 u    
-##  8     8 h        64 f    
-##  9     9 i        81 o    
-## 10    10 j       100 x    
+##  1     1 a         1 z    
+##  2     2 b         4 n    
+##  3     3 c         9 b    
+##  4     4 d        16 r    
+##  5     5 e        25 s    
+##  6     6 f        36 q    
+##  7     7 g        49 o    
+##  8     8 h        64 w    
+##  9     9 i        81 s    
+## 10    10 j       100 i    
 ## # … with 40 more rows
 ```
 
@@ -674,7 +652,7 @@ df$thex
 ```
 
 ```
-## [1] 0.94566935 0.68839523 0.16761450 0.61136103 0.04324678
+## [1] 0.9545137 0.8632062 0.8530558 0.8010896 0.7132297
 ```
 
 ```r
@@ -690,7 +668,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.94566935 0.68839523 0.16761450 0.61136103 0.04324678
+## [1] 0.9545137 0.8632062 0.8530558 0.8010896 0.7132297
 ```
 
 
@@ -723,7 +701,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.01313086 0.80029350 0.25300095 0.32050512 0.42545797
+## [1] 0.5423520 0.6477603 0.8064007 0.4360881 0.6868594
 ```
 
 
