@@ -608,49 +608,42 @@ ans
 ## # A tibble: 50 × 4
 ##        x t        x2 e    
 ##    <int> <chr> <dbl> <chr>
-##  1     1 a         1 h    
-##  2     2 b         4 k    
-##  3     3 c         9 n    
-##  4     4 d        16 o    
-##  5     5 e        25 k    
-##  6     6 f        36 v    
-##  7     7 g        49 z    
-##  8     8 h        64 l    
-##  9     9 i        81 k    
-## 10    10 j       100 y    
+##  1     1 a         1 p    
+##  2     2 b         4 v    
+##  3     3 c         9 l    
+##  4     4 d        16 t    
+##  5     5 e        25 p    
+##  6     6 f        36 x    
+##  7     7 g        49 a    
+##  8     8 h        64 m    
+##  9     9 i        81 q    
+## 10    10 j       100 s    
 ## # … with 40 more rows
 ```
 
 
 #### Subsetting
 
-Compared to a data.frame, tibbles are more strict: they never do partial matching, and they will generate a warning if the column you are trying to access does not exist.
+Compared to a data.frame, tibbles are stricter; in particular they never do *partial matching*, and they will generate a warning if the column you are trying to access does not exist.
 
 Compare the two codes
 
 
 ```r
 df <- data.frame(
-  thex = runif(5),
-  they = rnorm(5)
+  x1 = runif(5),
+  y1 = rnorm(5),
+  y2 = rnorm(5)
 )
 df$x # Extract by name
 ```
 
 ```
-## NULL
+## [1] 0.1005507 0.9272385 0.9274333 0.6662086 0.1572583
 ```
 
 ```r
-df$thex
-```
-
-```
-## [1] 0.9238056 0.8210649 0.5143388 0.7956738 0.7440891
-```
-
-```r
-df[["x"]] 
+df$y
 ```
 
 ```
@@ -658,20 +651,21 @@ df[["x"]]
 ```
 
 ```r
-df[[1]] # Extract by position
+df[, 1] # Extract by position
 ```
 
 ```
-## [1] 0.9238056 0.8210649 0.5143388 0.7956738 0.7440891
+## [1] 0.1005507 0.9272385 0.9274333 0.6662086 0.1572583
 ```
 
 
 ```r
 df <- tibble(
-  thex = runif(5),
-  they = rnorm(5)
+  x1 = runif(5),
+  y1 = rnorm(5),
+  y2 = rnorm(5)
 )
-df$x # Extract by name 
+df$x # Extract by name
 ```
 
 ```
@@ -683,7 +677,11 @@ df$x # Extract by name
 ```
 
 ```r
-df[["x"]] 
+df$y
+```
+
+```
+## Warning: Unknown or uninitialised column: `y`.
 ```
 
 ```
@@ -691,11 +689,18 @@ df[["x"]]
 ```
 
 ```r
-df[[1]] # Extract by position
+df[, 1 ] # Extract by position
 ```
 
 ```
-## [1] 0.9044189 0.6121497 0.3535011 0.2533239 0.1158706
+## # A tibble: 5 × 1
+##      x1
+##   <dbl>
+## 1 0.508
+## 2 0.308
+## 3 0.998
+## 4 0.189
+## 5 0.729
 ```
 
 

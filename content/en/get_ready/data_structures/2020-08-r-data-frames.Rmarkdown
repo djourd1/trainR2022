@@ -315,29 +315,30 @@ ans
 
 #### Subsetting
 
-Compared to a data.frame, tibbles are more strict: they never do partial matching, and they will generate a warning if the column you are trying to access does not exist.
+Compared to a data.frame, tibbles are stricter; in particular they never do *partial matching*, and they will generate a warning if the column you are trying to access does not exist.
 
 Compare the two codes
 
 ```{r}
 df <- data.frame(
-  thex = runif(5),
-  they = rnorm(5)
+  x1 = runif(5),
+  y1 = rnorm(5),
+  y2 = rnorm(5)
 )
 df$x # Extract by name
-df$thex
-df[["x"]] 
-df[[1]] # Extract by position
+df$y
+df[, 1] # Extract by position
 ```
 
 ```{r, error=TRUE}
 df <- tibble(
-  thex = runif(5),
-  they = rnorm(5)
+  x1 = runif(5),
+  y1 = rnorm(5),
+  y2 = rnorm(5)
 )
-df$x # Extract by name 
-df[["x"]] 
-df[[1]] # Extract by position
+df$x # Extract by name
+df$y
+df[, 1 ] # Extract by position
 ```
 
 
