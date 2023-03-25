@@ -608,16 +608,16 @@ ans
 ## # A tibble: 50 × 4
 ##        x t        x2 e    
 ##    <int> <chr> <dbl> <chr>
-##  1     1 a         1 p    
-##  2     2 b         4 v    
-##  3     3 c         9 l    
-##  4     4 d        16 t    
-##  5     5 e        25 p    
-##  6     6 f        36 x    
-##  7     7 g        49 a    
-##  8     8 h        64 m    
-##  9     9 i        81 q    
-## 10    10 j       100 s    
+##  1     1 a         1 v    
+##  2     2 b         4 l    
+##  3     3 c         9 i    
+##  4     4 d        16 x    
+##  5     5 e        25 u    
+##  6     6 f        36 m    
+##  7     7 g        49 d    
+##  8     8 h        64 b    
+##  9     9 i        81 f    
+## 10    10 j       100 w    
 ## # … with 40 more rows
 ```
 
@@ -626,7 +626,7 @@ ans
 
 Compared to a data.frame, tibbles are stricter; in particular they never do *partial matching*, and they will generate a warning if the column you are trying to access does not exist.
 
-Compare the two codes
+Compare the two codes:
 
 
 ```r
@@ -639,7 +639,7 @@ df$x # Extract by name
 ```
 
 ```
-## [1] 0.1005507 0.9272385 0.9274333 0.6662086 0.1572583
+## [1] 0.4185595 0.7090068 0.8417981 0.4979531 0.7715919
 ```
 
 ```r
@@ -655,7 +655,7 @@ df[, 1] # Extract by position
 ```
 
 ```
-## [1] 0.1005507 0.9272385 0.9274333 0.6662086 0.1572583
+## [1] 0.4185595 0.7090068 0.8417981 0.4979531 0.7715919
 ```
 
 
@@ -677,6 +677,14 @@ df$x # Extract by name
 ```
 
 ```r
+df$x1
+```
+
+```
+## [1] 0.82821475 0.02363167 0.99581781 0.88277135 0.64373937
+```
+
+```r
 df$y
 ```
 
@@ -694,13 +702,13 @@ df[, 1 ] # Extract by position
 
 ```
 ## # A tibble: 5 × 1
-##      x1
-##   <dbl>
-## 1 0.508
-## 2 0.308
-## 3 0.998
-## 4 0.189
-## 5 0.729
+##       x1
+##    <dbl>
+## 1 0.828 
+## 2 0.0236
+## 3 0.996 
+## 4 0.883 
+## 5 0.644
 ```
 
 
