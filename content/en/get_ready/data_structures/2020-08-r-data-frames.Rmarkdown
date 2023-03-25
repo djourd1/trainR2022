@@ -92,7 +92,7 @@ Moreover, we can use the row and column names instead of the numeric coordinates
 ```{r}
 mtcars["Mazda RX4", "cyl"] 
 ```
-
+{{< spoiler text="A note on row and column names" >}}
 {{% callout note %}}
 If you do not remember the names of the columns you can use either `names()` or `colnames()`:
 
@@ -106,7 +106,7 @@ If you do not remember the names of the rows you can use `rownames()`:
 rownames(mtcars)
 ```
 {{% /callout %}}
-
+{{< /spoiler>}}
 
 ### Data contained in a column
 

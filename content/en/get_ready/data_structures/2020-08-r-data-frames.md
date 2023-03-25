@@ -164,7 +164,7 @@ mtcars["Mazda RX4", "cyl"]
 ```
 ## [1] 6
 ```
-
+{{< spoiler text="A note on row and column names" >}}
 {{% callout note %}}
 If you do not remember the names of the columns you can use either `names()` or `colnames()`:
 
@@ -202,7 +202,7 @@ rownames(mtcars)
 ## [31] "Maserati Bora"       "Volvo 142E"
 ```
 {{% /callout %}}
-
+{{< /spoiler>}}
 
 ### Data contained in a column
 
@@ -651,16 +651,16 @@ ans
 ## # A tibble: 50 × 4
 ##        x t        x2 e    
 ##    <int> <chr> <dbl> <chr>
-##  1     1 a         1 l    
-##  2     2 b         4 v    
-##  3     3 c         9 x    
-##  4     4 d        16 a    
-##  5     5 e        25 o    
-##  6     6 f        36 v    
-##  7     7 g        49 u    
-##  8     8 h        64 g    
-##  9     9 i        81 u    
-## 10    10 j       100 t    
+##  1     1 a         1 c    
+##  2     2 b         4 h    
+##  3     3 c         9 a    
+##  4     4 d        16 f    
+##  5     5 e        25 l    
+##  6     6 f        36 e    
+##  7     7 g        49 t    
+##  8     8 h        64 p    
+##  9     9 i        81 r    
+## 10    10 j       100 i    
 ## # … with 40 more rows
 ```
 
@@ -689,7 +689,7 @@ df$thex
 ```
 
 ```
-## [1] 0.9860813 0.7607631 0.5633912 0.9159814 0.9465418
+## [1] 0.5865859 0.1799897 0.8548893 0.3326865 0.0523101
 ```
 
 ```r
@@ -705,7 +705,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.9860813 0.7607631 0.5633912 0.9159814 0.9465418
+## [1] 0.5865859 0.1799897 0.8548893 0.3326865 0.0523101
 ```
 
 
@@ -738,7 +738,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.64296596 0.06199283 0.46804030 0.87987991 0.85727995
+## [1] 0.7313278 0.4620766 0.1440085 0.4974438 0.6805723
 ```
 
 
