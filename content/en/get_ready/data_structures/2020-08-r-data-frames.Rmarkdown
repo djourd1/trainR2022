@@ -63,17 +63,31 @@ We are learning that mtcars is an R object of type `data.frame`, that contains 3
 
 Typically, `data.frames` are imported from other programs rather than created from scratch (refer to the Import Data section for details). Nevertheless, it is important to be aware that you can generate a data.frame on your own.
 
+You create a data frame by supplying *name-vector* pairs to the function `data.frame()`:
+
 ```{r}
-new.data <- data.frame(
+df1 <- data.frame(
    emp_id = c (1:5), 
    emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
    salary = c(623.3, 515.2, 611.0, 729.0, 843.25), 
-   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
-      "2015-03-27")),
-   stringsAsFactors = FALSE   # if needed, avoid converting the strings as factors
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2021-11-15", "2014-05-11", "2015-03-27"))
 )
 
-new.data
+str(df1)
+```
+
+Beware of the default conversion of strings to factors. Use `stringsAsFactors = FALSE` to suppress this and keep character vectors as character vectors:
+
+```{r}
+df2 <- data.frame(
+   emp_id = c (1:5), 
+   emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+   salary = c(623.3, 515.2, 611.0, 729.0, 843.25), 
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2021-11-15", "2014-05-11", "2015-03-27")),
+   stringsAsFactors = FALSE   # avoid converting the strings as factors
+)
+
+str(df2)
 ```
 
 
