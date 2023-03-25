@@ -138,8 +138,6 @@ str(df1)
 ##  $ start_date: Date, format: "2012-01-01" "2013-09-23" ...
 ```
 
-
-
 ## How to retrieve the data? 
 
 ### Data in a cell
@@ -166,6 +164,45 @@ mtcars["Mazda RX4", "cyl"]
 ```
 ## [1] 6
 ```
+
+{{% callout note %}}
+If you do not remember the names of the columns you can use either `names()` or `colnames()`:
+
+
+```r
+names(mtcars)
+```
+
+```
+##  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+## [11] "carb"
+```
+
+```r
+# colnames(mtcars)  #colnames give the same results
+```
+
+If you do not remember the names of the rows you can use `rownames()`:
+
+```r
+rownames(mtcars)
+```
+
+```
+##  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         
+##  [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
+##  [7] "Duster 360"          "Merc 240D"           "Merc 230"           
+## [10] "Merc 280"            "Merc 280C"           "Merc 450SE"         
+## [13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" 
+## [16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           
+## [19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      
+## [22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
+## [25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
+## [28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
+## [31] "Maserati Bora"       "Volvo 142E"
+```
+{{% /callout %}}
+
 
 ### Data contained in a column
 
@@ -614,16 +651,16 @@ ans
 ## # A tibble: 50 × 4
 ##        x t        x2 e    
 ##    <int> <chr> <dbl> <chr>
-##  1     1 a         1 z    
-##  2     2 b         4 n    
-##  3     3 c         9 b    
-##  4     4 d        16 r    
-##  5     5 e        25 s    
-##  6     6 f        36 q    
-##  7     7 g        49 o    
-##  8     8 h        64 w    
-##  9     9 i        81 s    
-## 10    10 j       100 i    
+##  1     1 a         1 l    
+##  2     2 b         4 v    
+##  3     3 c         9 x    
+##  4     4 d        16 a    
+##  5     5 e        25 o    
+##  6     6 f        36 v    
+##  7     7 g        49 u    
+##  8     8 h        64 g    
+##  9     9 i        81 u    
+## 10    10 j       100 t    
 ## # … with 40 more rows
 ```
 
@@ -652,7 +689,7 @@ df$thex
 ```
 
 ```
-## [1] 0.9545137 0.8632062 0.8530558 0.8010896 0.7132297
+## [1] 0.9860813 0.7607631 0.5633912 0.9159814 0.9465418
 ```
 
 ```r
@@ -668,7 +705,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.9545137 0.8632062 0.8530558 0.8010896 0.7132297
+## [1] 0.9860813 0.7607631 0.5633912 0.9159814 0.9465418
 ```
 
 
@@ -701,7 +738,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.5423520 0.6477603 0.8064007 0.4360881 0.6868594
+## [1] 0.64296596 0.06199283 0.46804030 0.87987991 0.85727995
 ```
 
 

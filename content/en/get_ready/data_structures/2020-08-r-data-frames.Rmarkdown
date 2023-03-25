@@ -76,8 +76,6 @@ df1 <- data.frame(
 str(df1)
 ```
 
-
-
 ## How to retrieve the data? 
 
 ### Data in a cell
@@ -94,6 +92,21 @@ Moreover, we can use the row and column names instead of the numeric coordinates
 ```{r}
 mtcars["Mazda RX4", "cyl"] 
 ```
+
+{{% callout note %}}
+If you do not remember the names of the columns you can use either `names()` or `colnames()`:
+
+```{r}
+names(mtcars)
+# colnames(mtcars)  #colnames give the same results
+```
+
+If you do not remember the names of the rows you can use `rownames()`:
+```{r}
+rownames(mtcars)
+```
+{{% /callout %}}
+
 
 ### Data contained in a column
 
