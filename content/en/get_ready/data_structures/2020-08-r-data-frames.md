@@ -114,7 +114,7 @@ We are learning that mtcars is an R object of type `data.frame`, that contains 3
 
 ## Create a Data Frame
 
-You will often not create a data.frame from scratch, but usually import them from other programs (see the Import Data chapter). However, you should know that you can create a data.frame by yourself.
+Typically, `data.frames` are imported from other programs rather than created from scratch (refer to the Import Data section for details). Nevertheless, it is important to be aware that you can generate a data.frame on your own.
 
 
 ```r
@@ -567,7 +567,7 @@ tibble(
 ```
 
 ```
-## # A tibble: 5 x 4
+## # A tibble: 5 × 4
 ##       x     y     z t    
 ##   <int> <dbl> <dbl> <chr>
 ## 1     1     1     2 a    
@@ -588,10 +588,11 @@ tibble(
 ```
 
 ```
-## Error: Tibble columns must have compatible sizes.
-## * Size 5: Existing data.
-## * Size 3: Column `t`.
-## i Only values of size one are recycled.
+## Error in `tibble()`:
+## ! Tibble columns must have compatible sizes.
+## • Size 5: Existing data.
+## • Size 3: Column `t`.
+## ℹ Only values of size one are recycled.
 ```
 
 #### Display 
@@ -610,20 +611,20 @@ ans
 ```
 
 ```
-## # A tibble: 50 x 4
+## # A tibble: 50 × 4
 ##        x t        x2 e    
 ##    <int> <chr> <dbl> <chr>
-##  1     1 a         1 f    
-##  2     2 b         4 p    
-##  3     3 c         9 m    
-##  4     4 d        16 n    
-##  5     5 e        25 d    
-##  6     6 f        36 s    
-##  7     7 g        49 e    
+##  1     1 a         1 w    
+##  2     2 b         4 h    
+##  3     3 c         9 h    
+##  4     4 d        16 d    
+##  5     5 e        25 y    
+##  6     6 f        36 i    
+##  7     7 g        49 p    
 ##  8     8 h        64 i    
-##  9     9 i        81 s    
-## 10    10 j       100 u    
-## # ... with 40 more rows
+##  9     9 i        81 q    
+## 10    10 j       100 t    
+## # … with 40 more rows
 ```
 
 
@@ -651,7 +652,7 @@ df$thex
 ```
 
 ```
-## [1] 0.3875897 0.7165484 0.9323750 0.4038740 0.8088399
+## [1] 0.80373749 0.25171359 0.76379743 0.07970185 0.45237305
 ```
 
 ```r
@@ -667,7 +668,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.3875897 0.7165484 0.9323750 0.4038740 0.8088399
+## [1] 0.80373749 0.25171359 0.76379743 0.07970185 0.45237305
 ```
 
 
@@ -700,7 +701,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.7323211 0.5807434 0.3484580 0.1269492 0.5315243
+## [1] 0.64069189 0.89770195 0.85943755 0.07305123 0.20711743
 ```
 
 

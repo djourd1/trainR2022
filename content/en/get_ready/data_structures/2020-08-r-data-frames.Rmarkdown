@@ -61,7 +61,7 @@ We are learning that mtcars is an R object of type `data.frame`, that contains 3
 
 ## Create a Data Frame
 
-You will often not create a data.frame from scratch, but usually import them from other programs (see the Import Data chapter). However, you should know that you can create a data.frame by yourself.
+Typically, `data.frames` are imported from other programs rather than created from scratch (refer to the Import Data section for details). Nevertheless, it is important to be aware that you can generate a data.frame on your own.
 
 ```{r}
 new.data <- data.frame(

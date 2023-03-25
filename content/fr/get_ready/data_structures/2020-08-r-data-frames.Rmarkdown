@@ -61,9 +61,7 @@ Nous apprenons que `mtcars` est un objet R de type `data.frame`, qui contient 32
 
 ## Comment créer un data.frame {#creer-data-frame}
 
-Souvent, vous ne créerez pas de data.frame à partir de zéro, mais vous les importerez généralement à partir d'autres programmes (voir le chapitre sur l'importation de données). 
-
-Cependant, vous devez savoir que vous pouvez créer un data.frame par vous-même.
+En général, vous ne créerez pas de `data.frame` à partir de zéro, mais vous les importerez à partir d'autres programmes (voir le chapitre sur l'importation de données). Cependant, vous devez savoir que vous pouvez créer un `data.frame` par vous-même.
 
 ```{r}
 new.data <- data.frame(
