@@ -249,35 +249,27 @@ mtcars[,4]
 ##  [1] 110 110  93 110 175 105 245  62  95 123 123 180 180 180 205 215 230  66  52
 ## [20]  65  97 150 150 245 175  66  91 113 264 175 335 109
 ```
-Note that :
 
-+ in the second case, that you do not need to remember the name of the column, but just its position in the table. 
-+ in both cases: 
-
-  + a single number is technically a vector, but that in general, they have several entries. The function `length` tells you how many.
-  + the order of the entries in the mtcars$hp list preserves the order of the rows in our data table. This is important this it allows us to manipulate one variable based on the results of another.
-  + the object, mtcars$hp, is not one number. It's a vector containing 32 numbers.
-
+Alternatively, we can use the column number. 
 
 
 ```r
-hp <- mtcars$hp 
-class(hp)
+mtcars[,4] 
 ```
 
 ```
-## [1] "numeric"
+##  [1] 110 110  93 110 175 105 245  62  95 123 123 180 180 180 205 215 230  66  52
+## [20]  65  97 150 150 245 175  66  91 113 264 175 335 109
 ```
 
-```r
-length(hp)
-```
+However, it is often clearer to use the column name than the column number. Besides, if you change the structure of the data frame, the ordering of the columns may change, and you may unknowingly refer to a different number if you use column numbers.
 
-```
-## [1] 32
-```
+{{% callout note %}}
+In both cases: 
 
-This particular vector is a numeric vector since `hp` column contains numbers.
+  + the object `mtcars$hp` or `mtcars[,4] ` is not one number but it is a vector containing 32 numbers (i.e., the number of rows).
++ the order of the entries in the `mtcars$hp` vector preserves the order of the rows in our data frame. This is important as this allows us to manipulate one variable based on the results of another.
+{{% /callout %}}
 
 
 ### Data contained in several columns
@@ -651,16 +643,16 @@ ans
 ## # A tibble: 50 × 4
 ##        x t        x2 e    
 ##    <int> <chr> <dbl> <chr>
-##  1     1 a         1 c    
-##  2     2 b         4 h    
-##  3     3 c         9 a    
-##  4     4 d        16 f    
-##  5     5 e        25 l    
-##  6     6 f        36 e    
-##  7     7 g        49 t    
-##  8     8 h        64 p    
-##  9     9 i        81 r    
-## 10    10 j       100 i    
+##  1     1 a         1 y    
+##  2     2 b         4 o    
+##  3     3 c         9 h    
+##  4     4 d        16 r    
+##  5     5 e        25 j    
+##  6     6 f        36 y    
+##  7     7 g        49 e    
+##  8     8 h        64 g    
+##  9     9 i        81 d    
+## 10    10 j       100 s    
 ## # … with 40 more rows
 ```
 
@@ -689,7 +681,7 @@ df$thex
 ```
 
 ```
-## [1] 0.5865859 0.1799897 0.8548893 0.3326865 0.0523101
+## [1] 0.06669095 0.32677350 0.62259212 0.36502697 0.68497820
 ```
 
 ```r
@@ -705,7 +697,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.5865859 0.1799897 0.8548893 0.3326865 0.0523101
+## [1] 0.06669095 0.32677350 0.62259212 0.36502697 0.68497820
 ```
 
 
@@ -738,7 +730,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.7313278 0.4620766 0.1440085 0.4974438 0.6805723
+## [1] 0.86082611 0.08566619 0.17891652 0.78360411 0.92979478
 ```
 
 

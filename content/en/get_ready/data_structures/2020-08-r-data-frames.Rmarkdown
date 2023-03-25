@@ -126,23 +126,21 @@ Second, we can retrieve the same column with the single square bracket "[]" oper
 mtcars[,"hp"] 
 mtcars[,4] 
 ```
-Note that :
 
-+ in the second case, that you do not need to remember the name of the column, but just its position in the table. 
-+ in both cases: 
-
-  + a single number is technically a vector, but that in general, they have several entries. The function `length` tells you how many.
-  + the order of the entries in the mtcars$hp list preserves the order of the rows in our data table. This is important this it allows us to manipulate one variable based on the results of another.
-  + the object, mtcars$hp, is not one number. It's a vector containing 32 numbers.
-
+Alternatively, we can use the column number. 
 
 ```{r}
-hp <- mtcars$hp 
-class(hp)
-length(hp)
+mtcars[,4] 
 ```
 
-This particular vector is a numeric vector since `hp` column contains numbers.
+However, it is often clearer to use the column name than the column number. Besides, if you change the structure of the data frame, the ordering of the columns may change, and you may unknowingly refer to a different number if you use column numbers.
+
+{{% callout note %}}
+In both cases: 
+
+  + the object `mtcars$hp` or `mtcars[,4] ` is not one number but it is a vector containing 32 numbers (i.e., the number of rows).
++ the order of the entries in the `mtcars$hp` vector preserves the order of the rows in our data frame. This is important as this allows us to manipulate one variable based on the results of another.
+{{% /callout %}}
 
 
 ### Data contained in several columns
