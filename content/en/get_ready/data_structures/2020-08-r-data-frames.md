@@ -241,15 +241,6 @@ mtcars[,"hp"]
 ## [20]  65  97 150 150 245 175  66  91 113 264 175 335 109
 ```
 
-```r
-mtcars[,4] 
-```
-
-```
-##  [1] 110 110  93 110 175 105 245  62  95 123 123 180 180 180 205 215 230  66  52
-## [20]  65  97 150 150 245 175  66  91 113 264 175 335 109
-```
-
 Alternatively, we can use the column number. 
 
 
@@ -267,19 +258,19 @@ However, it is often clearer to use the column name than the column number. Besi
 {{% callout note %}}
 In both cases: 
 
-  + the object `mtcars$hp` or `mtcars[,4] ` is not one number but it is a vector containing 32 numbers (i.e., the number of rows).
+  + the object `mtcars$hp` or `mtcars[,4] ` is a vector containing 32 numbers (i.e., the number of rows).
 + the order of the entries in the `mtcars$hp` vector preserves the order of the rows in our data frame. This is important as this allows us to manipulate one variable based on the results of another.
 {{% /callout %}}
 
 
 ### Data contained in several columns
 
-This use of brackets is becoming especially usuful when you want to retrieve several columns in one command. Try this command:
+This use of brackets is becoming especially useful when you want to retrieve several columns. Try this command:
 
 
 ```r
 carsub <- mtcars[,2:4]
-head(carsub)  # the function head displays the first six rows of the table
+head(carsub)  # the function head() displays the first six rows of the table
 ```
 
 ```
@@ -294,7 +285,9 @@ head(carsub)  # the function head displays the first six rows of the table
 
 This example shows that you can extract the columns 2, 3 and 4 of the table `mtcars` and store them in a new data.frame called `carsub`. 
 
-Remember that if you want to show several columns that are not in the same sequence of numbers, you can use the R function `c()`. Remember that c() is a generic function to combine arguments into a vector. So if you want to select the columns 3,7 and 11:
+If you want to show several columns that are not in the same sequence of numbers, you can use the function `c()`. 
+
+For example, if you want to select the columns 3,7 and 11:
 
 
 ```r
@@ -312,54 +305,19 @@ head(carsub)
 ## Valiant            225 20.22    1
 ```
 
-Note that the function `c()` is not limited to combine numbers. It can combine many different types of objects into one vector (as long as all the objects you want to combine are of the same type).
-
-So you would obtain the result by typing a vector of column names:
+Again, you can use a vector of column names instead of column numbers:
 
 
 ```r
-mtcars[ ,c("disp", "qsec","carb")]
+carsub <- mtcars[ ,c("disp", "qsec","carb")]
 ```
 
-```
-##                      disp  qsec carb
-## Mazda RX4           160.0 16.46    4
-## Mazda RX4 Wag       160.0 17.02    4
-## Datsun 710          108.0 18.61    1
-## Hornet 4 Drive      258.0 19.44    1
-## Hornet Sportabout   360.0 17.02    2
-## Valiant             225.0 20.22    1
-## Duster 360          360.0 15.84    4
-## Merc 240D           146.7 20.00    2
-## Merc 230            140.8 22.90    2
-## Merc 280            167.6 18.30    4
-## Merc 280C           167.6 18.90    4
-## Merc 450SE          275.8 17.40    3
-## Merc 450SL          275.8 17.60    3
-## Merc 450SLC         275.8 18.00    3
-## Cadillac Fleetwood  472.0 17.98    4
-## Lincoln Continental 460.0 17.82    4
-## Chrysler Imperial   440.0 17.42    4
-## Fiat 128             78.7 19.47    1
-## Honda Civic          75.7 18.52    2
-## Toyota Corolla       71.1 19.90    1
-## Toyota Corona       120.1 20.01    1
-## Dodge Challenger    318.0 16.87    2
-## AMC Javelin         304.0 17.30    2
-## Camaro Z28          350.0 15.41    4
-## Pontiac Firebird    400.0 17.05    2
-## Fiat X1-9            79.0 18.90    1
-## Porsche 914-2       120.3 16.70    2
-## Lotus Europa         95.1 16.90    2
-## Ford Pantera L      351.0 14.50    4
-## Ferrari Dino        145.0 15.50    6
-## Maserati Bora       301.0 14.60    8
-## Volvo 142E          121.0 18.60    2
-```
 
 ### Data contained in the rows
 
 We retrieve rows from a data frame with the single square bracket operator, just like what we did with columns. However, in additional to an index vector of row positions, we append an extra comma character. This is important, as the extra comma signals a wildcard match for the second coordinate for column positions. 
+
+To extract rows from a data frame, we use the single square bracket operator, just as we did with columns. However, instead of just providing a vector of row positions, we add a comma after it. 
 
 
 ```r
@@ -371,7 +329,14 @@ mtcars[1:2, ]
 ## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4
 ```
+This comma is crucial because it indicates a wildcard match for the second coordinate for column positions. In other words, the comma tells R to include all columns when sub-setting the data frame. Without the comma, R would interpret the index vector as selecting columns, which is not what you wanted.
+To convince yourself, evaluate the following command:
 
+```r
+mtcars[1:2] 
+```
+
+You can also select rows that are not part of a sequence:
 
 
 ```r
@@ -643,16 +608,16 @@ ans
 ## # A tibble: 50 × 4
 ##        x t        x2 e    
 ##    <int> <chr> <dbl> <chr>
-##  1     1 a         1 y    
-##  2     2 b         4 o    
-##  3     3 c         9 h    
-##  4     4 d        16 r    
-##  5     5 e        25 j    
-##  6     6 f        36 y    
-##  7     7 g        49 e    
-##  8     8 h        64 g    
-##  9     9 i        81 d    
-## 10    10 j       100 s    
+##  1     1 a         1 h    
+##  2     2 b         4 k    
+##  3     3 c         9 n    
+##  4     4 d        16 o    
+##  5     5 e        25 k    
+##  6     6 f        36 v    
+##  7     7 g        49 z    
+##  8     8 h        64 l    
+##  9     9 i        81 k    
+## 10    10 j       100 y    
 ## # … with 40 more rows
 ```
 
@@ -681,7 +646,7 @@ df$thex
 ```
 
 ```
-## [1] 0.06669095 0.32677350 0.62259212 0.36502697 0.68497820
+## [1] 0.9238056 0.8210649 0.5143388 0.7956738 0.7440891
 ```
 
 ```r
@@ -697,7 +662,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.06669095 0.32677350 0.62259212 0.36502697 0.68497820
+## [1] 0.9238056 0.8210649 0.5143388 0.7956738 0.7440891
 ```
 
 
@@ -730,7 +695,7 @@ df[[1]] # Extract by position
 ```
 
 ```
-## [1] 0.86082611 0.08566619 0.17891652 0.78360411 0.92979478
+## [1] 0.9044189 0.6121497 0.3535011 0.2533239 0.1158706
 ```
 
 

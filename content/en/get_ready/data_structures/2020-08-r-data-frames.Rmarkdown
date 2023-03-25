@@ -124,7 +124,6 @@ Second, we can retrieve the same column with the single square bracket "[]" oper
 
 ```{r}
 mtcars[,"hp"] 
-mtcars[,4] 
 ```
 
 Alternatively, we can use the column number. 
@@ -138,45 +137,54 @@ However, it is often clearer to use the column name than the column number. Besi
 {{% callout note %}}
 In both cases: 
 
-  + the object `mtcars$hp` or `mtcars[,4] ` is not one number but it is a vector containing 32 numbers (i.e., the number of rows).
+  + the object `mtcars$hp` or `mtcars[,4] ` is a vector containing 32 numbers (i.e., the number of rows).
 + the order of the entries in the `mtcars$hp` vector preserves the order of the rows in our data frame. This is important as this allows us to manipulate one variable based on the results of another.
 {{% /callout %}}
 
 
 ### Data contained in several columns
 
-This use of brackets is becoming especially usuful when you want to retrieve several columns in one command. Try this command:
+This use of brackets is becoming especially useful when you want to retrieve several columns. Try this command:
 
 ```{r}
 carsub <- mtcars[,2:4]
-head(carsub)  # the function head displays the first six rows of the table
+head(carsub)  # the function head() displays the first six rows of the table
 ```
 
 This example shows that you can extract the columns 2, 3 and 4 of the table `mtcars` and store them in a new data.frame called `carsub`. 
 
-Remember that if you want to show several columns that are not in the same sequence of numbers, you can use the R function `c()`. Remember that c() is a generic function to combine arguments into a vector. So if you want to select the columns 3,7 and 11:
+If you want to show several columns that are not in the same sequence of numbers, you can use the function `c()`. 
+
+For example, if you want to select the columns 3,7 and 11:
 
 ```{r}
 carsub <- mtcars[,c(3,7,11)]
 head(carsub)
 ```
 
-Note that the function `c()` is not limited to combine numbers. It can combine many different types of objects into one vector (as long as all the objects you want to combine are of the same type).
+Again, you can use a vector of column names instead of column numbers:
 
-So you would obtain the result by typing a vector of column names:
-
-```{r}
-mtcars[ ,c("disp", "qsec","carb")]
+```{r, eval=FALSE}
+carsub <- mtcars[ ,c("disp", "qsec","carb")]
 ```
+
 
 ### Data contained in the rows
 
 We retrieve rows from a data frame with the single square bracket operator, just like what we did with columns. However, in additional to an index vector of row positions, we append an extra comma character. This is important, as the extra comma signals a wildcard match for the second coordinate for column positions. 
 
+To extract rows from a data frame, we use the single square bracket operator, just as we did with columns. However, instead of just providing a vector of row positions, we add a comma after it. 
+
 ```{r}
 mtcars[1:2, ] 
 ```
+This comma is crucial because it indicates a wildcard match for the second coordinate for column positions. In other words, the comma tells R to include all columns when sub-setting the data frame. Without the comma, R would interpret the index vector as selecting columns, which is not what you wanted.
+To convince yourself, evaluate the following command:
+```{r, eval=FALSE}
+mtcars[1:2] 
+```
 
+You can also select rows that are not part of a sequence:
 
 ```{r}
 mtcars[c(1,3,10), ] 
